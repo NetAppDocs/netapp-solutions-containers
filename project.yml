@@ -1,5 +1,5 @@
 settings:
-  name: "Containers solutions"
+  name: "Container solutions"
   internal:
     pdf_enabled: true
   prod:
