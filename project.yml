@@ -16,7 +16,7 @@ product-family:
   name: NetApp Solutions
   repo: netapp-solutions-family
 
-
+sidebar:
   entries:
     - title: "NetApp Solutions Documentation"
       url: /index.html
