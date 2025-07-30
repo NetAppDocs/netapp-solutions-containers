@@ -6,6 +6,8 @@ summary: # no summary
 ---
 = Legal notices
 :icons: font
+:imagesdir: ./media/
+
 c:\Users\bmegan\git_workspace\netapp-solutions-internal\legal-notices.adoc
 
 // Include the common notices
