@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: anthos/a-w-n-use-cases.html
+keywords: validation, use-cases, application, multitenancy, virtualization,
+summary: The examples provided on this page are solution validations and use cases for Anthos with NetApp.
+---
+
+= Solution Validation and Use Cases
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ../media/
+
+//
+// This file was created with NDAC Version 0.9 (June 4, 2020)
+//
+// 2020-06-25 14:31:33.563897
+//
+
+[.lead]
+The examples provided on this page are solution validations and use cases for Anthos with NetApp.
+
+link:anthos-deploy-app-cloud-console.html[Install an application using the Google Cloud Console]
+
+
+
+// NetApp Solutions restructuring (jul 2025) - renamed from containers/a-w-n_use_cases.adoc
