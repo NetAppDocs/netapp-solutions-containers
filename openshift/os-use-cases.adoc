@@ -21,7 +21,7 @@ summary:
 [.lead]
 The examples provided on this page are solution validations and use cases for Red Hat OpenShift with NetApp.
 
-* link:rh-os-n_use_case_pipeline[Deploy a Jenkins CI/CD Pipeline with Persistent Storage]
+* link:os-use-case-pipeline.html[Deploy a Jenkins CI/CD Pipeline with Persistent Storage]
 
 * link:os-multitenancy-overview.html[Configure Multitenancy on Red Hat OpenShift with NetApp]
 

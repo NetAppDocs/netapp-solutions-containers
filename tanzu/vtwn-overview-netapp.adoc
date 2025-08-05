@@ -12,7 +12,7 @@ summary: NetApp has several storage platforms that are qualified with Trident an
 :linkattrs:
 :imagesdir: ../media/
 :solution_name: VMware Tanzu with NetApp
-:ontap_page_link: vtwn_netapp_ontap.html
+:ontap_page_link: vtwn-netapp-ontap.html
 
 [.lead]
 NetApp has several storage platforms that are qualified with Trident and Trident Protect to provision, protect and manage data for containerized applications and thus help in defining and maximizing DevOps throughput.
