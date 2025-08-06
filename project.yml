@@ -1,5 +1,5 @@
 settings:
-  name: "NetApp Container solutions"
+  name: "NetApp container solutions"
   internal:
     pdf_enabled: true
     lipi_enabled: true
@@ -13,7 +13,7 @@ settings:
     zip-filename: netapp-solutions-containers.zip
 
 product-family:
-  name: NetApp Solutions
+  name: NetApp solutions
   repo: netapp-solutions-family
 
 sidebar:
