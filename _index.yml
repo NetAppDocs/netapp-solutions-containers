@@ -2,44 +2,86 @@ indexpage:
   title: NetApp container solutions
   lead: "NetApp solutions are a set of strategic and technology capabilities that emphasize the NetApp portfolio of products and services to support our customers' most critical business needs."
   summary: "NetApp solutions are a set of strategic and technology capabilities that emphasize the NetApp portfolio of products and services to support our customers' most critical business needs."
+
   tiles:
-    - title: "Introduction"
+    - title: "Get started"
       links:
-        - title: "Learn about NetApp Solutions"
-          url: https://docs.netapp.com/us-en/netapp-solutions-family/intro-family.html
-        - title: "Change History"
+        - title: "What's new"
           url: /whats-new.html
         - title: "Blogs"
           url: /blogs.html
-        - title: "Videos & Demos"
-          url: /videos.html
-        - title: "Legal Notices"
-          url: legal-notices.html
-#
-    - title: "AI and Core Infrastructure Solutions"
+        - title: "Videos and demos"
+          url: /videos.ht
+    - title: "Load balancers"
       links:
-        - title: "SAP and SAP HANA"
-          url: https://docs.netapp.com/us-en/netapp-solutions-sap/index.html
-#
-    - title: "Solution Automation"
+        - title: "OpenShift load balancers"
+          url: openshift/os-load-balancers.html
+        - title: "OpenShift F5 BIG-IP"
+          url: openshift/os-lb-f5bigip.html
+        - title: "OpenShift MetalLB"
+          url: openshift/os-lb-metallb.html
+        - title: "Anthos load balancers"
+          url: anthos/anthos-load-balancers.html
+        - title: "Anthos F5 BIG-IP"
+          url: anthos/anthos-f5bigip-lb.html
+        - title: "Anthos MetalLB"
+          url: anthos/anthos-metallb.html
+        - title: "Anthos Seesaw"
+          url: anthos/anthos-seesaw-lb.html
+    - title: "Storage integrations"
       links:
-        - title: "Request Automation"
+        - title: "OpenShift integrations"
+          url: openshift/os-storint-overview.html
+        - title: "Anthos storage integrations"
+          url: anthos/anthos-storint-overview.html
+        - title: "Tanzu storage integrations"
+          url: tanzu/vtwn-overview-storint.html
+    - title: "Platform-specific deployments"
+      links:
+        - title: "Anthos on bare metal"
+          url: anthos/anthos-bm.html
+        - title: "Anthos on VMware"
+          url: anthos/anthos-vmw.html
+        - title: "Anthos deploy app cloud console"
+          url: anthos/anthos-deploy-app-cloud-console.html
+        - title: "OpenShift on AWS ROSA"
+          url: openshift/os-on-aws-rosa.html
+        - title: "OpenShift on bare metal"
+          url: openshift/os-on-bm.html
+        - title: "OpenShift on OpenStack"
+          url: openshift/os-on-openstack.html
+        - title: "OpenShift on RHV"
+          url: openshift/os-on-rhv.html
+        - title: "OpenShift on VMware"
+          url: openshift/os-on-vmw.html
+        - title: "Tanzu TKG"
+          url: tanzu/vtwn-overview-tkg.html
+        - title: "Tanzu TKGI"
+          url: tanzu/vtwn-overview-tkgi.html
+        - title: "Tanzu TKGS"
+          url: tanzu/vtwn-overview-tkgs.html
+        - title: "Tanzu VST"
+          url: tanzu/vtwn-overview-vst.html
+    - title: "Use cases and pipelines"
+      links:
+        - title: "Anthos use cases"
+          url: anthos/a-w-n-use-cases.html
+        - title: "OpenShift use cases"
+          url: openshift/os-use-cases.html
+        - title: "OpenShift pipeline use case"
+          url: openshift/os-use-case-pipeline.html
+    - title: "Data protection and backup"
+      links:
+        - title: "OpenShift Velero"
+          url: openshift/os-velero.html
+        - title: "OpenShift Trident Protect"
+          url: openshift/os-trident-protect.html
+    - title: "Solutions request and feedback"
+      links:
+        - title: "Request automation"
           url: https://github.com/NetAppDocs/netapp-solutions/issues/new?body=[Request%20Automation]%0d%0a%0d%0aSolution%20Name:%20%0d%0aRequest%20Title:%20%0d%0aDescription:%0d%0aSuggestions:&title=Request%20Automation%20-%20%3Crequest_title%3E
-#
-    - title: "FlexPod - A NetApp & Cisco Solution"
-      links:
-        - title: "FlexPod Solutions Technical Content"
-          url: https://docs.netapp.com/us-en/flexpod/
-        - title: "FlexPod Sales Page"
-          url: https://flexpod.com
-#        - title: "Videos and Demos"
-#          url: https://tv.netapp.com/search?q=flexpod
-        - title: "Blogs"
-          url: https://blog.netapp.com/tag/FlexPod/
-#
-    - title: "Feedback"
-      links:
-        - title: "Propose a New Solution"
+        - title: "Propose a new solution"
           url: https://github.com/NetAppDocs/netapp-solutions/issues/new?body=[Request%20Solution]%0d%0a%0d%0aSolution%20Use%20Case:%20%0d%0aSolution%20Description:%20%0d%0aAdditional%20Comments:&title=Request%20Solution%20-%20%3Csolution%3E
-        - title: "Provide Solution Feedback"
+        - title: "Provide solution feedback"
           url: https://github.com/NetAppDocs/netapp-solutions/issues/new?body=[Solution%20Feedback]%0d%0a%0d%0aSolution%20Name:%20%0d%0aSolution%20Feedback:%20%0d%0aAdditional%20Comments:&title=Solution%20Feedback%20-%20%3Csolution%3E
+

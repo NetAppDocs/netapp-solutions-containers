@@ -1,10 +1,9 @@
 ---
 sidebar: sidebar
-permalink: openshift/os-videos-and-demos.html
+permalink: openshift/openshift-videos.html
 keywords: video, demonstration, deployment
 summary:
 ---
-
 = Watch videos and demos to integrate Red Hat OpenShift Virtualization with NetApp Trident
 :hardbreaks:
 :nofooter:

@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
-permalink: anthos/anthos-videos-and-demos.html
+permalink: anthos/anthos-videos.html
 keywords: video, demonstration, deployment
-summary: The video linked to from this page demonstrates some of the capabilities documented in this document.
+summary: Demonstrates some of the capabilities documented in this document.
 ---
 
 = Videos and Demos
@@ -19,7 +19,7 @@ summary: The video linked to from this page demonstrates some of the capabilitie
 //
 
 [.lead]
-The following video demonstrates some of the capabilities described in this document:
+Explore key features and deployment scenarios for NetApp with Google Anthos through a curated selection of videos and demonstrations. These resources showcase best practices, integration steps, and real-world use cases.
 
 video::a9e5fd88-6bdc-4d23-a4b5-b01200effc06[panopto, title="Deploying Anthos on bare metal - Anthos with NetApp", width=360]
 

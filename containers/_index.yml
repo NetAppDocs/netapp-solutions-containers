@@ -4,24 +4,24 @@ indexpage:
   summary: "NetApp Container Solutions are validated deployments of many popular Kubernetes-based container orchestrators and their integration with NetApp storage management systems and software."
   tiles:
 #
-    - title: "Anthos with NetApp"
+    - title: "Get started"
       links:
-        - title: "Solution Overview"
+        - title: "Solution overview"
           url: ../anthos/anthos-solution-overview.html
-        - title: "Anthos Overview"
+        - title: "Anthos overview"
           url: ../anthos/anthos-overview.html
-        - title: "NetApp Storage Integrations"
+        - title: "NetApp storage integrations"
           url: ../anthos/anthos-storint-overview.html
-        - title: "Use Cases"
+        - title: "Use cases"
           url: ../anthos/a-w-n-use-cases.html
-        - title: "Videos and Demos"
-          url: ../anthos/anthos-videos-and-demos.html
+        - title: "Videos and demos"
+          url: ../videos/anthos-videos-and-demos.html
 #
     - title: "Red Hat OpenShift with NetApp"
       links:
-        - title: "Solution Overview"
+        - title: "Solution overview"
           url: ../openshift/os-solution-overview.html
-        - title: "Red Hat OpenShift Overview"
+        - title: "Red Hat OpenShift overview"
           url: ../openshift/os-overview.html
         - title: "NetApp Storage Integrations"
           url: ../openshift/os-storint-overview.html
@@ -32,25 +32,23 @@ indexpage:
 #
     - title: "VMware Tanzu with NetApp"
       links:
-        - title: "Solution Overview"
+        - title: "Solution overview"
           url: ../tanzu/vtwn-solution-overview.html
-        - title: "VMware Tanzu Overview"
+        - title: "VMware Tanzu overview"
           url: ../tanzu/vtwn-overview-vmware-tanzu.html
-        - title: "NetApp Storage Integrations"
+        - title: "NetApp storage integrations"
           url: ../tanzu/vtwn-overview-storint.html
         - title: "Videos and Demos"
-          url: ../tanzu/vtwn-videos-and-demos.html
+          url: ../videos/tanzu-videos.html
 #
-    - title: "About Our Resources for Containers"
+    - title: "Resources for Containers"
       links:
-        - title: "NetApp Trident"
-          url: https://netapp.io/persistent-storage-provisioner-for-kubernetes/
-#
-    - title: "About Our Partner Solutions"
+        #
+    - title: "Partner solutions"
       links:
-        - title: "Anthos Website"
+        - title: "Anthos website"
           url: https://cloud.google.com/anthos
-        - title: "Red Hat OpenShift Website"
+        - title: "Red Hat OpenShift website"
           url: https://www.redhat.com/en/technologies/cloud-computing/openshift
-        - title: "VMware Tanzu Website"
+        - title: "VMware Tanzu website"
           url: https://tanzu.vmware.com/
