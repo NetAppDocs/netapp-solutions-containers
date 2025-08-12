@@ -28,8 +28,27 @@ sidebar:
             url: /anthos/anthos-netapp-overview.html
           - title: "About NetApp ONTAP"
             url: /anthos/anthos-netapp-ontap.html
+          - title: "NetApp storage systems overview"
+            entries:
+            - title: "Overview"
+              url: /containers/rh-os-n_overview_netapp.html
+            - title: "NetApp ONTAP and Openshift"
+              url: /openshift/os-netapp-ontap.html
+            - title: "NetApp Element"
+              url: /openshift/os-netapp-element.html
+          - title: "NetApp storage integration with Openshift"
+            url: /openshift/os-storint-overview.html
+          - title: "NetApp Trident overview"
+            entries:
+              - title: "Trident overview"
+                url: /openshift/os-trident-overview.html
+              - title: "NetApp ONTAP NFS"
+                url: /openshift/os-trident-ontap-nfs.html
+              - title: "NetApp ONTAP iSCSI"
+                url: /openshift/os-trident-ontap-iscsi.html
+              - title: "NetApp Element iSCSI"
+                url: /openshift/os-trident-element-iscsi.html
     - section: containers
-
     - title: "Videos"
       entries:
         - title: "AWS hybrid cloud"

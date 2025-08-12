@@ -3,7 +3,6 @@ indexpage:
   lead: "NetApp solutions are a set of strategic and technology capabilities that emphasize the NetApp portfolio of products and services to support our customers' most critical business needs."
   summary: "NetApp solutions are a set of strategic and technology capabilities that emphasize the NetApp portfolio of products and services to support our customers' most critical business needs."
   tiles:
-#
     - title: "Get started"
       links:
         - title: "Solution overview"
@@ -16,18 +15,16 @@ indexpage:
           url: ../anthos/a-w-n-use-cases.html
         - title: "Videos and demos"
           url: ../videos/anthos-videos-and-demos.html
-#
     - title: "Red Hat OpenShift with NetApp"
       links:
         - title: "Solution overview"
           url: ../openshift/os-solution-overview.html
         - title: "Red Hat OpenShift overview"
           url: ../openshift/os-overview.html
-        - title: "NetApp Storage Integrations"
+        - title: "NetApp storage integrations"
           url: ../openshift/os-storint-overview.html
-        - title: "Use Cases"
+        - title: "Use cases"
           url: ../openshift/os-use-cases.html
-#
     - title: "VMware Tanzu with NetApp"
       links:
         - title: "Solution overview"
@@ -36,7 +33,6 @@ indexpage:
           url: ../tanzu/vtwn-overview-vmware-tanzu.html
         - title: "NetApp storage integrations"
           url: ../tanzu/vtwn-overview-storint.html
-#
     - title: "Partner solutions"
       links:
         - title: "Anthos website"
