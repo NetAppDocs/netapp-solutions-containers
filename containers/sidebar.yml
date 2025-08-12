@@ -1,3 +1,4 @@
+
 section: containers
 title: "Containers"
 url: /containers/index.html
@@ -5,63 +6,52 @@ entries:
   - title: "Anthos with NetApp"
     pdf-filename: "Anthos with NetApp"
     entries:
-      - title: "Solution Overview"
-        url: /anthos/anthos-solution-overview.html
-      - title: "Anthos Overview"
+      - title: "Get started"
         entries:
-          - title: "Overview"
+          - title: "Solution overview"
+            url: /anthos/anthos-solution-overview.html
+          - title: "NetApp storage integrations overview"
+            url: /anthos/anthos-storint-overview.html
+          - title: "NetApp Trident overview"
+            url: /anthos/anthos-trident-overview.html
+          - title: "About Anthos"
             url: /anthos/anthos-overview.html
-          - title: "Anthos Clusters on VMware"
+          - title: "Anthos clusters on VMware"
             url: /anthos/anthos-vmw.html
           - title: "Anthos on bare metal"
             url: /anthos/anthos-bm.html
-      - title: "NetApp Storage Systems Overview"
-        entries:
-          - title: "Overview"
-            url: /anthos/anthos-netapp-overview.html
-          - title: "NetApp ONTAP"
-            url: /anthos/anthos-netapp-ontap.html
-      - title: "NetApp Storage Integrations Overview"
-        entries:
-          - title: "Overview"
-            url: /anthos/anthos-storint-overview.html
-          - title: "NetApp Trident Overview"
-            url: /anthos/anthos-trident-overview.html
-      - title: "Advanced Configuration Options"
+      - title: "Advanced configuration options"
         entries:
           - title: "Overview"
             url: /anthos/anthos-advanced-overview.html
-          - title: "Exploring Load Balancer Options"
+          - title: "Exploring load balancer options"
             entries:
-              - title: "Overview"
+              - title: "About Anthos load balancers"
                 url: /anthos/anthos-load-balancers.html
-              - title: "Installing F5 BIG-IP load balancers"
+              - title: "Install F5 BIG-IP load balancers"
                 url: /anthos/anthos-f5bigip-lb.html
-              - title: "Installing MetalLB load balancers"
+              - title: "Instal MetalLB load balancers"
                 url: /anthos/anthos-metallb.html
-              - title: "Installing SeeSaw load balancers"
+              - title: "Install SeeSaw load balancers"
                 url: /anthos/anthos-seesaw-lb.html
-      - title: "Solution Validation and Use Cases"
+      - title: "Solution validation and use cases"
         entries:
-          - title: "Install an application using the Google Cloud Console"
+          - title: "Install an app with the Google Cloud Console"
             url: /anthos/anthos-deploy-app-cloud-console.html
-      - title: "Videos / Demos"
-        url: /anthos/anthos-videos-and-demos.html
-      - title: "Additional Information"
+      - title: "Additional information"
         url: /anthos/anthos-additional-information.html
-#
   - title: "Red Hat OpenShift with NetApp"
     pdf-filename: "Red Hat OpenShift with NetApp"
     entries:
-      - title: "Solution Overview"
-        url: /openshift/os-solution-overview.html
-      - title: "Red Hat Openshift Overview"
+      - title: "Get started"
         entries:
-          - title: "Overview"
+          - title: "Solution overview"
+            url: /openshift/os-solution-overview.html
+          - title: "About OpenShift"
             url: /openshift/os-overview.html
-          - title: "OpenShift on Bare Metal"
+          - title: "OpenShift on bare metal"
             url: /openshift/os-on-bm.html
-          - title: "OpenShift on Red Hat OpenStack Platform"
+          - title: "OpenShift on Red Hat OpenStack platform"
             url: /openshift/os-on-openstack.html
           - title: "OpenShift on Red Hat Virtualization"
             url: /openshift/os-on-rhv.html
@@ -69,7 +59,7 @@ entries:
             url: /openshift/os-on-vmw.html
           - title: "OpenShift on AWS"
             url: /openshift/os-on-aws-rosa.html
-      - title: "NetApp Storage Systems Overview"
+      - title: "NetApp storage systems overview"
         entries:
           - title: "Overview"
             url: /containers/rh-os-n_overview_netapp.html
@@ -77,11 +67,11 @@ entries:
             url: /openshift/os-netapp-ontap.html
           - title: "NetApp Element"
             url: /openshift/os-netapp-element.html
-      - title: "NetApp Storage Integrations Overview"
+      - title: "NetApp storage integrations overview"
         entries:
           - title: "Overview"
             url: /openshift/os-storint-overview.html
-          - title: "NetApp Trident Overview"
+          - title: "NetApp Trident overview"
             entries:
               - title: "Overview"
                 url: /openshift/os-trident-overview.html
@@ -91,43 +81,43 @@ entries:
                 url: /openshift/os-trident-ontap-iscsi.html
               - title: "NetApp Element iSCSI"
                 url: /openshift/os-trident-element-iscsi.html
-      - title: "Advanced Configuration Options"
+      - title: "Advanced configuration options"
         entries:
-          - title: "Exploring Load Balancer Options"
+          - title: "Explore load balancer options"
             entries:
-              - title: "Overview"
+              - title: "About Openshift load balancers"
                 url: /openshift/os-load-balancers.html
               - title: "MetalLB"
                 url: /openshift/os-lb-metallb.html
               - title: "F5 BIG-IP"
                 url: /openshift/os-lb-f5bigip.html
-          - title: "Creating Private Image Registries"
+          - title: "Create private image registries"
             url: /openshift/os-private-registry.html
-      - title: "Solution Validation and Use Cases"
+      - title: "Solution validation and use cases"
         entries:
           - title: "Overview"
             url: /openshift/os-use-cases.html
-          - title: "Deploy a Jenkins CI/CD Pipeline with Persistent Storage"
+          - title: "Deploy Jenkins CI/CD pipeline with persistent storage"
             url: /openshift/os-use-case-pipeline.html
-          - title: "Configure Multi-tenancy on Red Hat OpenShift with NetApp ONTAP"
+          - title: "Configure multi-tenancy on OpenShift with ONTAP"
             entries:
-              - title: "Overview"
+              - title: "About Openshift multitenancy"
                 url: /openshift/os-multitenancy-overview.html
               - title: "Architecture"
                 url: /openshift/os-multi-tenant-architecture.html
-              - title: "Configuration Overview"
+              - title: "Configuration overview"
                 url: /openshift/os-multitenancy-configuration.html
-              - title: "Configuration Prerequisites"
+              - title: "Configuration prerequisites"
                 url: /openshift/os-multitenancy-config-prereq.html
-              - title: "Cluster Administrator Tasks"
+              - title: "Cluster administrator tasks"
                 url: /openshift/os-multitenancy-clstr-admin-task.html
-              - title: "Storage Administrator Tasks"
+              - title: "Storage administrator tasks"
                 url: /openshift/os-multitenancy-stor-admin-tasks.html
               - title: "Validation"
                 url: /openshift/os-multitenancy-validation.html
               - title: "Scaling"
                 url: /openshift/os-multitenancy-scaling.html
-      - title: "Advanced Cluster Management for Kubernetes on Red Hat OpenShift with NetApp"
+      - title: "Advanced cluster management for Kubernetes on OpenShift"
         entries:
           - title: "Overview"
             url: /openshift/os-adv-mgmt-overview.html
@@ -137,61 +127,57 @@ entries:
                 url: /openshift/os-adv-mgmt-deployment-prereq.html
               - title: "Deploy via operator"
                 url: /openshift/os-adv-mgmt-deployment.html
-              - title: "Cluster Lifecycle Management"
+              - title: "Cluster lifecycle management"
                 url: /openshift/os-adv-mgmt-cluster-lcm.html
-              - title: "Application Lifecycle Management"
+              - title: "Application lifecycle management"
                 url: /openshift/os-adv-mgmt-app-lcm.html
-              - title: "Governance and Risk"
+              - title: "Governance and risk"
                 url: /openshift/os-adv-mgmt-governance-risk.html
               - title: "Observability"
                 url: /openshift/os-adv-mgmt-observability.html
-              - title: "Creating Resources"
+              - title: "Create resources"
                 url: /openshift/os-adv-mgmt-create-resources.html
-      - title: "Data Protection using Trident protect"
+      - title: "Protect data using Trident protect"
         url: /openshift/os-trident-protect.html
-      - title: "Data Protection using Third party tools"
+      - title: "Protect data using third-party tools"
         url: /openshift/os-velero.html
-      - title: "Videos / Demos"
-        url: /openshift/os-videos-and-demos.html
-      - title: "Additional Information"
+      - title: "Additional information"
         url: /openshift/os-additional-information.html
-#
   - title: "Red Hat OpenShift Service on AWS with FSxN"
     pdf-filename: "Red Hat OpenShift Service on AWS with FSxN"
     entries:
-      - title: "Overview"
+      - title: "Solution overview"
         url: /openshift/os-rosa-solution-overview.html
       - title: "Workflows"
         url: /openshift/os-rosa-app-workflows.html
-#        
   - title: "VMware Tanzu with NetApp"
     pdf-filename: "VMware Tanzu with NetApp"
     entries:
-      - title: "Solution Overview"
-        url: /tanzu/vtwn-solution-overview.html
-      - title: "VMware Tanzu Overview"
+      - title: "Get started"
         entries:
-          - title: "Overview"
+          - title: "Solution overview"
+            url: /tanzu/vtwn-solution-overview.html
+          - title: "About VMware Tanzu"
             url: /tanzu/vtwn-overview-vmware-tanzu.html
-          - title: "VMware TKG (Tanzu Kubernetes Grid) Overview"
+          - title: "About Tanzu Kubernetes Grid"
             url: /tanzu/vtwn-overview-tkg.html
-          - title: "VMware TKGS (Tanzu Kubernetes Grid Service) Overview"
+          - title: "About Tanzu Kubernetes Grid Service"
             url: /tanzu/vtwn-overview-tkgs.html
-          - title: "VMware TKGI (Tanzu Kubernetes Grid Integrated Edition) Overview"
+          - title: "About Tanzu Kubernetes Grid Integrated Edition"
             url: /tanzu/vtwn-overview-tkgi.html
-          - title: "VMware vSphere with Tanzu (vSphere Pods)"
+          - title: "VMware vSphere with Tanzu"
             url: /tanzu/vtwn-overview-vst.html
-      - title: "NetApp Storage Systems Overview"
+      - title: "NetApp storage systems overview"
         entries:
           - title: "Overview"
             url: /tanzu/vtwn-overview-netapp.html
           - title: "NetApp ONTAP"
             url: /tanzu/vtwn-netapp-ontap.html
-      - title: "NetApp Storage Integrations Overview"
+      - title: "NetApp storage integrations overview"
         entries:
           - title: "Overview"
             url: /tanzu/vtwn-overview-storint.html
-          - title: "NetApp Trident Overview"
+          - title: "NetApp Trident overview"
             entries:
               - title: "Overview"
                 url: /tanzu/vtwn-overview-trident.html
@@ -199,8 +185,5 @@ entries:
                 url: /tanzu/vtwn-trident-ontap-nfs.html
               - title: "NetApp ONTAP iSCSI"
                 url: /tanzu/vtwn-trident-ontap-iscsi.html
-      - title: "Videos / Demos"
-        url: /tanzu/vtwn-videos-and-demos.html
-      - title: "Additional Information"
+      - title: "Additional information"
         url: /tanzu/vtwn-additional-information.html
-#
