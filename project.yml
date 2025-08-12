@@ -50,14 +50,14 @@ sidebar:
                 url: /openshift/os-trident-element-iscsi.html
     - section: containers
     - title: "Videos"
+      url: /videos/index.html
       entries:
-        - title: "AWS hybrid cloud"
-          url: /videos/hmc-aws-videos.html
-        - title: "Azure hybrid cloud"
-          url: /videos/hmc-azure-videos.html
-        - title: "OpenShift hybrid cloud"
-          url: /videos/hmc-openshift-videos.html
-
+        - title: "Google Anthos"
+          url: /videos/anthos-videos.html
+        - title: "Red Hat OpenShift"
+          url: /videos/openshift-videos.html
+        - title: "VMware Tanzu"
+          url: /videos/tanzu-videos.html
     - title: "Blogs"
       url: /blogs.html
 
