@@ -2,28 +2,28 @@ indexpage:
   title: Watch videos and demos on containers with NetApp
   lead: "Discover NetApp's comprehensive video library showcasing container solutions across Anthos, OpenShift, and VMware Tanzu platforms. Each collection focuses on specific use cases and integration scenarios."
   summary: "Series of videos and demos discussing the features of many of NetApp's container solutions"
-entries:
-  - title: "Anthos with NetApp"
-    entries:
-      - title: "Anthos deployment and setup"
-        url: /videos/anthos-videos.html#anthos-deployment-and-setup-on-bare-metal
-      - title: "Trident deployment and setup"
-        url: /videos/anthos-videos.html#trident-deployment-and-setup-on-anthos
-  - title: "Red Hat OpenShift with NetApp"
-    entries:
-      - title: "Disaster recovery and data protection"
-        url: /videos/openshift-videos.html#disaster-recovery-and-data-protection
-      - title: "OpenShift virtualization and VM management"
-        url: /videos/openshift-videos.html#openshift-virtualization-and-vm-management
-      - title: "Application deployment and storage"
-        url: /videos/openshift-videos.html#application-deployment-and-storage
-      - title: "Automation and integration"
-        url: /videos/openshift-videos.html#automation-and-integration
-      - title: "Cloud and hybrid integrations"
-        url: /videos/openshift-videos.html#cloud-and-hybrid-integrations
-  - title: "VMware Tanzu with NetApp"
-    entries:
-      - title: "Persistent storage provisioning"
-        url: /videos/tanzu-videos.html#persistent-storage-provisioning
-      - title: "Application cloning and data protection"
-        url: /videos/tanzu-videos.html#application-cloning-and-data-protection
+  tiles:
+    - title: "Anthos with NetApp"
+      entries:
+        - title: "Anthos deployment and setup"
+          url: /videos/anthos-videos.html#anthos-deployment-and-setup-on-bare-metal
+        - title: "Trident deployment and setup"
+          url: /videos/anthos-videos.html#trident-deployment-and-setup-on-anthos
+    - title: "Red Hat OpenShift with NetApp"
+      entries:
+        - title: "Disaster recovery and data protection"
+          url: /videos/openshift-videos.html#disaster-recovery-and-data-protection
+        - title: "OpenShift virtualization and VM management"
+          url: /videos/openshift-videos.html#openshift-virtualization-and-vm-management
+        - title: "Application deployment and storage"
+          url: /videos/openshift-videos.html#application-deployment-and-storage
+        - title: "Automation and integration"
+          url: /videos/openshift-videos.html#automation-and-integration
+        - title: "Cloud and hybrid integrations"
+          url: /videos/openshift-videos.html#cloud-and-hybrid-integrations
+    - title: "VMware Tanzu with NetApp"
+      entries:
+        - title: "Persistent storage provisioning"
+          url: /videos/tanzu-videos.html#persistent-storage-provisioning
+        - title: "Application cloning and data protection"
+          url: /videos/tanzu-videos.html#application-cloning-and-data-protection
