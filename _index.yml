@@ -1,18 +1,20 @@
 indexpage:
   title: NetApp container solutions
-  lead: "NetApp solutions are a set of strategic and technology capabilities that emphasize the NetApp portfolio of products and services to support our customers' most critical business needs."
-  summary: "NetApp solutions are a set of strategic and technology capabilities that emphasize the NetApp portfolio of products and services to support our customers' most critical business needs."
+  lead: "NetApp container solutions are validated deployments of many popular Kubernetes-based container orchestrators and their integration with NetApp storage management systems and software."
+  summary: "NetApp Container Solutions are validated deployments of many popular Kubernetes-based container orchestrators and their integration with NetApp storage management systems and software."
   tiles:
+
     - title: "Get started"
       links:
         - title: "What's new"
           url: /whats-new.html
-        - title: "Learn about NetApp resources for containers"
-          url: https://www.netapp.com/kubernetes/
+        - title: "Learn about NetApp Trident for containers"
+          url: https://netapp.io/persistent-storage-provisioner-for-kubernetes/
         - title: "Blogs"
           url: /blogs.html
         - title: "Videos and demos"
           url: /videos/index.html
+
     - title: "Anthos with NetApp"
       links:
         - title: "Solution overview"
@@ -21,16 +23,24 @@ indexpage:
           url: /anthos/anthos-vmw.html
         - title: "Anthos on bare metal"
           url: /anthos/anthos-bm.html
-        - title: "Deploy an application to the Anthos cluster"
+        - title: "NetApp storage integrations"
+          url: /anthos/anthos-storint-overview.html
+        - title: Use case
           url: /anthos/anthos-deploy-app-cloud-console.html
+
     - title: "Red Hat OpenShift with NetApp"
       links:
-        - title: "OpenShift with NetApp"
+        - title: "Solution overview"
           url: /openshift/os-solution-overview.html
-        - title: "OpenShift on AWS"
+        - title: "About Red Hat OpenShift"
+          url: /openshift/os-overview.html
+        - title: "About OpenShift on AWS"
           url: /openshift/os-rosa-solution-overview.html
+        - title: "NetApp storage integrations"
+          url: /openshift/os-storint-overview.html
         - title: "Use cases"
           url: /openshift/os-use-cases.html
+
     - title: "VMware Tanzu with NetApp"
       links:
         - title: "Solution overview"
@@ -39,6 +49,7 @@ indexpage:
           url: /tanzu/vtwn-overview-vmware-tanzu.html
         - title: "NetApp storage integrations"
           url: /tanzu/vtwn-overview-storint.html
+
     - title: "Partner solutions"
       links:
         - title: "Anthos website"
@@ -47,6 +58,7 @@ indexpage:
           url: https://www.redhat.com/en/technologies/cloud-computing/openshift
         - title: "VMware Tanzu website"
           url: https://tanzu.vmware.com/
+    
     - title: "Solution requests and feedback"
       links:
         - title: "Request automation"
