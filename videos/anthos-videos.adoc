@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: anthos/anthos-videos.html
+permalink: videos/anthos-videos.html
 keywords: video, demonstration, deployment
 summary: Demonstrates some of the capabilities documented in this document.
 ---
@@ -20,9 +20,13 @@ summary: Demonstrates some of the capabilities documented in this document.
 [.lead]
 Explore key features and deployment scenarios for NetApp with Google Anthos through a curated selection of videos and demonstrations. These resources showcase best practices, integration steps, and real-world use cases.
 
-video::a9e5fd88-6bdc-4d23-a4b5-b01200effc06[panopto, title="Deploying Anthos on bare metal - Anthos with NetApp", width=360]
+== Anthos deployment and setup on bare metal
 
-video::8ea4c03a-85e9-4d90-bf3c-afb6011b051c[panopto, title="Deployment of Trident on Anthos 1.14 cluster", width=360]
+video::a9e5fd88-6bdc-4d23-a4b5-b01200effc06[panopto, title="Deploy Anthos on bare metal - Anthos with NetApp", width=360]
+
+
+== Trident deployment and setup on Anthos
+video::8ea4c03a-85e9-4d90-bf3c-afb6011b051c[panopto, title="Deploy Trident on Anthos 1.14 cluster", width=360]
 
 
 

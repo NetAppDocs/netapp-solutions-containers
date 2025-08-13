@@ -1,50 +1,27 @@
 section: videos
 entries:
-  - title: "Anthos with NetApp videos"
+  - title: "Anthos with NetApp"
     entries:
-      - title: "Deploying Anthos on bare metal - Anthos with NetApp"
-        video_id: a9e5fd88-6bdc-4d23-a4b5-b01200effc06
-        platform: panopto
-      - title: "Deployment of Trident on Anthos 1.14 cluster"
-        video_id: 8ea4c03a-85e9-4d90-bf3c-afb6011b051c
-        platform: panopto
-  - title: "Red Hat OpenShift with NetApp videos"
+      - title: "Anthos deployment and setup"
+        url: /videos/anthos-videos.html#anthos-deployment-and-setup-on-bare-metal
+      - title: "Trident deployment and setup"
+        url: /videos/anthos-videos.html#trident-deployment-and-setup-on-anthos
+  - title: "Red Hat OpenShift with NetApp"
     entries:
       - title: "Disaster recovery and data protection"
-        link: openshift-videos.html#disaster-recovery-and-data-protection
+        url: /videos/openshift-videos.html#disaster-recovery-and-data-protection
       - title: "OpenShift virtualization and VM management"
-        link: openshift-videos.html#openshift-virtualization-and-vm-management
+        url: /videos/openshift-videos.html#openshift-virtualization-and-vm-management
       - title: "Application deployment and storage"
-        link: openshift-videos.html#application-deployment-and-storage
+        url: /videos/openshift-videos.html#application-deployment-and-storage
       - title: "Automation and integration"
-        link: openshift-videos.html#automation-and-integration
+        url: /videos/openshift-videos.html#automation-and-integration
       - title: "Cloud and hybrid integrations"
-        link: openshift-videos.html#cloud-and-hybrid-integrations
-      - title: "Using Red Hat MTV to migrate VMs to OpenShift Virtualization with NetApp ONTAP Storage"
-        video_id: bac58645-dd75-4e92-b5fe-b12b015dc199
-        platform: panopto
-      - title: "Failover/Failback of OpenShift VMs using advanced data management capabilities of Trident (Only Early Access Program available)"
-        video_id: f2a8fa24-2971-4cdc-9bbb-b1f1007032ea
-        platform: panopto
-      - title: "Workload Migration - Red Hat OpenShift with NetApp"
-        video_id: 27773297-a80c-473c-ab41-b01200fa009a
-        platform: panopto
-      - title: "Installing OpenShift Virtualization - Red Hat OpenShift with NetApp"
-        video_id: e589a8a3-ce82-4a0a-adb6-b01200f9b907
-        platform: panopto
-      - title: "Deploying a Virtual Machine with OpenShift Virtualization - Red Hat OpenShift with NetApp"
-        video_id: 8a29fa18-8643-499e-94c7-b01200f9ce11
-        platform: panopto
-      - title: "NetApp HCI for Red Hat OpenShift on Red Hat Virtualization"
-        video_id: 13b32159-9ea3-4056-b285-b01200f0873a
-        platform: panopto
-      - title: "Sample Ansible code in GitHub"
-        url: https://github.com/NetApp/trident-install
-  - title: "VMware Tanzu with NetApp videos"
+        url: /videos/openshift-videos.html#cloud-and-hybrid-integrations
+  
+  - title: "VMware Tanzu with NetApp"
     entries:
-      - title: "Use Trident to Provision Persistent Storage in VMware Tanzu - VMware Tanzu with NetApp"
-        video_id: 8db3092b-3468-4754-b2d7-b01200fbb38d
-        platform: panopto
-      - title: "Use Trident Protect to Clone Applications in VMWare Tanzu - VMware Tanzu with NetApp"
-        video_id: 01aff358-a0a2-4c4f-9062-b01200fb9abd
-        platform: panopto
+      - title: "Persistent storage provisioning"
+        url: /videos/tanzu-videos.html#persistent-storage-provisioning
+      - title: "Application cloning and data protection"
+        url: /videos/tanzu-videos.html#application-cloning-and-data-protection

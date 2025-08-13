@@ -115,6 +115,6 @@ image:redhat-openshift-container-rosa-030.png[database restored]
 
 video::213061d2-53e6-4762-a68f-b21401519023[panopto, title="Amazon FSx for NetApp ONTAP wth Red Hat OpenShift Service on AWS using Hosted Control Plane", width=360]
 
-More videos on Red Hat OpenShift and OpenShift solutions can be found link:os-videos-and-demos.html[here]. 
+More videos on Red Hat OpenShift and OpenShift solutions can be found link:openshift-videos.html[here]. 
 
 // NetApp Solutions restructuring (jul 2025) - renamed from containers/rh-os-n_use_case_rosa_solution_app_workflows.adoc
