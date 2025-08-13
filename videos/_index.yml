@@ -4,13 +4,13 @@ indexpage:
   summary: "Series of videos and demos discussing the features of many of NetApp's container solutions"
   tiles:
     - title: "Anthos with NetApp"
-      entries:
+      links:
         - title: "Anthos deployment and setup"
           url: /videos/anthos-videos.html#anthos-deployment-and-setup-on-bare-metal
         - title: "Trident deployment and setup"
           url: /videos/anthos-videos.html#trident-deployment-and-setup-on-anthos
     - title: "Red Hat OpenShift with NetApp"
-      entries:
+      links:
         - title: "Disaster recovery and data protection"
           url: /videos/openshift-videos.html#disaster-recovery-and-data-protection
         - title: "OpenShift virtualization and VM management"
@@ -22,7 +22,7 @@ indexpage:
         - title: "Cloud and hybrid integrations"
           url: /videos/openshift-videos.html#cloud-and-hybrid-integrations
     - title: "VMware Tanzu with NetApp"
-      entries:
+      links:
         - title: "Persistent storage provisioning"
           url: /videos/tanzu-videos.html#persistent-storage-provisioning
         - title: "Application cloning and data protection"

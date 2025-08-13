@@ -12,7 +12,7 @@ summary: This page contains links to videos that demonstrate some of the capabil
 :imagesdir: ../media/
 
 [.lead]
-Explore the integration of VMware Tanzu with NetApp through a series of videos demonstrating key capabilities such as persistent storage provisioning, application cloning, and automation using Trident.
+Explore the integration of VMware Tanzu with NetApp through a series of videos demonstrating key capabilities such as persistent storage provisioning, application cloning, and data protection using Trident.
 
 
 == Persistent storage provisioning
