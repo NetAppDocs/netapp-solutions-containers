@@ -1,0 +1,38 @@
+section: tanzu
+title: "VMware Tanzu with NetApp"
+pdf-filename: "VMware Tanzu with NetApp"
+entries:
+  - title: "Solution overview"
+    url: /tanzu/vtwn-solution-overview.html
+  - title: "VMware Tanzu product portfolio"
+    entries:
+      - title: "About VMware Tanzu"
+        url: /tanzu/vtwn-overview-vmware-tanzu.html
+      - title: "VMware Tanzu Kubernetes Grid"
+        url: /tanzu/vtwn-overview-tkg.html
+      - title: "Tanzu Kubernetes Grid Service"
+        url: /tanzu/vtwn-overview-tkgs.html
+      - title: "Tanzu Kubernetes Grid Integrated Edition"
+        url: /tanzu/vtwn-overview-tkgi.html
+      - title: "VMware vSphere with Tanzu"
+        url: /tanzu/vtwn-overview-vst.html
+  - title: "NetApp storage systems"
+    entries:
+      - title: "NetApp storage systems overview"
+        url: /tanzu/vtwn-overview-netapp.html
+      - title: "NetApp ONTAP"
+        url: /tanzu/vtwn-netapp-ontap.html
+  - title: "NetApp storage integrations"
+    entries:
+      - title: "NetApp storage integration overview"
+        url: /tanzu/vtwn-overview-storint.html
+  - title: "NetApp Trident"
+    entries:
+      - title: "Trident overview"
+        url: /tanzu/vtwn-overview-trident.html
+      - title: "NetApp ONTAP NFS"
+        url: /tanzu/vtwn-trident-ontap-nfs.html
+      - title: "NetApp ONTAP iSCSI"
+        url: /tanzu/vtwn-trident-ontap-iscsi.html
+  - title: "Additional information"
+    url: /tanzu/vtwn-additional-information.html
