@@ -4,7 +4,7 @@ permalink: videos/anthos-videos.html
 keywords: video, demonstration, deployment
 summary: Demonstrates some of the capabilities documented in this document.
 ---
-= Watch videos and demos on Anthos with NetApp
+= Watch videos on Anthos with NetApp
 :hardbreaks:
 :nofooter:
 :icons: font

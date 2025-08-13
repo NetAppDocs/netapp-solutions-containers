@@ -4,7 +4,7 @@ permalink: videos/openshift-videos.html
 keywords: video, demonstration, deployment
 summary:
 ---
-= Watch videos and demos on Red Hat OpenShift with NetApp
+= Watch videos on Red Hat OpenShift with NetApp
 :hardbreaks:
 :nofooter:
 :icons: font
