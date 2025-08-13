@@ -1,8 +1,7 @@
 section: openshift-aws
 title: "Red Hat OpenShift Service on AWS with FSxN"
-pdf-filename: "Red Hat OpenShift Service on AWS with FSxN"
 entries:
-      - title: "Solution overview"
-        url: /openshift/os-rosa-solution-overview.html
-      - title: "Workflows for OpenShift Service on AWS"
-        url: /openshift/os-rosa-app-workflows.html
+  - title: "Solution overview"
+    url: /openshift/os-rosa-solution-overview.html
+  - title: "Workflows for OpenShift Service on AWS"
+    url: /openshift/os-rosa-app-workflows.html
