@@ -99,6 +99,7 @@ entries:
       - title: "Data protection using Trident protect"
         url: /openshift/os-trident-protect.html
       - title: "Data protection using third-party tools"
+        url: /openshift/os-velero.html
       - title: "Additional Information"
         url: /openshift/os-additional-information.html
 
