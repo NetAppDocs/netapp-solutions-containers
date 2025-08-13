@@ -1,0 +1,27 @@
+---
+sidebar: sidebar
+permalink: videos/tanzu-videos.html
+keywords: video, demonstration, deployment, VMware Tanzu with NetApp, NetApp, Tanzu
+summary: This page contains links to videos that demonstrate some of the capabilities described in this document.
+---
+= Watch videos on VMware Tanzu with NetApp
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ../media/
+
+[.lead]
+Explore the integration of VMware Tanzu with NetApp through a series of videos demonstrating key capabilities such as persistent storage provisioning, application cloning, and data protection using Trident.
+
+NOTE: These demos were recorded as a tech preview using version 1.3.1 of TKG and version 21.12 of Trident Protect. Please see the Support Matrix for official supported versions.
+
+== Persistent storage provisioning
+
+video::8db3092b-3468-4754-b2d7-b01200fbb38d[panopto, title="Use Trident to provision persistent storage in VMware Tanzu - VMware Tanzu with NetApp", width=360]
+
+== Application cloning and data protection
+
+video::01aff358-a0a2-4c4f-9062-b01200fb9abd[panopto, title="Use Trident Protect to clone applications in VMWare Tanzu - VMware Tanzu with NetApp", width=360]
+
+// NetApp Solutions restructuring (jul 2025) - renamed from containers/vtwn_videos_and_demos.adoc
