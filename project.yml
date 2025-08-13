@@ -29,7 +29,7 @@ sidebar:
     - title: "Videos"
       url: /videos/index.html
       entries:
-        - title: "Google Anthos"
+        - title: "Anthos"
           url: /videos/anthos-videos.html
         - title: "Red Hat OpenShift"
           url: /videos/openshift-videos.html
