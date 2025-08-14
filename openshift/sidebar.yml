@@ -20,8 +20,6 @@ entries:
             url: /openshift/os-on-aws-rosa.html
       - title: "NetApp storage systems"
         entries:
-          - title: "NetApp storage systems overview"
-            url: /containers/rh-os-n_overview_netapp.html
           - title: "NetApp ONTAP"
             url: /openshift/os-netapp-ontap.html
           - title: "NetApp Element"
