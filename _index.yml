@@ -1,14 +1,70 @@
 indexpage:
-  title: # Unquoted string 
-  lead: # Quoted string
-  summary: # Quoted string 
-  keywords: # Unquoted comma-delimited list of keywords 
-  tiles: 
-    # Tile definition 
-    - title: # Quoted or unquoted string
-      links: 
-        # Link definition
-        - title: # Quoted or unquoted string
-          url: # Path to target
-        # Next link on this tile (title/url pair)
-    # Next tile on this page (title/links)
+  title: NetApp container solutions
+  lead: "NetApp container solutions are validated deployments of many popular Kubernetes-based container orchestrators and their integration with NetApp storage management systems and software."
+  summary: "NetApp Container Solutions are validated deployments of many popular Kubernetes-based container orchestrators and their integration with NetApp storage management systems and software."
+  tiles:
+
+    - title: "Get started"
+      links:
+        - title: "What's new"
+          url: /whats-new.html
+        - title: "Learn about NetApp Trident for containers"
+          url: https://netapp.io/persistent-storage-provisioner-for-kubernetes/
+        - title: "Blogs"
+          url: /blogs.html
+        - title: "Videos and demos"
+          url: /videos/index.html
+
+    - title: "Anthos with NetApp"
+      links:
+        - title: "Solution overview"
+          url: /anthos/anthos-solution-overview.html
+        - title: "Anthos clusters on VMware"
+          url: /anthos/anthos-vmw.html
+        - title: "Anthos on bare metal"
+          url: /anthos/anthos-bm.html
+        - title: "NetApp storage integrations"
+          url: /anthos/anthos-storint-overview.html
+        - title: Use case
+          url: /anthos/anthos-deploy-app-cloud-console.html
+
+    - title: "Red Hat OpenShift with NetApp"
+      links:
+        - title: "Solution overview"
+          url: /openshift/os-solution-overview.html
+        - title: "About Red Hat OpenShift"
+          url: /openshift/os-overview.html
+        - title: "About OpenShift on AWS"
+          url: /openshift/os-rosa-solution-overview.html
+        - title: "NetApp storage integrations"
+          url: /openshift/os-storint-overview.html
+        - title: "Use cases"
+          url: /openshift/os-use-cases.html
+
+    - title: "VMware Tanzu with NetApp"
+      links:
+        - title: "Solution overview"
+          url: /tanzu/vtwn-solution-overview.html
+        - title: "About VMware Tanzu"
+          url: /tanzu/vtwn-overview-vmware-tanzu.html
+        - title: "NetApp storage integrations"
+          url: /tanzu/vtwn-overview-storint.html
+
+    - title: "Partner solutions"
+      links:
+        - title: "Anthos website"
+          url: https://cloud.google.com/anthos
+        - title: "Red Hat OpenShift website"
+          url: https://www.redhat.com/en/technologies/cloud-computing/openshift
+        - title: "VMware Tanzu website"
+          url: https://tanzu.vmware.com/
+    
+    - title: "Solution requests and feedback"
+      links:
+        - title: "Request automation"
+          url: https://github.com/NetAppDocs/netapp-solutions/issues/new?body=[Request%20Automation]%0d%0a%0d%0aSolution%20Name:%20%0d%0aRequest%20Title:%20%0d%0aDescription:%0d%0aSuggestions:&title=Request%20Automation%20-%20%3Crequest_title%3E
+        - title: "Propose a new solution"
+          url: https://github.com/NetAppDocs/netapp-solutions/issues/new?body=[Request%20Solution]%0d%0a%0d%0aSolution%20Use%20Case:%20%0d%0aSolution%20Description:%20%0d%0aAdditional%20Comments:&title=Request%20Solution%20-%20%3Csolution%3E
+        - title: "Provide solution feedback"
+          url: https://github.com/NetAppDocs/netapp-solutions/issues/new?body=[Solution%20Feedback]%0d%0a%0d%0aSolution%20Name:%20%0d%0aSolution%20Feedback:%20%0d%0aAdditional%20Comments:&title=Solution%20Feedback%20-%20%3Csolution%3E
+

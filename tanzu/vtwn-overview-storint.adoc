@@ -1,0 +1,24 @@
+---
+sidebar: sidebar
+permalink: tanzu/vtwn-overview-storint.html
+keywords: Trident, Trident Protect, persistent storage, Tanzu, VMware Tanzu with NetApp Storage
+summary: NetApp provides a number of products which assist our customers with orchestrating and managing persistent data in container based environments.
+---
+
+= NetApp storage integration overview
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ../media/
+:k8s_distribution_name: Red Hat OpenShift, Rancher, VMware Tanzu etc
+:solution_name: VMware Tanzu with NetApp
+:trident_overview_page_link: vtwn-overview-trident.html
+
+[.lead]
+ NetApp provides a number of products which assist our customers with orchestrating and managing persistent data in container based environments.
+
+include::../_include/containers-common-intro-sections.adoc[tags=storage_integration_overview]
+
+
+// NetApp Solutions restructuring (jul 2025) - renamed from containers/vtwn_overview_storint.adoc

@@ -1,0 +1,56 @@
+---
+sidebar: sidebar
+permalink: openshift/os-adv-mgmt-deployment.html
+keywords: OpenShift, OCP, Trident, NetApp ONTAP, ONTAP, Trident, Red Hat OpenShift, Advanced Cluster Management, Advanced Cluster Management for Kubernetes
+summary: Advanced Cluster Management for Kubernetes on Red Hat OpenShift with NetApp.
+---
+
+= Deploy Advanced Cluster Management for Kubernetes
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ../media/
+
+[.lead]
+To install Advanced Cluster Management for Kubernetes on an OpenShift cluster, complete the following steps:
+
+.	Choose an OpenShift cluster as the hub cluster and log into it with cluster-admin privileges.
+.	Navigate to Operators > Operators Hub and search for Advanced Cluster Management for Kubernetes.
++
+image:redhat-openshift-066.png[ACM tile]
++
+.	Select Advanced Cluster Management for Kubernetes and click Install.
++
+image:redhat-openshift-067.png[ACM tile details]
++
+.	On the Install Operator screen, provide the necessary details (NetApp recommends retaining the default parameters) and click Install.
++
+image:redhat-openshift-068.png[Install ACM Operator tile]
++
+.	Wait for the operator installation to complete.
++
+image:redhat-openshift-069.png[ACM operator installation in-progress]
++
+.	After the operator is installed, click Create MultiClusterHub.
++
+image:redhat-openshift-070.png[ACM operator Multiclusterhub]
++
+.	On the Create MultiClusterHub screen, click Create after furnishing the details. This initiates the installation of a multi-cluster hub.
++
+image:redhat-openshift-071.png[Create Multicluster hub screen]
++
+.	After all the pods move to the Running state in the open-cluster-management namespace and the operator moves to the Succeeded state, Advanced Cluster Management for Kubernetes is installed.
++
+image:redhat-openshift-072.png[ACM operator installed]
++
+.	It takes some time to complete the hub installation, and, after it is done, the MultiCluster hub moves to Running state.
++
+image:redhat-openshift-073.png[Multicluster hub ready]
++
+.	It creates a route in the open-cluster-management namespace. Connect to the URL in the route to access the Advanced Cluster Management console.
++
+image:redhat-openshift-074.png[ACM console route]
+
+
+// NetApp Solutions restructuring (jul 2025) - renamed from containers/rh-os-n_use_case_advanced_cluster_management_deployment.adoc
