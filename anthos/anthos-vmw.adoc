@@ -138,10 +138,10 @@ Distributing Anthos cluster nodes across multiple hypervisor nodes can be achiev
 
 Affinity or anti-affinity is a way to define rules for a set of VMs and/or hosts that determine whether the VMs run together on the same host or hosts in the group or on different hosts. It is applied to VMs by creating affinity groups that consist of VMs and/or hosts with a set of identical parameters and conditions. Depending on whether the VMs in an affinity group run on the same host or hosts in the group or separately on different hosts, the parameters of the affinity group can define either positive affinity or negative affinity.
 
-To configure affinity groups, see the appropriate link below for your version of VMWare vSphere.
+To configure affinity groups, see the appropriate link below for your version of VMware vSphere.
 
-https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.resmgmt.doc/GUID-FF28F29C-8B67-4EFF-A2EF-63B3537E6934.html[vSphere 6.7 Documentation: Using DRS Affinity Rules^].
-https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-FF28F29C-8B67-4EFF-A2EF-63B3537E6934.html[vSphere 7.0 Documentation: Using DRS Affinity Rules^].
+https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/vsphere-resource-management/using-drs-clusters-to-manage-resources/using-vm-host-affinity-rules.html[vSphere 9.0 Documentation: Using DRS Affinity Rules^].
+hhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-resource-management/using-drs-clusters-to-manage-resources/using-vm-host-affinity-rules.html[vSphere 7.0 Documentation: Using DRS Affinity Rules^].
 
 NOTE: Anthos has a config option in each individual `cluster.yaml` file to automatically create node affinity rules that can be enabled or disabled based on the number of ESXi hosts in your environment.
 
