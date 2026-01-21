@@ -95,7 +95,7 @@ Ensuring the distribution of the OpenShift masters across multiple hypervisor no
 
 Affinity or anti-affinity is a way to define rules for a set of VMs and/or hosts that determine whether the VMs run together on the same host or hosts in the group or on different hosts. It is applied to VMs by creating affinity groups that consist of VMs and/or hosts with a set of identical parameters and conditions. Depending on whether the VMs in an affinity group run on the same host or hosts in the group or separately on different hosts, the parameters of the affinity group can define either positive affinity or negative affinity.
 
-To configure affinity groups, see the link:https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.resmgmt.doc/GUID-FF28F29C-8B67-4EFF-A2EF-63B3537E6934.html[vSphere 6.7 Documentation: Using DRS Affinity Rules^].
+To configure affinity groups, see the link:https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/vsphere-resource-management/using-drs-clusters-to-manage-resources/using-vm-host-affinity-rules.html[vSphere 9.0 Documentation: Using DRS Affinity Rules^].
 
 === Use a custom install file for OpenShift deployment
 
