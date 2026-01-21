@@ -25,7 +25,6 @@ sidebar:
     - section: anthos
     - section: openshift
     - section: openshift-aws
-    - section: tanzu
     - title: "Videos"
       url: /videos/index.html
       entries:
@@ -33,8 +32,6 @@ sidebar:
           url: /videos/anthos-videos.html
         - title: "Red Hat OpenShift"
           url: /videos/openshift-videos.html
-        - title: "VMware Tanzu"
-          url: /videos/tanzu-videos.html
     - title: "Blogs"
       url: /blogs.html
     - title: "Legal notices"

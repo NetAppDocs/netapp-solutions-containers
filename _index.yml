@@ -41,23 +41,12 @@ indexpage:
         - title: "Use cases"
           url: /openshift/os-use-cases.html
 
-    - title: "VMware Tanzu with NetApp"
-      links:
-        - title: "Solution overview"
-          url: /tanzu/vtwn-solution-overview.html
-        - title: "About VMware Tanzu"
-          url: /tanzu/vtwn-overview-vmware-tanzu.html
-        - title: "NetApp storage integrations"
-          url: /tanzu/vtwn-overview-storint.html
-
     - title: "Partner solutions"
       links:
         - title: "Anthos website"
           url: https://cloud.google.com/anthos
         - title: "Red Hat OpenShift website"
           url: https://www.redhat.com/en/technologies/cloud-computing/openshift
-        - title: "VMware Tanzu website"
-          url: https://tanzu.vmware.com/
     
     - title: "Solution requests and feedback"
       links:
