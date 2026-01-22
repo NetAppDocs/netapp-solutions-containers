@@ -76,6 +76,7 @@ The following table contains a list vSphere versions that have been used by NetA
 
 |===
 | Operating System  | Release | Anthos Versions
+
 | VCenter
 | 8.0.1
 | 1.28
@@ -102,6 +103,7 @@ The following table includes a list of software versions deployed in the validat
 
 |===
 | Manufacturer  | Software Name | Version
+
 | NetApp  | ONTAP | 9.12.1
 | NetApp  | Trident | 24.02.0
 |===
@@ -141,7 +143,7 @@ Affinity or anti-affinity is a way to define rules for a set of VMs and/or hosts
 To configure affinity groups, see the appropriate link below for your version of VMware vSphere.
 
 https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/vsphere-resource-management/using-drs-clusters-to-manage-resources/using-vm-host-affinity-rules.html[vSphere 9.0 Documentation: Using DRS Affinity Rules^].
-hhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-resource-management/using-drs-clusters-to-manage-resources/using-vm-host-affinity-rules.html[vSphere 7.0 Documentation: Using DRS Affinity Rules^].
+https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-resource-management/using-drs-clusters-to-manage-resources/using-vm-host-affinity-rules.html[vSphere 7.0 Documentation: Using DRS Affinity Rules^].
 
 NOTE: Anthos has a config option in each individual `cluster.yaml` file to automatically create node affinity rules that can be enabled or disabled based on the number of ESXi hosts in your environment.
 
