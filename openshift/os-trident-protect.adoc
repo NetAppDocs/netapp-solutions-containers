@@ -5,7 +5,7 @@ keywords: data protection, DP, Trident Protect
 summary:
 ---
 
-= Data protection for Container Apps and VMs using Trident protect
+= Data protection for Container Apps and VMs using Trident Protect
 :hardbreaks:
 :nofooter:
 :icons: font
