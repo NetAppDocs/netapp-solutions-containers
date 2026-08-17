@@ -1,0 +1,38 @@
+section: vSphere Kubernetes Service with NetApp Storage
+title: "vSphere Kubernetes Service with NetApp Storage"
+pdf-filename: "VSphere Kubernetes Service with NetApp Storage"
+entries:
+      - title: "Overview"
+        pdf-filename: "vSphere Kubernetes Service with NetApp Storage Overview"
+        url: "/vks-netapp-ontap/overview.html"
+      - title: "Getting Started with Storage and vSphere Kubernetes Service"
+        pdf-filename: "Getting Started with Storage and vSphere Kubernetes Service"
+        entries:
+          - title: "Deploy vSphere Kubernetes Service" 
+            url: "/vks-netapp-ontap/deploy-vks.html"
+          - title: "NetApp Storage provisioning for VKS workloads"
+            url: "/vks-netapp-ontap/netapp-storage-provisioning.html"
+          - title: "Deploy VKS workloads using NetApp Storage"
+            url: "/vks-netapp-ontap/deploy-vks-workloads.html"
+
+      - title: "Data Protection"
+        pdf-filename: "Data Protection"
+        entries:
+          - title: "Backup and Restore Using Trident Protect"
+            url: "/vks-netapp-ontap/backup-restore-trident-protect.html"
+          - title: "Protect using Snapshots and Volume Group Snapshots"
+            url: "/vks-netapp-ontap/snapshots-volume-group-snapshots.html"
+
+      - title: "Disaster Recovery using Trident Protect"
+        pdf-filename: "Disaster Recovery using Trident Protect"
+        entries:
+          - title: "Requirements and Prerequisites"
+            url: "/vks-netapp-ontap/disaster-recovery-trident-protect.html"
+          - title: "Source Cluster Setup"
+            url: "/vks-netapp-ontap/source-cluster-setup.html"
+          - title: "Target Cluster Setup"
+            url: "/vks-netapp-ontap/target-cluster-setup.html"
+          - title: "Failover"
+            url: "/vks-netapp-ontap/failover.html"
+          - title: "Failback"
+            url: "/vks-netapp-ontap/failback.html"
