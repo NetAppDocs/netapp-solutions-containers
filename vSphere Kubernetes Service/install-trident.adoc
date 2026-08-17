@@ -20,7 +20,7 @@ Install NetApp Trident as the dynamic storage provisioner in your VMware Kuberne
 .Before you begin
 
 * Ensure your ONTAP cluster is configured and connected to your VMware Kubernetes environment.
-* Ensure your VKS cluster has the iSCSI or NMVMe tools installed if your workloads will be using those protocols for storage. 
+* Ensure your VKS cluster has the iSCSI or NVMe tools installed if your workloads will be using those protocols for storage.
 * Ensure you have `kubectl` installed on a machine from which you can connect to the VKS cluster using the kubeconfig file.
 +
 image:vks-004.png["KubeConfig download from Resources tab"]

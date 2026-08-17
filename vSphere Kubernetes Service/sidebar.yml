@@ -1,6 +1,6 @@
-section: vSphere Kubernetes Service with NetApp Storage
+section: vSphere-Kubernetes-Service 
 title: "vSphere Kubernetes Service with NetApp Storage"
-pdf-filename: "VSphere Kubernetes Service with NetApp Storage"
+pdf-filename: "vSphere Kubernetes Service with NetApp Storage"
 entries:
       - title: "Overview"
         pdf-filename: "vSphere Kubernetes Service with NetApp Storage Overview"

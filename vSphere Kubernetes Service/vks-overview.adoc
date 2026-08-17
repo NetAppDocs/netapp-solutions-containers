@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: vSphere Kubernetes Service/overview.html
+permalink: vSphere Kubernetes Service/vks-overview.html
 keywords: vks, vmware kubernetes service, ONTAP, kubernetes, overview
 summary: "Learn about VMware Kubernetes Service and how it integrates with NetApp ONTAP for containerized workloads."
 ---
@@ -12,7 +12,7 @@ summary: "Learn about VMware Kubernetes Service and how it integrates with NetAp
 :nofooter:
 :icons: font
 :linkattrs:
-:imagesdir: ../media/vSphere Kubernetes Service/
+:imagesdir: ../media/
 
 [.lead]
 VMware Kubernetes Service (VKS) is a managed Kubernetes offering from VMware that enables organizations to deploy, manage, and scale containerized applications using Kubernetes. Paired with NetApp ONTAP storage, VKS delivers enterprise-grade persistence, performance, and data management for cloud-native workloads.

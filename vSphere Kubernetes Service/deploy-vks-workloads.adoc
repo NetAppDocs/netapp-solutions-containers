@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: vks-netapp-ontap/deploy-container-app.html
+permalink: vks-netapp-ontap/deploy-vks-workloads.html
 keywords: postgresql, deployment, pvc, ontap-nas, iscsi, container application
 summary: "Deploy a containerized application in a VKS cluster using NetApp ONTAP persistent storage with NAS or SAN protocols."
 ---
@@ -65,9 +65,9 @@ spec:
             - name: POSTGRES_DB
               value: "mydb"
             - name: POSTGRES_USER
-              value: "admin"
+              value: "<username>"
             - name: POSTGRES_PASSWORD
-              value: "adminpass"
+              value: "<password>"
             - name: PGDATA
               value: "/var/lib/postgresql/data/pgdata"
           volumeMounts:
@@ -98,11 +98,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres
+  name: postgres-service
 spec:
   type: ClusterIP
   ports:
     - port: 5432
+      targetPort: 5432
   selector:
     app: postgres
 ----
@@ -164,12 +165,12 @@ spec:
                 - ALL
           env:
             - name: POSTGRES_PASSWORD
-              value: "mysecretpassword"
+              value: "<password>"
             - name: PGDATA
               value: /var/lib/postgresql/data/pgdata
           volumeDevices:
             - name: postgres-raw-storage
-              devicePath: /dev/xvda1
+              devicePath: /dev/postgres-raw
           ports:
             - containerPort: 5432
               name: postgres
@@ -204,14 +205,14 @@ After deploying the application, connect to the database and verify data operati
 +
 [source,bash]
 ----
-kubectl port-forward svc/postgres-service 5439:5432 -n postgres
+kubectl port-forward svc/postgres-service 5432:5432 
 ----
 
 . From a different terminal, connect to the database using psql:
 +
 [source,bash]
 ----
-psql "postgresql://postgres:mysecretpassword@127.0.0.1:5439/postgres"
+psql "postgresql://postgres:<password>@127.0.0.1:5432/postgres"
 ----
 
 . Create a database and a table, then populate the table with data:
