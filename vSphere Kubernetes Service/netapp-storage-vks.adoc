@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: vSphere Kubernetes Service/netapp-storage-vks.html
+permalink: vSphere-Kubernetes-Service/netapp-storage-vks.html
 keywords: netapp, ONTAP, trident, persistent storage, kubernetes, vks
 summary: "Learn about the key benefits of using NetApp ONTAP storage with VMware Kubernetes Service workloads."
 ---

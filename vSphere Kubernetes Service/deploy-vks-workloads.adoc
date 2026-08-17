@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: vSphere Kubernetes Service/deploy-vks-workloads.html
+permalink: vSphere-Kubernetes-Service/deploy-vks-workloads.html
 keywords: postgresql, deployment, pvc, ontap-nas, iscsi, container application
 summary: "Deploy a containerized application in a VKS cluster using NetApp ONTAP persistent storage with NAS or SAN protocols."
 ---
@@ -12,7 +12,7 @@ summary: "Deploy a containerized application in a VKS cluster using NetApp ONTAP
 :nofooter:
 :icons: font
 :linkattrs:
-:imagesdir: ../media/vks-netapp-ontap/
+:imagesdir: ../media/
 
 [.lead]
 Deploy a containerized application in your VMware Kubernetes Service cluster using NetApp ONTAP persistent storage. The following examples demonstrate deploying a PostgreSQL database using either NAS (ontap-nas) or SAN iSCSI (ontap-san) storage.

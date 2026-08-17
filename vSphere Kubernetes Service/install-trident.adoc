@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: vSphere Kubernetes Service/install-trident.html
+permalink: vSphere-Kubernetes-Service/install-trident.html
 keywords: trident, install, helm, operator, vks, storage provisioner
 summary: "Install NetApp Trident in a VMware Kubernetes Service cluster to enable dynamic storage provisioning."
 ---
@@ -55,7 +55,7 @@ image:vks-trident-install-001.png[Trident installed]
 
 . Define storage classes in Kubernetes that map to NetApp storage backends. These classes specify parameters like performance characteristics and replication policies.
 +
-Define trident backends and storage classes for the following protocols as required by your workloads:
+Define Trident backends and storage classes for the following protocols as required by your workloads:
 +
 * NAS (ontap-nas driver)
 * NAS Economy (ontap-nas-economy driver)
