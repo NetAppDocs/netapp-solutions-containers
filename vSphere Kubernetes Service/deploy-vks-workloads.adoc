@@ -1,0 +1,244 @@
+---
+sidebar: sidebar
+permalink: vks-netapp-ontap/deploy-container-app.html
+keywords: postgresql, deployment, pvc, ontap-nas, iscsi, container application
+summary: "Deploy a containerized application in a VKS cluster using NetApp ONTAP persistent storage with NAS or SAN protocols."
+---
+
+= Deploy a container application with NetApp persistent storage
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ../media/vks-netapp-ontap/
+
+[.lead]
+Deploy a containerized application in your VMware Kubernetes Service cluster using NetApp ONTAP persistent storage. The following examples demonstrate deploying a PostgreSQL database using either NAS (ontap-nas) or SAN iSCSI (ontap-san) storage.
+
+[role="tabbed-block"]
+====
+
+.Deploy PostgreSQL with NAS storage (ontap-nas driver)
+
+--
+
+You can deploy a PostgreSQL container application backed by an NFS persistent volume provisioned by the ontap-nas driver. The following example demonstrates how to create a PersistentVolumeClaim (PVC) and a Deployment for PostgreSQL.
+    
+[source,yaml]
+----
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+spec:
+  storageClassName: ontap-gold # Specify the StorageClass for dynamic provisioning
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      securityContext:
+        fsGroup: 999  # Ensures proper permissions for the mounted volume (PostgreSQL default user is 999)
+      containers:
+        - name: postgres
+          image: postgres:14
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: "mydb"
+            - name: POSTGRES_USER
+              value: "admin"
+            - name: POSTGRES_PASSWORD
+              value: "adminpass"
+            - name: PGDATA
+              value: "/var/lib/postgresql/data/pgdata"
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgres-storage
+              subPath: postgres-data  # Ensures data is stored in a subdirectory to avoid permission issues
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 999  # PostgreSQL default user ID
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: postgres-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5432
+  selector:
+    app: postgres
+----
+
+
+.Deploy PostgreSQL with SAN storage (ontap-san iSCSI driver)
+
+--
+
+Use the following YAML to deploy a PostgreSQL container application backed by a raw iSCSI block LUN:
+
+[source,yaml]
+----
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-block-pvc
+spec:
+  accessModes:
+    - ReadWriteMany     # Required by your infrastructure team / environment
+  volumeMode: Block     # Provisions a raw iSCSI block LUN without a file system
+  resources:
+    requests:
+      storage: 20Gi
+  storageClassName: sc-iscsi # Must map to an ontap-san driver
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-block-app
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      # 1. POD LEVEL SECURITY CONTEXT
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999       # Official Postgres image default user ID
+        runAsGroup: 999      # Official Postgres image default group ID
+        fsGroup: 999
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: postgres
+          image: postgres:15
+          # 2. CONTAINER LEVEL SECURITY CONTEXT
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+          env:
+            - name: POSTGRES_PASSWORD
+              value: "mysecretpassword"
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          volumeDevices:
+            - name: postgres-raw-storage
+              devicePath: /dev/xvda1
+          ports:
+            - containerPort: 5432
+              name: postgres
+      volumes:
+        - name: postgres-raw-storage
+          persistentVolumeClaim:
+            claimName: postgres-block-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5432
+      targetPort: 5432
+  selector:
+    app: postgres
+----
+
+
+====
+
+== Validate the database deployment
+
+After deploying the application, connect to the database and verify data operations.
+
+.Steps
+
+. Forward the PostgreSQL service port to your local machine:
++
+[source,bash]
+----
+kubectl port-forward svc/postgres-service 5439:5432 -n postgres
+----
+
+. From a different terminal, connect to the database using psql:
++
+[source,bash]
+----
+psql "postgresql://postgres:mysecretpassword@127.0.0.1:5439/postgres"
+----
+
+. Create a database and a table, then populate the table with data:
++
+[source,sql]
+----
+postgres=# CREATE DATABASE EMPLOYEE;
+CREATE DATABASE
+
+postgres=# \c employee
+psql (17.10 (Ubuntu 17.10-0ubuntu0.25.10.1), server 15.18 (Debian 15.18-1.pgdg13+1))
+You are now connected to database "employee" as user "postgres".
+
+employee=# CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    department VARCHAR(50),
+    hire_date DATE DEFAULT CURRENT_DATE,
+    salary NUMERIC(10, 2)
+);
+CREATE TABLE
+
+employee=# INSERT INTO employees (first_name, last_name, email, department, salary)
+VALUES ('John', 'Doe', 'john.doe@example.com', 'Engineering', 85000.00);
+INSERT 0 1
+
+employee=# SELECT * FROM employees;
+----

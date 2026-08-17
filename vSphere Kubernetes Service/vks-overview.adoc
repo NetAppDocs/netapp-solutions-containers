@@ -1,0 +1,48 @@
+---
+sidebar: sidebar
+permalink: vSphere Kubernetes Service/overview.html
+keywords: vks, vmware kubernetes service, ONTAP, kubernetes, overview
+summary: "Learn about VMware Kubernetes Service and how it integrates with NetApp ONTAP for containerized workloads."
+---
+
+= Learn about VMware Kubernetes Service with NetApp ONTAP
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ../media/vSphere Kubernetes Service/
+
+[.lead]
+VMware Kubernetes Service (VKS) is a managed Kubernetes offering from VMware that enables organizations to deploy, manage, and scale containerized applications using Kubernetes. Paired with NetApp ONTAP storage, VKS delivers enterprise-grade persistence, performance, and data management for cloud-native workloads.
+
+VMware Kubernetes Service is typically integrated into VMware's broader ecosystem, such as VMware Tanzu, which provides a comprehensive suite of tools for Kubernetes management, application modernization, and DevOps practices.
+
+== Key features of VMware Kubernetes Service
+
+. *Managed Kubernetes Clusters:* VMware Kubernetes Service simplifies the deployment and management of Kubernetes clusters. It automates tasks like cluster creation, upgrades, scaling, and monitoring.
+
+. *Integration with VMware Infrastructure:* VKS integrates seamlessly with VMware vSphere, NSX-T, and other VMware solutions, enabling organizations to leverage their existing VMware infrastructure for Kubernetes workloads.
+
+. *Multi-Cloud and Hybrid Cloud Support:* VMware Kubernetes Service supports deployment on private clouds, public clouds (e.g., AWS, Azure, Google Cloud), and hybrid cloud environments, giving organizations flexibility in managing their applications.
+
+. *Built-in Security:* VKS includes security features such as role-based access control (RBAC), policy enforcement, and integration with VMware NSX for network security.
+
+. *Developer-Friendly Tools:* VMware Kubernetes Service integrates with developer tools like Tanzu Application Platform to simplify the development and deployment of containerized applications.
+
+. *Scalability and High Availability:* VKS offers features like auto-scaling and fault tolerance to ensure applications remain highly available and performant.
+
+. *Observability and Monitoring:* VMware Kubernetes Service integrates with VMware Tanzu Observability (formerly Wavefront) and other monitoring tools to provide real-time insights into cluster and application performance.
+
+. *Support for Kubernetes Ecosystem:* VKS is fully compliant with upstream Kubernetes, meaning it supports the Kubernetes API and works with Kubernetes-native tools like Helm, Istio, and Prometheus.
+
+== Use cases for VMware Kubernetes Service
+
+. *Application Modernization:* Organizations can modernize legacy applications by containerizing them and deploying them on Kubernetes clusters managed by VKS.
+
+. *DevOps Enablement:* VKS supports DevOps workflows by providing automation, CI/CD integration, and developer-friendly tools.
+
+. *Hybrid Cloud Deployments:* Enterprises can use VKS to deploy Kubernetes clusters across on-premises and cloud environments, enabling consistent operations.
+
+. *Microservices Architecture:* VKS supports microservices-based application development, allowing teams to build and scale distributed systems.

@@ -1,0 +1,169 @@
+---
+sidebar: sidebar
+permalink: vSphere Kubernetes Service/install-vks-cluster.html
+keywords: vks, cluster, install, worker nodes, iscsi, nvme, custom image
+summary: "Install a VMware Kubernetes Service cluster in your VCF environment with the appropriate worker node configuration."
+---
+
+= Install a VMware Kubernetes Service cluster
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ../media/
+
+[.lead]
+Install a VMware Kubernetes Service (VKS) cluster in your VCF 9.1 environment and configure worker nodes with the appropriate storage utilities for your workloads.
+
+.About this task
+
+NFS utilities are automatically installed in the worker nodes of the cluster that you create. If you want to create worker nodes with iSCSI or NVMe utilities installed, you must create a custom OVA image and use that image for the worker nodes. The custom image can be created using Docker, and the `vcf` command line tool can then be used to create an OVA file from this image. This OVA file can be uploaded to the Content Library in vSphere. When creating the VKS cluster, this image from the Content Library can be selected for the node pools.
+
+.Steps
+
+. Create the VKS cluster:
++
+You can create a VKS cluster using either the default worker node image or a custom image that you create. The default worker node image includes NFS utilities pre-installed, while the custom image can include iSCSI and NVMe utilities. The following options are available:
+
+* *NAS only (default):* Create a VKS cluster using the default worker node image, which includes NFS utilities pre-installed.
+* *SAN enabled (custom image):* Create a custom Docker image that includes iSCSI and NVMe utilities, generate an OVA file using the `vcf` command line tool, upload the OVA to the vSphere Content Library, and then create the VKS cluster selecting that custom image for the node pools. 
+
+[%collapsible]
+
+====
+
+Create a docker image 
+[source,docker]
+----
+FROM ubuntu:24.04
+# Prevent interactive prompts during package installation
+ENV DEBIAN_FRONTEND=noninteractive
+# Install required system packages for iSCSI and Multipathing
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    nvme-cli \
+    kmod \
+    linux-tools-common \
+    open-iscsi \
+    lsscsi \
+    sg3-utils \
+    multipath-tools \
+    scsitools  \
+    chrony \
+    networkd-dispatcher &&\
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+# Set iSCSI session scanning to manual as required by Trident
+RUN sed -i 's/^\(node.session.scan\).*/\1 = manual/' /etc/iscsi/iscsid.conf
+#Configure device-mapper-multipath with Trident recommendations
+RUN printf "defaults {\n    user_friendly_names yes\n    find_multipaths no\n}\n" > /etc/multipath.conf
+RUN mkdir -p /etc/networkd-dispatcher/off.d /etc/networkd-dispatcher/routable.d/
+CMD ["bash"]
+----
+
+Build the docker image using
+[source,docker]
+----
+docker build -f san-dockerfile.txt -t ubuntu-2404:san .
+----
+
+If docker registry is not available, 
+[source,docker]
+----
+docker run -d -p 5000:5000 --restart=always --name registry registry:2
+----
+
+Then, tag the image and push it.
+[source,docker]
+----
+docker tag ubuntu-2404:san localhost:5000/ubuntu-2404:san
+docker push localhost:5000/ubuntu-2404:san
+----
+
+Create a file and reference that image.
+[source,yaml]
+----
+apiVersion: imageconfiguration.vmware.com/v1alpha1
+kind: Image
+metadata:
+    name: ubuntu-2404-amd64-v1.35.5---vmware.1-vkr.1
+spec:
+    osSpec:
+        name: ubuntu
+        version: "24.04"
+        image: "localhost:5000/ubuntu-2404:san"
+    kubernetesSpec:
+        image: projects.packages.broadcom.com/vsphere/iaas/kubernetes-release/1.35.5/kubernetes-distribution-image:v1.35.5_vmware.1-vkr.1
+    diskSize: 20Gi
+    repositorySpec:
+        debs:
+            - name: noble
+              url: http://archive.ubuntu.com/ubuntu
+              suites:
+                  - noble
+              components:
+                  - main
+                  - restricted
+                  - universe
+                  - multiverse
+            - name: noble-security
+              url: http://security.ubuntu.com/ubuntu
+              suites:
+                  - noble-security
+              components:
+                  - main
+                  - restricted
+                  - universe
+                  - multiverse
+    packages:
+      present:                  # Packages to install
+        - name: open-iscsi
+        - name: lsscsi
+        - name: sg3-utils
+        - name: multipath-tools
+        - name: scsitools
+        - name: nvme-cli
+    services:
+      - name: multipath-tools.service
+        status: enabled
+      - name: open-iscsi.service
+        status: enabled
+----
+
+Note: Metadata name should be of one of the pre-approved list. If not, you will get an error as shown below when you try to create the OVA file. The pre-approved list can be found in the vcf cli help for the `kr bake` command.
+
+image: vks-006.png["Error when metadata name is not in the pre-approved list"]
+
+Create the OVA file using the vcf cli
+[source,cli]
+----
+vcf kr bake -f /home/tme/ubuntu2404vkr135-san.yml --log-level DEBUG --log-format plain
+----
+
+Transfer the file using scp to a machine from where you can upload to the content library
+
+
+====
+
+
+
+
+. After the cluster is installed, locate it in vCenter and download the kubeconfig file.
++
+.. Click on *Supervisor Management* from the main menu and select the namespace where your cluster was created.
+.. Select the *Compute* tab and then *Kubernetes Clusters*. All clusters in the namespace are displayed.
+.. Go to the *Resources* tab, select the Kubernetes Cluster you need, and download its KubeConfig file.
++
+image:vks-001.png["Supervisor Management menu in vCenter"]
++
+image:vks-002.png["Kubernetes Clusters list in vCenter"]
++
+image:vks-003.png["Resources tab"]
++
+image:vks-004.png["KubeConfig download for a cluster"]
+
+. From a bastion host, connect to the cluster using the kubeconfig file to manage it from the CLI.
++
+image:vks-005.png["CLI connection to VKS cluster using kubeconfig"]
