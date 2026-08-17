@@ -96,8 +96,8 @@ spec:
   storageDriverName: ontap-nas
   managementLIF: <ONTAP management LIF>
   backendName: tbc-nas
-  svm:  #<your SVM name>
-  storagePrefix: #<your prefix for all volume names created using this backend configuration>
+  svm: <your SVM name>
+  storagePrefix: <your prefix for all volume names created using this backend configuration>
   defaults:
     nameTemplate: "{{ .config.StoragePrefix }}_{{ .volume.Namespace }}_{{ .volume.RequestName }}"
   credentials:
@@ -128,8 +128,8 @@ spec:
   storageDriverName: ontap-nas
   managementLIF: <ONTAP management LIF>
   backendName: tbc-nas
-  svm: #<your SVM name>
-  storagePrefix: #<your prefix for all volume names created using this backend configuration>
+  svm: <your SVM name>
+  storagePrefix: <your prefix for all volume names created using this backend configuration>
   credentials:
     name: ontap-nas-secret
   clientCertificate: <client certificate>

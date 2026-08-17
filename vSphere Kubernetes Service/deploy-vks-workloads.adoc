@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: vks-netapp-ontap/deploy-vks-workloads.html
+permalink: vSphere Kubernetes Service/deploy-vks-workloads.html
 keywords: postgresql, deployment, pvc, ontap-nas, iscsi, container application
 summary: "Deploy a containerized application in a VKS cluster using NetApp ONTAP persistent storage with NAS or SAN protocols."
 ---
@@ -33,7 +33,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: postgres-pvc
 spec:
-  storageClassName: ontap-gold # Specify the StorageClass for dynamic provisioning
+  storageClassName: sc-nas # Specify the StorageClass for dynamic provisioning
   accessModes:
     - ReadWriteOnce
   resources:
