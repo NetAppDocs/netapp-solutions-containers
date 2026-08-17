@@ -63,19 +63,19 @@ RUN mkdir -p /etc/networkd-dispatcher/off.d /etc/networkd-dispatcher/routable.d/
 CMD ["bash"]
 ----
 
-Build the Docker image using
+Build the Docker image using:
 [source,docker]
 ----
 docker build -f san-dockerfile.txt -t ubuntu-2404:san .
 ----
 
-If Docker registry is not available, 
+If Docker registry is not available, run this command to start a local registry and push the image to it:
 [source,docker]
 ----
 docker run -d -p 5000:5000 --restart=always --name registry registry:2
 ----
 
-Then, tag the image and push it.
+Tag the image and push it.
 [source,docker]
 ----
 docker tag ubuntu-2404:san localhost:5000/ubuntu-2404:san
@@ -132,7 +132,7 @@ spec:
         status: enabled
 ----
 
-Note: Metadata name should be of one of the pre-approved list. If not, you will get an error as shown below when you try to create the OVA file. The pre-approved list can be found in the vcf cli help for the `kr bake` command.
+Note: Metadata name should be one from the pre-approved list. If not, you will get an error as shown below when you try to create the OVA file. The pre-approved list can be found in the VCF CLI help for the `kr bake` command.
 
 image:vks-006.png["Error when metadata name is not in the pre-approved list"]
 
@@ -142,7 +142,7 @@ Create the OVA file using the vcf cli
 vcf kr bake -f /home/tme/ubuntu2404vkr135-san.yml --log-level DEBUG --log-format plain
 ----
 
-Transfer the file using scp to a machine from where you can upload to the content library
+Transfer the file using SCP to a machine from where you can upload to the content library
 
 
 ====

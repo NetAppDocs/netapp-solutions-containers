@@ -82,6 +82,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: tbc-nas-secret
+  namespace: trident  
 type: Opaque
 stringData:
   username: "<cluster admin username>"
@@ -91,6 +92,7 @@ apiVersion: trident.netapp.io/v1
 kind: TridentBackendConfig
 metadata:
   name: tbc-nas
+  namespace: trident
 spec:
   version: 1
   storageDriverName: ontap-nas
@@ -116,7 +118,7 @@ metadata:
   namespace: trident
 type: Opaque
 stringData:
-  clientPrivateKey: <client private>
+  clientPrivateKey: <client private key value>
 ---
 apiVersion: trident.netapp.io/v1
 kind: TridentBackendConfig
@@ -169,6 +171,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: backend-tbc-ontap-iscsi-secret
+  namespace: trident
 type: Opaque
 stringData:
   username: <cluster admin username>
@@ -178,6 +181,7 @@ apiVersion: trident.netapp.io/v1
 kind: TridentBackendConfig
 metadata:
   name: ontap-iscsi
+  namespace: trident
 spec:
   version: 1
   storageDriverName: ontap-san
@@ -196,6 +200,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: backend-tbc-ontap-iscsi-secret
+  namespace: trident
 type: Opaque
 stringData:
   clientPrivateKey: <client private key>
@@ -204,6 +209,7 @@ apiVersion: trident.netapp.io/v1
 kind: TridentBackendConfig
 metadata:
   name: ontap-iscsi
+  namespace: trident
 spec:
   version: 1
   storageDriverName: ontap-san
