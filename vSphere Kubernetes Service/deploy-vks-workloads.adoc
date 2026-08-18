@@ -233,7 +233,6 @@ postgres=# CREATE DATABASE EMPLOYEE;
 CREATE DATABASE
 
 postgres=# \c employee
-psql (17.10 (Ubuntu 17.10-0ubuntu0.25.10.1), server 15.18 (Debian 15.18-1.pgdg13+1))
 You are now connected to database "employee" as user "postgres".
 
 employee=# CREATE TABLE employees (
