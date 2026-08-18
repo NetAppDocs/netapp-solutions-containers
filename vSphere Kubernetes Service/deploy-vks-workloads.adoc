@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: vSphere-Kubernetes-Service/deploy-vks-workloads.html
+permalink: vsphere-kubernetes-service/deploy-vks-workloads.html
 keywords: postgresql, deployment, pvc, ontap-nas, iscsi, container application
 summary: "Deploy a containerized application in a VKS cluster using NetApp ONTAP persistent storage with NAS or SAN protocols."
 ---
@@ -19,9 +19,7 @@ Deploy a containerized application in your VMware Kubernetes Service cluster usi
 
 [role="tabbed-block"]
 ====
-
 .Deploy PostgreSQL with NAS storage (ontap-nas driver)
-
 --
 
 You can deploy a PostgreSQL container application backed by an NFS persistent volume provisioned by the ontap-nas driver. The following example demonstrates how to create a PersistentVolumeClaim (PVC) and a Deployment for PostgreSQL.
@@ -59,21 +57,6 @@ spec:
       containers:
         - name: postgres
           image: postgres:14
-          ports:
-            - containerPort: 5432
-          env:
-            - name: POSTGRES_DB
-              value: "mydb"
-            - name: POSTGRES_USER
-              value: "<username>"
-            - name: POSTGRES_PASSWORD
-              value: "<password>"
-            - name: PGDATA
-              value: "/var/lib/postgresql/data/pgdata"
-          volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: postgres-storage
-              subPath: postgres-data  # Ensures data is stored in a subdirectory to avoid permission issues
           securityContext:
             allowPrivilegeEscalation: false
             runAsNonRoot: true
@@ -83,6 +66,21 @@ spec:
                 - ALL
             seccompProfile:
               type: RuntimeDefault
+          env:
+            - name: POSTGRES_DB
+              value: "mydb"
+            - name: POSTGRES_USER
+              value: "<username>"
+            - name: POSTGRES_PASSWORD
+              value: "<password>"
+            - name: PGDATA
+              value: "/var/lib/postgresql/data/pgdata"
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgres-storage
+              subPath: postgres-data  # Ensures data is stored in a subdirectory to avoid permission issues
           resources:
             requests:
               memory: "512Mi"
@@ -108,9 +106,9 @@ spec:
     app: postgres
 ----
 
+--
 
 .Deploy PostgreSQL with SAN storage (ontap-san iSCSI driver)
-
 --
 
 Use the following YAML to deploy a PostgreSQL container application backed by a raw iSCSI block LUN:
@@ -192,6 +190,7 @@ spec:
     app: postgres
 ----
 
+--
 
 ====
 

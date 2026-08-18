@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: vSphere-Kubernetes-Service/vks-overview.html
+permalink: vsphere-kubernetes-service/vks-overview.html
 keywords: vks, vmware kubernetes service, ONTAP, kubernetes, overview
 summary: "Learn about VMware Kubernetes Service and how it integrates with NetApp ONTAP for containerized workloads."
 ---

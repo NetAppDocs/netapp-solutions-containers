@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: vSphere-Kubernetes-Service/deploy-vks.html
+permalink: vsphere-kubernetes-service/deploy-vks.html
 keywords: vks, cluster, install, worker nodes, iscsi, nvme, custom image
 summary: "Install a VMware Kubernetes Service cluster in your VCF environment with the appropriate worker node configuration."
 ---
@@ -132,17 +132,17 @@ spec:
         status: enabled
 ----
 
-Note: Metadata name should be one from the pre-approved list. If not, you will get an error as shown below when you try to create the OVA file. The pre-approved list can be found in the VCF CLI help for the `kr bake` command.
+NOTE: Metadata name should be one from the pre-approved list. If not, you will get an error as shown below when you try to create the OVA file. The pre-approved list can be found in the VCF CLI help for the `kr bake` command.
 
 image:vks-006.png["Error when metadata name is not in the pre-approved list"]
 
-Create the OVA file using the vcf cli
+Create the OVA file using the VCF CLI:
 [source,cli]
 ----
 vcf kr bake -f /home/tme/ubuntu2404vkr135-san.yml --log-level DEBUG --log-format plain
 ----
 
-Transfer the file using SCP to a machine from where you can upload to the content library
+Transfer the OVA file using SCP to a machine from which you can upload it to the vSphere Content Library.
 
 
 ====
