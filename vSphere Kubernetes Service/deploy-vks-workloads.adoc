@@ -111,7 +111,7 @@ spec:
 .Deploy PostgreSQL with SAN storage (ontap-san iSCSI driver)
 --
 
-Use the following YAML to deploy a PostgreSQL container application backed by a raw iSCSI block LUN:
+Use the following YAML to deploy a PostgreSQL container application backed by an iSCSI persistent volume provisioned by the ontap-san driver. The `Recreate` deployment strategy ensures the pod is fully terminated before a new one starts, which is required for ReadWriteOnce iSCSI volumes and prevents data corruption across pod restarts. This configuration supports data persistence across pod deletions and recreations, and is compatible with Trident volume snapshots and backup and restore operations.
 
 [source,yaml]
 ----
@@ -121,8 +121,7 @@ metadata:
   name: postgres-block-pvc
 spec:
   accessModes:
-    - ReadWriteMany     # Required by your infrastructure team / environment
-  volumeMode: Block     # Provisions a raw iSCSI block LUN without a file system
+    - ReadWriteOnce
   resources:
     requests:
       storage: 20Gi
@@ -162,18 +161,30 @@ spec:
               drop:
                 - ALL
           env:
+            - name: POSTGRES_DB
+              value: "mydb"
+            - name: POSTGRES_USER
+              value: "<username>"
             - name: POSTGRES_PASSWORD
               value: "<password>"
             - name: PGDATA
               value: /var/lib/postgresql/data/pgdata
-          volumeDevices:
-            - name: postgres-raw-storage
-              devicePath: /dev/postgres-raw
           ports:
             - containerPort: 5432
               name: postgres
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgres-block-storage
+              subPath: postgres-data
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
       volumes:
-        - name: postgres-raw-storage
+        - name: postgres-block-storage
           persistentVolumeClaim:
             claimName: postgres-block-pvc
 ---
@@ -211,7 +222,7 @@ kubectl port-forward svc/postgres-service 5432:5432
 +
 [source,bash]
 ----
-psql "postgresql://postgres:<password>@127.0.0.1:5432/postgres"
+psql "postgresql://<username>:<password>@127.0.0.1:5432/postgres"
 ----
 
 . Create a database and a table, then populate the table with data:

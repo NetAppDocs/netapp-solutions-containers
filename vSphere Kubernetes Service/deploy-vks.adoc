@@ -147,7 +147,11 @@ Transfer the OVA file using SCP to a machine from which you can upload it to the
 
 ====
 
+== Video Demonstration 
 
+The following video shows a demonstration of creating a vSphere Kubernetes Cluster.
+
+video::4ef64b3c-7a68-41d5-bacf-b4a8012b49f8[panopto, title="Create a vSphere Kubernetes Cluster on the Supervisor Cluster", width=360]
 
 
 . After the cluster is installed, locate it in vCenter and download the kubeconfig file.
