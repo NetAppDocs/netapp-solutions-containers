@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: videos/vks-videos.html
 keywords: video, demonstration, deployment
-summary:
+summary: Demonstrates some of the capabilities documented in this document.
 ---
 = Watch videos on vSphere Kubernetes Service with NetApp
 :hardbreaks:

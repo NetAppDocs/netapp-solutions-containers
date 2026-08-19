@@ -23,7 +23,7 @@ Deploy a containerized application in your VMware Kubernetes Service cluster usi
 --
 
 You can deploy a PostgreSQL container application backed by an NFS persistent volume provisioned by the ontap-nas driver. The following example demonstrates how to create a PersistentVolumeClaim (PVC) and a Deployment for PostgreSQL.
-    
+   
 [source,yaml]
 ----
 apiVersion: v1
