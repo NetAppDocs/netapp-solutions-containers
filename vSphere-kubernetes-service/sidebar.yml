@@ -16,25 +16,25 @@ entries:
             url: "/vsphere-kubernetes-service/install-trident.html"
           - title: "Deploy VKS workloads using NetApp Storage"
             url: "/vsphere-kubernetes-service/deploy-vks-workloads.html"
-
+    ## TODO: Add the following section when the content is ready.
     ## - title: "Data Protection"
     ##   pdf-filename: "Data Protection"
     ##   entries:
     ##      - title: "Backup and Restore Using Trident Protect"
-    ##       url: "/vSphere Kubernetes Service/backup-restore-trident-protect.html"
+    ##       url: "/vsphere-kubernetes-service/backup-restore-trident-protect.html"
     ##      - title: "Protect using Snapshots and Volume Group Snapshots"
-    ##        url: "/vSphere Kubernetes Service/snapshots-volume-group-snapshots.html"
+    ##        url: "/vsphere-kubernetes-service/snapshots-volume-group-snapshots.html"
 
     ## - title: "Disaster Recovery using Trident Protect"
     ##   pdf-filename: "Disaster Recovery using Trident Protect"
     ##   entries:
     ##     - title: "Requirements and Prerequisites"
-    ##       url: "/vSphere Kubernetes Service/disaster-recovery-trident-protect.html"
+    ##       url: "/vsphere-kubernetes-service/disaster-recovery-trident-protect.html"
     ##     - title: "Source Cluster Setup"
-    ##       url: "/vSphere Kubernetes Service/source-cluster-setup.html"
+    ##       url: "/vsphere-kubernetes-service/source-cluster-setup.html"
     ##     - title: "Target Cluster Setup"
-    ##       url: "/vSphere Kubernetes Service/target-cluster-setup.html"
+    ##       url: "/vsphere-kubernetes-service/target-cluster-setup.html"
     ##     - title: "Failover"
-    ##       url: "/vSphere Kubernetes Service/failover.html"
+    ##       url: "/vsphere-kubernetes-service/failover.html"
     ##     - title: "Failback"
-    ##       url: "/vSphere Kubernetes Service/failback.html"
+    ##       url: "/vsphere-kubernetes-service/failback.html"

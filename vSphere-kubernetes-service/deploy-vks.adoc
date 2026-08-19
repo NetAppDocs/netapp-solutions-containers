@@ -71,6 +71,7 @@ Create a Docker image with the required utilities installed. The following examp
 
 [source,docker]
 ----
+#san-dockerfile.txt
 FROM ubuntu:24.04
 # Prevent interactive prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
@@ -193,7 +194,7 @@ image:vks-002.png["Kubernetes Clusters list in vCenter"]
 +
 image:vks-003.png["Resources tab"]
 +
-image:vks-004.png["KubeConfig download for a cluster"]
+image:vks-004.png["kubeConfig download for a cluster"]
 
 . From a bastion host, connect to the cluster using the kubeconfig file to manage it from the CLI.
 +

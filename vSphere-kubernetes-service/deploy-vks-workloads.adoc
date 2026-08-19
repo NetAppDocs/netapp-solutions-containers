@@ -233,7 +233,7 @@ psql "postgresql://<username>:<password>@127.0.0.1:5432/postgres"
 CREATE DATABASE
 
 # \c employee
-You are now connected to database "employee" as user "postgres".
+You are now connected to database "employee" as user "<username>".
 
 # CREATE TABLE employees (
     id SERIAL PRIMARY KEY,

@@ -37,4 +37,4 @@ NetApp ONTAP provides enterprise-grade storage with features like data deduplica
 
 You use Trident Protect to handle data protection and disaster recovery for your Kubernetes workloads. Trident Protect allows you to create snapshots, clones, and replicate data across different storage backends, ensuring that your data is safe and recoverable in case of failures.
 
-For additional information about NetApp Trident, refer to the official documentation: link:https://docs.netapp.com/us-en/trident/index.html[https://docs.netapp.com/us-en/trident/index.html^]  
+For additional information about NetApp Trident, refer to the official documentation: link:https://docs.netapp.com/us-en/trident/index.html[https://docs.netapp.com/us-en/trident/index.html^]
