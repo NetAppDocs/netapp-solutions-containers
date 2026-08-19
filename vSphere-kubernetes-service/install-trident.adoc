@@ -36,7 +36,7 @@ link:https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-hel
 ====
 [source,cli]
 ----
-helm install trident netapp-trident/trident-operator --version 100.2606.0 --create-namespace --namespace trident --set tridentDebug=true --kubeconfig=<path/your kubeconfig file>
+helm install trident netapp-trident/trident-operator --version 100.2606.0 --create-namespace --namespace trident --set tridentDebug=true --kubeconfig=<path/your-kubeconfig-file>
 ----
 ====
 +

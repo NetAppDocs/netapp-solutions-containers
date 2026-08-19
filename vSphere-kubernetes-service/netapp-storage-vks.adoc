@@ -33,7 +33,7 @@ Using NetApp as storage for VMware Kubernetes Service (VKS) is a powerful combin
 
 == NetApp ONTAP integration overview
 
-NetApp ONTAP provides enterprise-grade storage with features like data deduplication, compression, and encryption. You use NetApp Trident to integrate NetApp storage with Kubernetes. NetApp Trident supports various NetApp storage platforms, including ONTAP on premises, FSx for NetApp ONTAP in AWS, Azure NetApp Files in Azure, and Google Cloud NetApp Volumes in Google Cloud.
+NetApp ONTAP provides enterprise-grade storage with features like data deduplication, compression, and encryption. You use NetApp Trident to integrate NetApp storage with Kubernetes. NetApp Trident supports various NetApp storage platforms, including ONTAP on-premises, FSx for NetApp ONTAP in AWS, Azure NetApp Files in Azure, and Google Cloud NetApp Volumes in Google Cloud.
 
 You use Trident Protect to handle data protection and disaster recovery for your Kubernetes workloads. Trident Protect allows you to create snapshots, clones, and replicate data across different storage backends, ensuring that your data is safe and recoverable in case of failures.
 
