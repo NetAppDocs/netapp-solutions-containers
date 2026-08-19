@@ -54,7 +54,7 @@ For complete details on Trident, refer to NetApp Trident link:https://docs.netap
 
 == Trident Protect
 
-Trident Protect is an advanced feature of Trident that provides enhanced data protection and security for containerized environments. It is designed to ensure that critical data is safeguarded against potential threats and data loss scenarios. It is available free of cost for all Trident users and can be easily enabled in any OpenShift cluster with Trident installed.
+Trident Protect is an advanced feature of Trident that provides enhanced data protection and security for containerized environments. It is designed to ensure that critical data is safeguarded against potential threats and data loss scenarios. It is available free of cost for all Trident users and can be easily enabled in any Kubernetes cluster with Trident installed.
 
 === Key features of Trident Protect
 
@@ -62,7 +62,7 @@ Trident Protect is an advanced feature of Trident that provides enhanced data pr
 Trident Protect enables automated, policy-driven backups of container applications and VMs, ensuring that they are regularly backed up without manual intervention.
 
 **Snapshot Management**
-It leverages ONTAP's snapshot capabilities to create frequent, point-in-time copies container applications and VMs, providing a reliable mechanism for recovery.
+It leverages ONTAP's snapshot capabilities to create frequent, point-in-time copies of container applications and VMs, providing a reliable mechanism for recovery.
 
 **Data Encryption**
 Ensures that data is encrypted both at rest and in transit, meeting stringent security requirements and protecting sensitive information.
@@ -102,11 +102,11 @@ Trident includes the following CSI drivers, each capable of provisioning a volum
 
 === For NAS protocols on supported hardware models
 
-. ontap-nas: One pvc maps to 1 pv which is a dedicated flexvolume
+. ontap-nas: One PVC maps to one PV, which is a dedicated FlexVolume.
 
 . ontap-nas-economy: Each PV provisioned is a qtree, with a configurable number of qtrees per FlexVolume (default is 200, configurable between 50 and 300).
 +
-One pvc maps to 1 pv which is a qtree on a shared flexvolume
+One PVC maps to one PV, which is a qtree on a shared FlexVolume.
 
 NOTE: You can place all the disks of the VMs as qtrees in a single volume. However, please be aware that Snapshots, Clones and Replication features are not supported by Trident. When those features are managed by the storage administrator, they are not PV granular.
 
@@ -114,11 +114,11 @@ NOTE: You can place all the disks of the VMs as qtrees in a single volume. Howev
 
 === For SAN protocols on supported hardware models
 
-. ontap-san: One pvc maps to 1 pv which is a LUN on dedicated flexvolume
+. ontap-san: One PVC maps to one PV, which is a LUN on a dedicated FlexVolume.
 
-. ontap-san-economy: One pvc maps to 1 pv which is a LUN on shared flexvolume. You can have multiple LUNs in the shared flexvolume. (default is 100, configurable between 50 and 200 LUNs/PVs per flexvol volume)
+. ontap-san-economy: One PVC maps to one PV, which is a LUN on a shared FlexVolume. You can have multiple LUNs in the shared FlexVolume (default is 100, configurable between 50 and 200 LUNs/PVs per FlexVolume).
 
-NOTE: You can place all the disks of the VMs as LUNs in a single volume. However, this driver, while it supports Snapshots and Clones, it does not support Replication. When Replication is managed by storage administrator, it is not PV granular.
+NOTE: You can place all the disks of the VMs as LUNs in a single volume. However, this driver supports Snapshots and Clones but does not support Replication. When Replication is managed by storage administrator, it is not PV granular.
 
 image::vks-trident-storage-001.png[Trident Drivers for ONTAP storage]
 

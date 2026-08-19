@@ -412,19 +412,19 @@ Apply the configuration files you created in the previous steps to the vSphere K
 +
 [source,bash]
 ----
-kubectl create -f tbc-nas.yaml -n trident
-kubectl create -f sc-nas.yaml
+kubectl apply -f tbc-nas.yaml -n trident
+kubectl apply -f sc-nas.yaml
 
-kubectl create -f tbc-nas-economy.yaml -n trident
-kubectl create -f sc-nas-economy.yaml
+kubectl apply -f tbc-nas-economy.yaml -n trident
+kubectl apply -f sc-nas-economy.yaml
 
-kubectl create -f tbc-iscsi.yaml -n trident
-kubectl create -f sc-iscsi.yaml
+kubectl apply -f tbc-iscsi.yaml -n trident
+kubectl apply -f sc-iscsi.yaml
 
-kubectl create -f tbc-nvme.yaml -n trident
-kubectl create -f sc-nvme.yaml
+kubectl apply -f tbc-nvme.yaml -n trident
+kubectl apply -f sc-nvme.yaml
 
-kubectl create -f snapshot-class.yaml
+kubectl apply -f snapshot-class.yaml
 ----
 
 . Verify that the resources were created successfully.
