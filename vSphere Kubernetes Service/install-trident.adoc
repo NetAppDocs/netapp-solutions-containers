@@ -30,7 +30,7 @@ image:vks-004.png["KubeConfig download from Resources tab"]
 . Install the Trident Operator using a Helm chart by following the instructions in the Trident documentation:
 +
 link:https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-helm.html[https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-helm.html^]
-
++
 .Show example
 [%collapsible]
 ====
@@ -39,7 +39,7 @@ link:https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-hel
 helm install trident netapp-trident/trident-operator --version 100.2606.0 --create-namespace --namespace trident --set tridentDebug=true --kubeconfig=<path/your kubeconfig file>
 ----
 ====
-
++
 NOTE: You can also install Trident manually using the Trident Operator. Review the procedures in the Trident documentation: link:https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-operator.html[https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-operator.html#critical-information-about-trident-26-06^]
 
 . Confirm that all Trident pods are running in the cluster.
@@ -49,7 +49,6 @@ NOTE: You can also install Trident manually using the Trident Operator. Review t
 ====
 image:vks-trident-install-001.png[Trident installed]
 ====
-
 
 . Configure a Trident backend for ONTAP by defining the necessary connection details and storage parameters.
 
@@ -61,17 +60,12 @@ Define Trident backends and storage classes for the following protocols as requi
 * NAS Economy (ontap-nas-economy driver)
 * SAN (ontap-san driver) for iSCSI, FC, or NVMe protocols
 * SAN Economy (ontap-san-economy driver) for iSCSI, FC, or NVMe protocols
-
-
-
++
 [role="tabbed-block"]
 ====
-
 .NAS
-
 --
-Create a TridentBackendConfig and StorageClass for ONTAP NAS to enable NFS-based persistent storage provisioning. The backend configuration includes credentials stored in a Kubernetes Secret and references your ONTAP SVM and management LIF. 
-
+Create a TridentBackendConfig and StorageClass for ONTAP NAS to enable NFS-based persistent storage provisioning. The backend configuration includes credentials stored in a Kubernetes Secret and references your ONTAP SVM and management LIF.
 
 Sample backend secret and backend configuration file using username and password authentication (save as `tbc-nas.yaml`):
 
@@ -82,7 +76,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: tbc-nas-secret
-  namespace: trident  
+  namespace: trident
 type: Opaque
 stringData:
   username: "<cluster admin username>"
@@ -137,7 +131,6 @@ spec:
   clientCertificate: <client certificate>
 ----
 
-
 StorageClass definition (save as `sc-nas.yaml`):
 
 [source,yaml]
@@ -158,10 +151,8 @@ allowVolumeExpansion: true
 --
 
 .NAS Economy
-
 --
-
-Create a TridentBackendConfig and StorageClass for ONTAP NAS Economy driver to enable NFS-based persistent storage provisioning using qtrees. The backend configuration includes credentials stored in a Kubernetes Secret and references your ONTAP SVM and management LIF.
+Create a TridentBackendConfig and StorageClass for the ONTAP NAS Economy driver to enable NFS-based persistent storage provisioning using qtrees. The backend configuration includes credentials stored in a Kubernetes Secret and references your ONTAP SVM and management LIF.
 
 Sample backend secret and backend configuration file using username and password authentication (save as `tbc-nas-economy.yaml`):
 
@@ -216,11 +207,10 @@ allowVolumeExpansion: true
 --
 
 .iSCSI SAN
-
 --
-Create a TridentBackendConfig and StorageClass for ONTAP SAN with iSCSI to enable iSCSI-based block storage provisioning. The backend configuration uses the ontap-san driver and includes credentials stored in a Kubernetes Secret. The sanType parameter defaults to iSCSI protocol if omitted.
+Create a TridentBackendConfig and StorageClass for ONTAP SAN with iSCSI to enable iSCSI-based block storage provisioning. The backend configuration uses the ontap-san driver and includes credentials stored in a Kubernetes Secret. The `sanType` parameter defaults to the iSCSI protocol if omitted.
 
-Backend secret and backend configuration file using username password authentication (save as `tbc-iscsi.yaml`):
+Backend secret and backend configuration file using username and password authentication (save as `tbc-iscsi.yaml`):
 
 [source,yaml]
 ----
@@ -232,8 +222,8 @@ metadata:
   namespace: trident
 type: Opaque
 stringData:
-  username: <cluster admin username>
-  password: <cluster admin password>
+  username: "<cluster admin username>"
+  password: "<cluster admin password>"
 ---
 apiVersion: trident.netapp.io/v1
 kind: TridentBackendConfig
@@ -243,12 +233,13 @@ metadata:
 spec:
   version: 1
   storageDriverName: ontap-san
-  managementLIF: <management LIF>
+  managementLIF: <ONTAP management LIF>
   backendName: ontap-iscsi
-  svm: <SVM name>
+  svm: <your SVM name>
   credentials:
     name: backend-tbc-ontap-iscsi-secret
 ----
+
 Backend secret and backend configuration file using client certificate authentication (save as `tbc-iscsi.yaml`):
 
 [source,yaml]
@@ -271,9 +262,9 @@ metadata:
 spec:
   version: 1
   storageDriverName: ontap-san
-  managementLIF: <management LIF>
+  managementLIF: <ONTAP management LIF>
   backendName: ontap-iscsi
-  svm: <SVM name>
+  svm: <your SVM name>
   credentials:
     name: backend-tbc-ontap-iscsi-secret
   clientCertificate: <client certificate>
@@ -301,42 +292,10 @@ allowVolumeExpansion: true
 --
 
 .NVMe SAN
-
 --
 Create a TridentBackendConfig and StorageClass for ONTAP SAN with NVMe to enable NVMe-based block storage provisioning. The backend configuration uses the ontap-san driver and includes credentials stored in a Kubernetes Secret. The `sanType` parameter must be set to `nvme`.
 
 Backend secret and backend configuration file using username and password authentication (save as `tbc-nvme.yaml`):
-
-[source,yaml]
-----
-# tbc-nvme.yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: backend-tbc-ontap-nvme-secret
-  namespace: trident
-type: Opaque
-stringData:
-  username: <cluster admin username>
-  password: <cluster admin password>
----
-apiVersion: trident.netapp.io/v1
-kind: TridentBackendConfig
-metadata:
-  name: ontap-nvme
-  namespace: trident
-spec:
-  version: 1
-  storageDriverName: ontap-san
-  sanType: nvme
-  managementLIF: <management LIF>
-  backendName: ontap-nvme
-  svm: <SVM name>
-  credentials:
-    name: backend-tbc-ontap-nvme-secret
-----
-
-Backend secret and backend configuration file using client certificate authentication (save as `tbc-nvme.yaml`):
 
 [source,yaml]
 ----
@@ -360,9 +319,39 @@ spec:
   version: 1
   storageDriverName: ontap-san
   sanType: nvme
-  managementLIF: <management LIF>
+  managementLIF: <ONTAP management LIF>
   backendName: ontap-nvme
-  svm: <SVM name>
+  svm: <your SVM name>
+  credentials:
+    name: backend-tbc-ontap-nvme-secret
+----
+
+Backend secret and backend configuration file using client certificate authentication (save as `tbc-nvme.yaml`):
+
+[source,yaml]
+----
+# tbc-nvme.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: backend-tbc-ontap-nvme-secret
+  namespace: trident
+type: Opaque
+stringData:
+  clientPrivateKey: <client private key>
+---
+apiVersion: trident.netapp.io/v1
+kind: TridentBackendConfig
+metadata:
+  name: ontap-nvme
+  namespace: trident
+spec:
+  version: 1
+  storageDriverName: ontap-san
+  sanType: nvme
+  managementLIF: <ONTAP management LIF>
+  backendName: ontap-nvme
+  svm: <your SVM name>
   credentials:
     name: backend-tbc-ontap-nvme-secret
   clientCertificate: <client certificate>
@@ -389,9 +378,6 @@ allowVolumeExpansion: true
 
 --
 ====
-
-
-
 
 . Use Kubernetes Persistent Volume Claims (PVCs) to request storage from the defined storage classes. Trident automatically provisions the necessary volumes from the backend NetApp storage.
 
