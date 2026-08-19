@@ -215,7 +215,7 @@ After deploying the application, connect to the database and verify data operati
 +
 [source,bash]
 ----
-kubectl port-forward svc/postgres-service 5432:5432 
+kubectl port-forward svc/postgres-service 5432:5432
 ----
 
 . From a different terminal, connect to the database using psql:
@@ -229,13 +229,13 @@ psql "postgresql://<username>:<password>@127.0.0.1:5432/postgres"
 +
 [source,sql]
 ----
-postgres=# CREATE DATABASE EMPLOYEE;
+# CREATE DATABASE EMPLOYEE;
 CREATE DATABASE
 
-postgres=# \c employee
+# \c employee
 You are now connected to database "employee" as user "postgres".
 
-employee=# CREATE TABLE employees (
+# CREATE TABLE employees (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
@@ -246,9 +246,9 @@ employee=# CREATE TABLE employees (
 );
 CREATE TABLE
 
-employee=# INSERT INTO employees (first_name, last_name, email, department, salary)
+# INSERT INTO employees (first_name, last_name, email, department, salary)
 VALUES ('John', 'Doe', 'john.doe@example.com', 'Engineering', 85000.00);
 INSERT 0 1
 
-employee=# SELECT * FROM employees;
+# SELECT * FROM employees;
 ----
