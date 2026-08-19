@@ -23,7 +23,7 @@ Install NetApp Trident as the dynamic storage provisioner in your VMware Kuberne
 * Ensure your VKS cluster has the iSCSI or NVMe tools installed if your workloads will be using those protocols for storage.
 * Ensure you have `kubectl` installed on a machine from which you can connect to the VKS cluster using the kubeconfig file.
 +
-image:vks-004.png["kubeconfig download from Resources tab"]
+image::vks-004.png[kubeconfig download from Resources tab]
 
 .Steps
 
@@ -47,8 +47,10 @@ NOTE: You can also install Trident manually using the Trident Operator. Review t
 .Show example
 [%collapsible]
 ====
-image:vks-trident-install-001.png[Trident installed]
+image::vks-trident-install-001.png[Trident installed]
 ====
+
+== Prepare storage backend and StorageClass configuration files for your environment
 
 . Configure a Trident backend for ONTAP by defining the necessary connection details and storage parameters.
 
@@ -379,5 +381,107 @@ allowVolumeExpansion: true
 --
 ====
 
-. Use Kubernetes Persistent Volume Claims (PVCs) to request storage from the defined storage classes. Trident automatically provisions the necessary volumes from the backend NetApp storage.
+Review the Trident documentation for additional samples of YAML files and information on access modes and volume modes supported by SAN drivers and NAS drivers.
+
+* link:https://docs.netapp.com/us-en/trident/trident-use/ontap-nas.html[Samples using NAS drivers]
+* link:https://docs.netapp.com/us-en/trident/trident-use/ontap-san.html[Samples using SAN drivers]
+
+== Create a VolumeSnapshotClass configuration file
+
+Create a VolumeSnapshotClass definition. This configuration enables snapshot-based operations for persistent volumes.
+
+VolumeSnapshotClass definition (save as `snapshot-class.yaml`):
+
+[source,yaml]
+----
+# snapshot-class.yaml
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotClass
+metadata:
+  name: trident-snapshotclass
+driver: csi.trident.netapp.io
+deletionPolicy: Retain
+----
+
+== Apply the configuration files to your cluster
+
+Apply the configuration files you created in the previous steps to the vSphere Kubernetes Service cluster using `kubectl`. This creates the necessary secrets, backend configurations, storage classes, and snapshot class in your cluster.
+
+.Steps
+. Apply the TridentBackendConfig and StorageClass files for each protocol you configured.
++
+[source,bash]
+----
+kubectl create -f tbc-nas.yaml -n trident
+kubectl create -f sc-nas.yaml
+
+kubectl create -f tbc-nas-economy.yaml -n trident
+kubectl create -f sc-nas-economy.yaml
+
+kubectl create -f tbc-iscsi.yaml -n trident
+kubectl create -f sc-iscsi.yaml
+
+kubectl create -f tbc-nvme.yaml -n trident
+kubectl create -f sc-nvme.yaml
+
+kubectl create -f snapshot-class.yaml
+----
+
+. Verify that the resources were created successfully.
++
+Check TridentBackendConfig objects:
++
+[source,bash]
+----
+kubectl get tbc -n trident
+----
++
+Check StorageClass objects:
++
+[source,bash]
+----
+kubectl get storageclass
+----
++
+Check VolumeSnapshotClass:
++
+[source,bash]
+----
+kubectl get volumesnapshotclass
+----
+
+== Set the default Trident storage and snapshot classes
+
+Set the Trident StorageClass and VolumeSnapshotClass as the defaults in the vSphere Kubernetes Service cluster.
+
+.Steps
+. Set the default Trident StorageClass.
++
+Set a Trident-backed StorageClass as the cluster default so that PersistentVolumeClaims automatically use it when no storage class is specified.
++
+Ensure that only one StorageClass is set as default. If another StorageClass is already set to default, set its annotation to `false`.
++
+From the CLI:
++
+[source,bash]
+----
+kubectl patch storageclass <storage class name> -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+----
+
+. Set the default Trident VolumeSnapshotClass.
++
+Set a Trident-backed VolumeSnapshotClass as the cluster default to enable snapshot-based operations for persistent volumes. This ensures that VolumeSnapshots automatically use the Trident CSI driver when no snapshot class is specified.
++
+Ensure that only one VolumeSnapshotClass is set as default. If another VolumeSnapshotClass is already set to default, set its annotation to `false`.
++
+From the CLI:
++
+[source,bash]
+----
+kubectl patch volumesnapshotclass <snapshot class name> --type=merge -p '{"metadata":{"annotations":{"snapshot.storage.kubernetes.io/is-default-class":"true"}}}'
+----
+
+== Use Kubernetes Persistent Volume Claims to request storage for workloads
+
+Trident automatically provisions the necessary volumes from the backend NetApp storage. Refer to link:deploy-vks-workloads.html[Deploy workloads with persistent storage] for examples of deploying a workload with PVCs in a VKS cluster.
 
