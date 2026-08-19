@@ -237,15 +237,15 @@ psql "postgresql://<username>:<password>@127.0.0.1:5432/postgres"
 
 . Create a database and a table, then populate the table with data:
 +
-[source,sql]
+[source,cli]
 ----
-# CREATE DATABASE EMPLOYEE;
+postgres=# CREATE DATABASE employee;
 CREATE DATABASE
 
-# \c employee
+postgres=# \c employee
 You are now connected to database "employee" as user "<username>".
 
-# CREATE TABLE employees (
+employee=# CREATE TABLE employees (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
@@ -256,9 +256,9 @@ You are now connected to database "employee" as user "<username>".
 );
 CREATE TABLE
 
-# INSERT INTO employees (first_name, last_name, email, department, salary)
+employee=# INSERT INTO employees (first_name, last_name, email, department, salary)
 VALUES ('John', 'Doe', 'john.doe@example.com', 'Engineering', 85000.00);
 INSERT 0 1
 
-# SELECT * FROM employees;
+employee=# SELECT * FROM employees;
 ----

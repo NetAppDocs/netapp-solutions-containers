@@ -5,7 +5,7 @@ keywords: vks, vmware kubernetes service, ONTAP, kubernetes, overview
 summary: "Learn about VMware Kubernetes Service and how it integrates with NetApp ONTAP for containerized workloads."
 ---
 
-= Learn about VMware Kubernetes Service with NetApp ONTAP
+= Learn about vSphere Kubernetes Service with NetApp ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
