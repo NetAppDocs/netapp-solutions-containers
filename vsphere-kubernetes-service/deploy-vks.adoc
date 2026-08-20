@@ -47,19 +47,19 @@ Complete the form with the cluster details:
 
 After reviewing the cluster details, click *Finish*. The vSphere Kubernetes cluster will be created in a few minutes.
 
-image:vks-create-001.png["Namespace in vCenter"]
+image::vks-create-001.png["Namespace in vCenter"]
 
-image:vks-create-002.png["Create cluster configuration type"]
+image::vks-create-002.png["Create cluster configuration type"]
 
-image:vks-create-003.png["Create cluster General settings"]
+image::vks-create-003.png["Create cluster General settings"]
 
-image:vks-create-004.png["Create cluster Control Plane"]
+image::vks-create-004.png["Create cluster Control Plane"]
 
-image:vks-create-005.png["Create cluster Node Pools"]
+image::vks-create-005.png["Create cluster Node Pools"]
 
-image:vks-create-006.png["Create cluster Finish"]
+image::vks-create-006.png["Create cluster Finish"]
 
-image:vks-create-007.png["Cluster creation complete"]
+image::vks-create-007.png["Cluster creation complete"]
 
 ====
 +
@@ -170,7 +170,7 @@ spec:
 
 NOTE: Metadata name should be one from the pre-approved list. If not, you will get an error as shown below when you try to create the OVA file. The pre-approved list can be found in the VCF CLI help for the `kr bake` command.
 
-image:vks-006.png["Error when metadata name is not in the pre-approved list"]
+image::vks-006.png["Error when metadata name is not in the pre-approved list"]
 
 Create the OVA file using the VCF CLI:
 [source,cli]
@@ -188,17 +188,17 @@ Transfer the OVA file using SCP to a machine from which you can upload it to the
 .. Select the *Compute* tab and then *Kubernetes Clusters*. All clusters in the namespace are displayed.
 .. Go to the *Resources* tab, select the Kubernetes cluster you need, and download its kubeconfig file.
 +
-image:vks-001.png["Supervisor Management menu in vCenter"]
+image::vks-001.png["Supervisor Management menu in vCenter"]
 +
-image:vks-002.png["Kubernetes Clusters list in vCenter"]
+image::vks-002.png["Kubernetes Clusters list in vCenter"]
 +
-image:vks-003.png["Resources tab"]
+image::vks-003.png["Resources tab"]
 +
-image:vks-004.png["kubeconfig download for a cluster"]
+image::vks-004.png["kubeconfig download for a cluster"]
 
 . From a bastion host, connect to the cluster using the kubeconfig file to manage it from the CLI.
 +
-image:vks-005.png["CLI connection to VKS cluster using kubeconfig"]
+image::vks-005.png["CLI connection to VKS cluster using kubeconfig"]
 
 == Video demonstration
 

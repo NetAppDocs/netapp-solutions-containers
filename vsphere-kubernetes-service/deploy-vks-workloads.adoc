@@ -17,6 +17,8 @@ summary: "Deploy a containerized application in a VKS cluster using NetApp ONTAP
 [.lead]
 Deploy a containerized application in your vSphere Kubernetes Service cluster using NetApp ONTAP persistent storage. The following examples demonstrate deploying a PostgreSQL database using either NAS (ontap-nas) or SAN iSCSI (ontap-san) storage.
 
+The following yaml configuration sets POSTGRES_USER / POSTGRES_PASSWORD directly in the manifest. In production, it is recommended to use Kubernetes Secrets to manage sensitive information like database credentials.
+
 [role="tabbed-block"]
 ====
 .Deploy PostgreSQL with NAS storage (ontap-nas driver)
