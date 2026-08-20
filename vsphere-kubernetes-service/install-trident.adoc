@@ -40,7 +40,7 @@ helm install trident netapp-trident/trident-operator --version 100.2606.0 --crea
 ----
 ====
 +
-NOTE: You can also install Trident manually using the Trident Operator. Review the procedures in the Trident documentation: link:https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-operator.html[https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-operator.html#critical-information-about-trident-26-06^]
+NOTE: You can also install Trident manually using the Trident Operator. Review the procedures in the Trident documentation: link:https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-operator.html[Manually deploy the Trident Operator^]
 
 . Confirm that all Trident pods are running in the cluster.
 +
@@ -52,16 +52,14 @@ NOTE: You can also install Trident manually using the Trident Operator. Review t
 kubectl get pods -n trident
 ----
 
-NOTE: The Trident pods may not get created at this point. If you describe the ReplicaSet object, you might see an error about violating PodSecurity:
+NOTE: The Trident pods may not get created at this point. If you describe the ReplicaSet object, you might see an error about violating PodSecurity as shown below. This error occurs because the `trident` namespace created during installation enforces the Kubernetes restricted Pod Security Standard (PSS). The Trident Operator requires elevated system privileges to manage host storage and cannot run under the rigid constraints of a restricted profile. To fix this, grant the `trident` namespace a privileged profile so the ReplicaSet controller can successfully spin up the pods.
 
-[source,cli]
+[source,text]
 ----
-"Warning FailedCreate 25s (x5 over 64s) replicaset-controller (combined from similar events): Error creating: pods trident-operator-5cbf7f857-z7ztd is forbidden: violates PodSecurity restricted:latest : allowPrivilegeEscalation != false (container trident-operator must set securityContext.allowPrivilegeEscalation=false), unrestricted capabilities (container trident-operator must set securityContext.capabilities.drop=[ ALL ]), runAsNonRoot != true (pod or container trident-operator must set securityContext.runAsNonRoot=true), seccompProfile (pod or container trident-operator must set securityContext.seccompProfile.type to RuntimeDefault or Localhost)
+Warning  FailedCreate  25s (x5 over 64s)  replicaset-controller  (combined from similar events): Error creating: pods "trident-operator-5cbf7f857-z7ztd" is forbidden: violates PodSecurity "restricted:latest": allowPrivilegeEscalation != false (container "trident-operator" must set securityContext.allowPrivilegeEscalation=false), unrestricted capabilities (container "trident-operator" must set securityContext.capabilities.drop=["ALL"]), runAsNonRoot != true (pod or container "trident-operator" must set securityContext.runAsNonRoot=true), seccompProfile (pod or container "trident-operator" must set securityContext.seccompProfile.type to "RuntimeDefault" or "Localhost")
 ----
 
-This error occurs because the `trident` namespace created during installation enforces the Kubernetes restricted Pod Security Standard (PSS). The Trident Operator requires elevated system privileges to manage host storage and cannot run under the rigid constraints of a restricted profile. To fix this, you must grant the Trident deployment namespace a privileged profile so the ReplicaSet controller can successfully spin up the pods.
-
-Fix this error by applying the built-in Kubernetes Pod Security Admission labels to the `trident` namespace to exempt it from the restricted profile constraints.
+Apply the built-in Kubernetes Pod Security Admission labels to the `trident` namespace to exempt it from the restricted profile constraints:
 
 [source,cli]
 ----

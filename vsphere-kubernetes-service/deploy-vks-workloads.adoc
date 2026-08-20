@@ -223,7 +223,7 @@ Depending on the protocol used, the backend storage could be a volume, qtree, or
 
 [source,bash]
 ----
-kubectl describe pv/<pv-name> -n <namespace>
+kubectl describe pv/<pv-name> 
 ----
 
 .Show Example
@@ -271,7 +271,7 @@ After the pods are in the running state, connect to the database and verify data
 +
 [source,bash]
 ----
-kubectl port-forward svc/postgres-service 5432:5432
+kubectl port-forward svc/postgres-service 5432:5432 -n <namespace>
 ----
 
 . From a different terminal, connect to the database using psql:
@@ -311,5 +311,5 @@ employee=# SELECT * FROM employees;
 
 == Video demonstration
 
-The following video demonstrates installing Trident on a vSphere Kubernetes cluster and deploying a PostgreSQL database with persistent storage using Tr  ident. 
+The following video demonstrates installing Trident on a vSphere Kubernetes cluster and deploying a PostgreSQL database with persistent storage using Trident. 
 video::eb8bd0c0-a1fe-4288-a575-b4ac00e004a9[panopto, title="Deploying workloads with ONTAP persistent storage using Trident", width=360]
