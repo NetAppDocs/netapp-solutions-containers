@@ -207,7 +207,7 @@ spec:
 
 == Validate the database deployment
 
-After deploying the application, verify that the pods are in the running state and that the database is operational. Use the following commands to check the status of the pods, PVCs, and services:
+After deploying the application, verify that the pods are in the running state and that the database is operational. Use the following commands to check the status of the pods, PVCs, and services. Ensure that the pods are running and the PVCs are bound to the appropriate volumes.
 
 [source,bash]
 ----
@@ -216,6 +216,52 @@ kubectl get pvc -n <namespace>
 ----
 
 image::vks-workload-001.png[Workload deployed with persistent storage]
+
+Verify the volume provisioning in the ONTAP system. The internal volume name for NAS volumes or the internal LUN name for SAN volumes can be found in the PersistentVolume (PV) details. Use the following command to describe the PV and retrieve the internal volume or LUN name.
+
+Depending on the protocol used, the backend storage could be a volume, qtree, or LUN. You can confirm that the appropriate storage is provisioned in the ONTAP system:
+
+[source,bash]
+----
+kubectl describe pv/<pv-name> -n <namespace>
+----
+
+.Show Example
+image::vks-workload-002.png[Internal volume name for NAS volume]
+
+image::vks-workload-003.png[Internal LUN name for SAN volume]
+
+Copy the internal volume name from the output and run the following command to get the storage details from the ONTAP CLI.
+
+For NAS volumes:
+
+[source,cli]
+----
+volume show -vserver <vserver> -volume <internal-volume-name>
+----
+
+image::vks-workload-004.png[ONTAP CLI output for NAS volume]
+
+For SAN volumes, run the following command to get the LUN details from the ONTAP CLI:
+
+[source,cli]
+----
+lun show -vserver <vserver> -volume <internal-volume-name>
+----
+
+image::vks-workload-005.png[ONTAP CLI output for SAN volume]
+
+If you used `nconnect` mount options in the NAS or NAS Economy storage class, you can verify the number of active TCP connections from the worker node to the storage server using the following command.
+
+Describe the Trident backend config to get the vserver name and the data LIF, then log into the ONTAP cluster:
+
+[source,cli]
+----
+network connections active show -local-address <data lif> -local-port 2049
+----
+
+.Show Example
+image::vks-workload-006.png[ONTAP CLI output for active connections]
 
 After the pods are in the running state, connect to the database and verify data operations.
 

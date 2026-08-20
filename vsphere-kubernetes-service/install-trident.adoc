@@ -47,6 +47,34 @@ NOTE: You can also install Trident manually using the Trident Operator. Review t
 .Show example
 [%collapsible]
 ====
+[source,cli]
+----
+kubectl get pods -n trident
+----
+
+NOTE: The Trident pods may not get created at this point. If you describe the ReplicaSet object, you might see an error about violating PodSecurity:
+
+[source,cli]
+----
+"Warning FailedCreate 25s (x5 over 64s) replicaset-controller (combined from similar events): Error creating: pods trident-operator-5cbf7f857-z7ztd is forbidden: violates PodSecurity restricted:latest : allowPrivilegeEscalation != false (container trident-operator must set securityContext.allowPrivilegeEscalation=false), unrestricted capabilities (container trident-operator must set securityContext.capabilities.drop=[ ALL ]), runAsNonRoot != true (pod or container trident-operator must set securityContext.runAsNonRoot=true), seccompProfile (pod or container trident-operator must set securityContext.seccompProfile.type to RuntimeDefault or Localhost)
+----
+
+This error occurs because the `trident` namespace created during installation enforces the Kubernetes restricted Pod Security Standard (PSS). The Trident Operator requires elevated system privileges to manage host storage and cannot run under the rigid constraints of a restricted profile. To fix this, you must grant the Trident deployment namespace a privileged profile so the ReplicaSet controller can successfully spin up the pods.
+
+Fix this error by applying the built-in Kubernetes Pod Security Admission labels to the `trident` namespace to exempt it from the restricted profile constraints.
+
+[source,cli]
+----
+kubectl label namespace trident pod-security.kubernetes.io/enforce=privileged --overwrite
+kubectl label namespace trident pod-security.kubernetes.io/audit=privileged --overwrite
+kubectl label namespace trident pod-security.kubernetes.io/warn=privileged --overwrite
+----
+
+[source,cli]
+----
+kubectl get pods -n trident
+----
+
 image::vks-trident-install-001.png[Trident installed]
 ====
 
@@ -80,9 +108,9 @@ metadata:
   name: tbc-nas-secret
   namespace: trident
 type: Opaque
-stringData:
-  username: "<cluster admin username>"
-  password: "<cluster admin password>"
+data:
+  username: "<base64-encoded cluster admin username>"
+  password: "<base64-encoded cluster admin password>"
 ---
 apiVersion: trident.netapp.io/v1
 kind: TridentBackendConfig
@@ -135,6 +163,13 @@ spec:
 
 StorageClass definition (save as `sc-nas.yaml`):
 
+[NOTE]
+=====
+`mountOptions` is an optional parameter that specifies additional mount options for NFS volumes. The `nconnect` option allows multiple parallel TCP connections for a single NFS mount, which can improve performance for high-throughput workloads. The default value is 1, but it can be increased up to the maximum allowed by the ONTAP system.
+
+In VCF 9.0 and 9.1, the default maximum is 4 and the absolute maximum is 8 parallel TCP connections per datastore. Trident passes the mount options directly to the Kubernetes worker nodes. Set the maximum by adding the option to the storage class manifest.
+=====
+
 [source,yaml]
 ----
 # sc-nas.yaml
@@ -149,6 +184,8 @@ parameters:
   provisioningType: "thin"
   snapshots: "true"
 allowVolumeExpansion: true
+mountOptions:
+- nconnect=4
 ----
 --
 
@@ -204,6 +241,8 @@ parameters:
   media: "ssd"
   provisioningType: "thin"
 allowVolumeExpansion: true
+mountOptions:
+- nconnect=4
 ----
 
 --
