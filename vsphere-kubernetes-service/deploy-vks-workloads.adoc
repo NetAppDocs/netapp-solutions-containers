@@ -6,7 +6,7 @@ summary: "Deploy a containerized application in a VKS cluster using NetApp ONTAP
 ---
 
 = Deploy a container application with NetApp persistent storage
-:toc: macro
+:toc:
 :hardbreaks:
 :toclevels: 1
 :nofooter:
@@ -15,7 +15,7 @@ summary: "Deploy a containerized application in a VKS cluster using NetApp ONTAP
 :imagesdir: ../media/
 
 [.lead]
-Deploy a containerized application in your VMware Kubernetes Service cluster using NetApp ONTAP persistent storage. The following examples demonstrate deploying a PostgreSQL database using either NAS (ontap-nas) or SAN iSCSI (ontap-san) storage.
+Deploy a containerized application in your vSphere Kubernetes Service cluster using NetApp ONTAP persistent storage. The following examples demonstrate deploying a PostgreSQL database using either NAS (ontap-nas) or SAN iSCSI (ontap-san) storage.
 
 [role="tabbed-block"]
 ====
@@ -308,3 +308,8 @@ INSERT 0 1
 
 employee=# SELECT * FROM employees;
 ----
+
+== Video demonstration
+
+The following video demonstrates installing Trident on a vSphere Kubernetes cluster and deploying a PostgreSQL database with persistent storage using Tr  ident. 
+video::eb8bd0c0-a1fe-4288-a575-b4ac00e004a9[panopto, title="Deploying workloads with ONTAP persistent storage using Trident", width=360]

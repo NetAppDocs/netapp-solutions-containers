@@ -2,11 +2,11 @@
 sidebar: sidebar
 permalink: vsphere-kubernetes-service/install-trident.html
 keywords: trident, install, helm, operator, vks, storage provisioner
-summary: "Install NetApp Trident in a VMware Kubernetes Service cluster to enable dynamic storage provisioning."
+summary: "Install NetApp Trident in a vSphere Kubernetes Service cluster to enable dynamic storage provisioning."
 ---
 
 = Install NetApp Trident in a VKS cluster
-:toc: macro
+:toc:
 :hardbreaks:
 :toclevels: 1
 :nofooter:
@@ -15,7 +15,7 @@ summary: "Install NetApp Trident in a VMware Kubernetes Service cluster to enabl
 :imagesdir: ../media/
 
 [.lead]
-Install NetApp Trident as the dynamic storage provisioner in your VMware Kubernetes Service cluster to integrate NetApp ONTAP storage with your Kubernetes workloads.
+Install NetApp Trident as the dynamic storage provisioner in your vSphere Kubernetes Service cluster to integrate NetApp ONTAP storage with your Kubernetes workloads.
 
 .Before you begin
 

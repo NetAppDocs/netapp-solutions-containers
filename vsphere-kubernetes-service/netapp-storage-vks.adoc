@@ -2,11 +2,11 @@
 sidebar: sidebar
 permalink: vsphere-kubernetes-service/netapp-storage-vks.html
 keywords: netapp, ONTAP, trident, persistent storage, kubernetes, vks
-summary: "Learn about the key benefits of using NetApp ONTAP storage with VMware Kubernetes Service workloads."
+summary: "Learn about the key benefits of using NetApp ONTAP storage with vSphere Kubernetes Service workloads."
 ---
 
-= Learn about NetApp storage for VMware Kubernetes Service
-:toc: macro
+= Learn about NetApp storage for vSphere Kubernetes Service
+:toc:
 :hardbreaks:
 :toclevels: 1
 :nofooter:
@@ -15,7 +15,7 @@ summary: "Learn about the key benefits of using NetApp ONTAP storage with VMware
 :imagesdir: ../media/
 
 [.lead]
-Using NetApp as storage for VMware Kubernetes Service (VKS) is a powerful combination that leverages NetApp's robust storage solutions to enhance the performance, scalability, and reliability of Kubernetes workloads. NetApp Trident, an open-source dynamic storage provisioner for Kubernetes, is used for integrating storage with workloads on VMware Kubernetes Service.
+Using NetApp as storage for vSphere Kubernetes Service (VKS) is a powerful combination that leverages NetApp's robust storage solutions to enhance the performance, scalability, and reliability of Kubernetes workloads. NetApp Trident, an open-source dynamic storage provisioner for Kubernetes, is used for integrating storage with workloads on vSphere Kubernetes Service.
 
 == Key benefits of using NetApp storage with VKS
 
