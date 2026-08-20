@@ -17,7 +17,7 @@ summary: "Deploy a containerized application in a VKS cluster using NetApp ONTAP
 [.lead]
 Deploy a containerized application in your vSphere Kubernetes Service cluster using NetApp ONTAP persistent storage. The following examples demonstrate deploying a PostgreSQL database using either NAS (ontap-nas) or SAN iSCSI (ontap-san) storage.
 
-The following yaml configuration sets POSTGRES_USER / POSTGRES_PASSWORD directly in the manifest. In production, it is recommended to use Kubernetes Secrets to manage sensitive information like database credentials.
+The following YAML configuration sets POSTGRES_USER / POSTGRES_PASSWORD directly in the manifest. In production, it is recommended to use Kubernetes Secrets to manage sensitive information like database credentials.
 
 [role="tabbed-block"]
 ====
@@ -231,7 +231,7 @@ kubectl describe pv/<pv-name>
 .Show Example
 image::vks-workload-002.png[Internal volume name for NAS volume]
 
-image::vks-workload-003.png[Internal LUN name for SAN volume]
+image::vks-workload-003.png[Internal volume name for SAN LUN]
 
 Copy the internal volume name from the output and run the following command to get the storage details from the ONTAP CLI.
 
@@ -244,14 +244,14 @@ volume show -vserver <vserver> -volume <internal-volume-name>
 
 image::vks-workload-004.png[ONTAP CLI output for NAS volume]
 
-For SAN volumes, run the following command to get the LUN details from the ONTAP CLI:
+For SAN LUNs, run the following command to get the LUN details from the ONTAP CLI:
 
 [source,cli]
 ----
 lun show -vserver <vserver> -volume <internal-volume-name>
 ----
 
-image::vks-workload-005.png[ONTAP CLI output for SAN volume]
+image::vks-workload-005.png[ONTAP CLI output for SAN LUN]
 
 If you used `nconnect` mount options in the NAS or NAS Economy storage class, you can verify the number of active TCP connections from the worker node to the storage server using the following command.
 
