@@ -100,7 +100,7 @@ image:redhat-openshift-container-rosa-002.png[FSxN created]
 //[source]
 //$ helm install trident netapp-trident/trident-operator --version 100.2406.0 --create-namespace --namespace trident
 
-//NOTE: Depending on the version you install, the version parameter will need to be changed in the command shown. Refer to the link:https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-helm.html[documentation] for the correct version number. For additional methods of installing Trident, refer to the Trident link:https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html[documentation]. 
+//NOTE: Depending on the version you install, the version parameter will need to be changed in the command shown. Refer to the link:https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-helm.html[Trident Helm installation documentation^] for the correct version number. For additional methods of installing Trident, refer to link:https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy.html[Learn about Trident installation^].
 
 **b.Install Trident**
 
