@@ -22,9 +22,9 @@ MetalLB is a self-hosted network load balancer installed on your OpenShift clust
 
 Based on how MetalLB announces the IP address assigned to LoadBalancer services outside of the OpenShift cluster, it operates in two modes:
 
-* *Layer 2 mode.*  In this mode, one node in the OpenShift cluster takes ownership of the service and responds to ARP requests for that IP to make it reachable outside of the OpenShift cluster. Because only the node advertises the IP, it has a bandwidth bottleneck and slow failover limitations. For more information, see the documentation link:https://metallb.universe.tf/concepts/layer2/[here].
+* *Layer 2 mode.*  In this mode, one node in the OpenShift cluster takes ownership of the service and responds to ARP requests for that IP to make it reachable outside of the OpenShift cluster. Because only the node advertises the IP, it has a bandwidth bottleneck and slow failover limitations. For more information, see link:https://metallb.universe.tf/concepts/layer2/[MetalLB Layer 2 mode documentation^].
 
-* *BGP mode.* In this mode, all nodes in the OpenShift cluster establish BGP peering sessions with a router and advertise the routes to forward traffic to the service IPs. The prerequisite for this is to integrate MetalLB with a router in that network. Owing to the hashing mechanism in BGP, it has certain limitation when IP-to-Node mapping for a service changes. For more information, refer to the documentation link:https://metallb.universe.tf/concepts/bgp/[here].
+* *BGP mode.* In this mode, all nodes in the OpenShift cluster establish BGP peering sessions with a router and advertise the routes to forward traffic to the service IPs. The prerequisite for this is to integrate MetalLB with a router in that network. Owing to the hashing mechanism in BGP, it has certain limitation when IP-to-Node mapping for a service changes. For more information, refer to link:https://metallb.universe.tf/concepts/bgp/[MetalLB BGP mode documentation^].
 
 NOTE: For the purpose of this document, we are configuring MetalLB in layer-2 mode.
 
@@ -108,7 +108,7 @@ configmap/config created
 .	Now when loadbalancer services are created, MetalLB assigns an externalIP to the services and advertises the IP address by responding to ARP requests.
 +
 
-NOTE: If you wish to configure MetalLB in BGP mode, skip step 6 above and follow the procedure in the MetalLB documentation link:https://metallb.universe.tf/concepts/bgp/[here].
+NOTE: If you wish to configure MetalLB in BGP mode, skip step 6 above and follow the procedure in link:https://metallb.universe.tf/concepts/bgp/[MetalLB BGP mode documentation^].
 
 
 // NetApp Solutions restructuring (jul 2025) - renamed from containers/rh-os-n_LB_MetalLB.adoc

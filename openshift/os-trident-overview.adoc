@@ -27,15 +27,15 @@ image:redhat-openshift-002.png["Figure showing input/output dialog or representi
 
 Trident has a rapid development cycle, and just like Kubernetes, is released four times a year.
 
-A support matrix for what version of Trident has been tested with which Kubernetes distribution can be found https://docs.netapp.com/us-en/trident/trident-get-started/requirements.html#supported-frontends-orchestrators[here].
+A support matrix for what version of Trident has been tested with which Kubernetes distribution can be found in link:https://docs.netapp.com/us-en/trident/trident-get-started/requirements.html#supported-frontends-orchestrators[Supported frontends (orchestrators)^].
 
-Please refer to the link:https://docs.netapp.com/us-en/trident/index.html[Trident product documentation] for installation and configuration details. 
+Please refer to the link:https://docs.netapp.com/us-en/trident/index.html[Trident product documentation^] for installation and configuration details. 
 
 == Download Trident
 
 To install Trident on the deployed user cluster and provision a persistent volume, complete the following steps:
 
-.	Download the installation archive to the admin workstation and extract the contents. The current version of Trident can be downloaded https://github.com/NetApp/trident/releases?q=25.&expanded=true[here].
+.   Download the installation archive to the admin workstation and extract the contents. The current version of Trident can be downloaded from the link:https://github.com/NetApp/trident/releases?q=25.&expanded=true[Trident releases page on GitHub^].
 
 . Extract the Trident install from the downloaded bundle.
 +

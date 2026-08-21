@@ -26,7 +26,7 @@ Red Hat Advanced Cluster Management for Kubernetes is installed as an add-on to 
 
 image:redhat-openshift-065.png[ACM architecture]
 
-For more information, see the documentation https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.2/[here].
+For more information, see the link:https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.2/[Red Hat Advanced Cluster Management documentation^].
 
 
 // NetApp Solutions restructuring (jul 2025) - renamed from containers/rh-os-n_use_case_advanced_cluster_management_overview.adoc
