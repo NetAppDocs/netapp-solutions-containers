@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: openshift/os-use-case-pipeline.html
-keywords: CI/CD, Continuous integration, continuous deployment, Jenkins, PVC
+keywords: CI CD, Continuous integration, continuous deployment, Jenkins, PVC
 summary: This section provides the steps to deploy a continuous integration and continuous delivery or deployment pipeline with Jenkins to validate solution operation.
 ---
 
