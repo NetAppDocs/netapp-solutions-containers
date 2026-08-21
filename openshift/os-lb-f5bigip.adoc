@@ -45,7 +45,7 @@ NOTE: An F5 BIG-IP system can be deployed on dedicated hardware, in the cloud, o
 
 == Installation
 
-.	Install the F5 Application Services 3 extension to allow BIG-IP systems to accept configurations in JSON instead of imperative commands. Go to https://github.com/F5Networks/f5-appsvcs-extension/releases[F5 AS3 GitHub repository^], and download the latest RPM file.
+.       Install the F5 Application Services 3 extension to allow BIG-IP systems to accept configurations in JSON instead of imperative commands. Go to link:https://github.com/F5Networks/f5-appsvcs-extension/releases[F5 AS3 GitHub repository^], and download the latest RPM file.
 
 .	Log into F5 BIG-IP system, navigate to iApps > Package Management LX and click Import.
 

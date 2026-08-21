@@ -23,7 +23,7 @@ NetApp Element software provides modular, scalable performance, with each storag
 
 image:redhat-openshift-064.png["Figure showing input/output dialog or representing written content"]
 
-For more information about NetApp Element storage systems, visit the https://www.netapp.com/data-storage/solidfire/[NetApp Solidfire website^].
+For more information about NetApp Element storage systems, visit the link:https://www.netapp.com/data-storage/solidfire/[NetApp Solidfire website^].
 
 == iSCSI login redirection and self-healing capabilities
 
