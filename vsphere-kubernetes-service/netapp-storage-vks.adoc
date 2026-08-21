@@ -50,7 +50,7 @@ Trident supports drivers for ONTAP storage on-premises and managed storage servi
 **Advanced Data Management**
 Leveraging ONTAP's snapshot and cloning capabilities for efficient data protection and rapid provisioning of test and development environments.
 
-For complete details on Trident, refer to NetApp Trident link:https://docs.netapp.com/us-en/trident/[documentation here].
+For complete details on Trident, refer to the link:https://docs.netapp.com/us-en/trident/[Trident documentation^].
 
 == Trident Protect
 
@@ -73,7 +73,7 @@ Provides tools and features that help organizations meet compliance requirements
 **Disaster Recovery**
 Integrates with ONTAP's replication features to provide robust disaster recovery solutions, ensuring business continuity even in the face of catastrophic events.
 
-For complete details on Trident Protect, refer to NetApp Trident Protect link:https://docs.netapp.com/us-en/trident/trident-protect/learn-about-trident-protect.html[documentation here].
+For complete details on Trident Protect, refer to the link:https://docs.netapp.com/us-en/trident/trident-protect/learn-about-trident-protect.html[Trident Protect documentation^].
 
 == NetApp ONTAP hardware models and protocols supported
 
@@ -122,4 +122,4 @@ NOTE: You can place all the disks of the VMs as LUNs in a single volume. However
 
 image::vks-trident-storage-001.png[Trident Drivers for ONTAP storage]
 
-For the complete list of capabilities exposed through Trident drivers and those that must be applied by the storage administrator, see link:https://docs.netapp.com/us-en/trident/trident-reco/integrate-trident.html#ontap-backend-drivers[ONTAP backend drivers] section in the Trident documentation.
+For the complete list of capabilities exposed through Trident drivers and those that must be applied by the storage administrator, see link:https://docs.netapp.com/us-en/trident/trident-reco/integrate-trident.html#ontap-backend-drivers[ONTAP backend drivers^] section in the Trident documentation.

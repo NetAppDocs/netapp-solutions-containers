@@ -427,8 +427,8 @@ allowVolumeExpansion: true
 
 Review the Trident documentation for additional samples of YAML files and information on access modes and volume modes supported by SAN drivers and NAS drivers.
 
-* link:https://docs.netapp.com/us-en/trident/trident-use/ontap-nas.html[Samples using NAS drivers]
-* link:https://docs.netapp.com/us-en/trident/trident-use/ontap-san.html[Samples using SAN drivers]
+* link:https://docs.netapp.com/us-en/trident/trident-use/ontap-nas.html[Samples using NAS drivers^]
+* link:https://docs.netapp.com/us-en/trident/trident-use/ontap-san.html[Samples using SAN drivers^]
 
 == Create a VolumeSnapshotClass configuration file
 

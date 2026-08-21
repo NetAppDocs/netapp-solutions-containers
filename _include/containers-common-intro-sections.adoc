@@ -19,13 +19,13 @@ Enterprises are increasingly adopting DevOps practices to create new products, s
 //tag::solution_overview_openshift_intro[]
 Red Hat OpenShift Container Platform is a fully supported enterprise Kubernetes platform. Red Hat makes several enhancements to open-source Kubernetes to deliver an application platform with all the components fully integrated to build, deploy, and manage containerized applications.
 
-For more information, visit the OpenShift website https://www.openshift.com[here].
+For more information, visit the link:https://www.openshift.com[Red Hat OpenShift website^].
 //end::solution_overview_openshift_intro[]
 
 //tag::solution_overview_netapp_storage_intro[]
 NetApp has several storage systems perfect for enterprise data centers and hybrid cloud deployments. The NetApp portfolio includes NetApp ONTAP, NetApp Element, and NetApp e-Series storage systems, all of which can provide persistent storage for containerized applications.
 
-For more information, visit the NetApp website https://www.netapp.com[here].
+For more information, visit the link:https://www.netapp.com[NetApp website^].
 //end::solution_overview_netapp_storage_intro[]
 
 //tag::solution_overview_netapp_storage_integrations_intro[]
@@ -98,19 +98,19 @@ NetApp provides robust all-flash (AFF) and scale-out hybrid (FAS) storage platfo
 
 Both systems are powered by NetApp ONTAP data management software, the industry's most advanced data-management software for simplified, highly available, cloud-integrated storage management to deliver enterprise-class speed, efficiency, and security for your data fabric needs.
 
-For more information about NETAPP AFF/FAS platforms, click https://docs.netapp.com/platstor/index.jsp[here].
+For more information about NetApp AFF/FAS platforms, see the link:https://docs.netapp.com/platstor/index.jsp[NetApp hardware platform documentation^].
 
 === ONTAP Select
 
 ONTAP Select is a software-defined deployment of NetApp ONTAP that can be deployed onto a hypervisor in your environment. It can be installed on VMware vSphere or on KVM, and it provides the full functionality and experience of a hardware-based ONTAP system.
 
-For more information about ONTAP Select, click https://docs.netapp.com/us-en/ontap-select/[here].
+For more information about ONTAP Select, see the link:https://docs.netapp.com/us-en/ontap-select/[ONTAP Select documentation^].
 
 === Cloud Volumes ONTAP
 
 NetApp Cloud Volumes ONTAP is a cloud-deployed version of NetApp ONTAP that can be deployed in a number of public clouds, including Amazon AWS, Microsoft Azure, and Google Cloud.
 
-For more information about Cloud Volumes ONTAP, click https://docs.netapp.com/us-en/occm/#discover-whats-new[here].
+For more information about Cloud Volumes ONTAP, see the link:https://docs.netapp.com/us-en/occm/#discover-whats-new[Cloud Volumes ONTAP documentation^].
 //end::netapp_ontap_page[]
 
 //tag::storage_integration_overview[]
@@ -119,7 +119,7 @@ NetApp provides a number of products to help you orchestrate, manage, protect, a
 
 image:devops-with-netapp-001.png["Figure showing input/output dialog or representing written content"]
 
-NetApp Trident is an open-source and fully-supported storage orchestrator for containers and Kubernetes distributions like {k8s_distribution_name}. For more information, visit the Trident website https://docs.netapp.com/us-en/trident/index.html[here].
+NetApp Trident is an open-source and fully-supported storage orchestrator for containers and Kubernetes distributions like {k8s_distribution_name}. For more information, visit the link:https://docs.netapp.com/us-en/trident/index.html[Trident documentation^].
 
 The following pages have additional information about the NetApp products that have been validated for application and persistent storage management in the {solution_name} solution:
 
@@ -136,7 +136,7 @@ image:redhat-openshift-002.png["Figure showing input/output dialog or representi
 
 Trident has a rapid development cycle and, like Kubernetes, is released four times a year.
 
-The latest version of Trident is 22.04 released in April 2022. A support matrix for what version of Trident has been tested with which Kubernetes distribution can be found https://docs.netapp.com/us-en/trident/trident-get-started/requirements.html#supported-frontends-orchestrators[here].
+A support matrix for what version of Trident has been tested with which Kubernetes distribution can be found in link:https://docs.netapp.com/us-en/trident/trident-get-started/requirements.html#supported-frontends-orchestrators[Supported frontends (orchestrators)^].
 
 Starting with the 20.04 release, Trident setup is performed by the Trident operator. The operator makes large scale deployments easier and provides additional support, including self healing for pods that are deployed as a part of the Trident install.
 
