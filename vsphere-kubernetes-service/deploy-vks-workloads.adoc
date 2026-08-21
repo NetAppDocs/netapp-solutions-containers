@@ -70,7 +70,7 @@ spec:
               type: RuntimeDefault
           env:
             - name: POSTGRES_DB
-              value: "mydb"
+              value: "postgres"
             - name: POSTGRES_USER
               value: "<username>"
             - name: POSTGRES_PASSWORD
@@ -164,7 +164,7 @@ spec:
                 - ALL
           env:
             - name: POSTGRES_DB
-              value: "mydb"
+              value: "postgres"
             - name: POSTGRES_USER
               value: "<username>"
             - name: POSTGRES_PASSWORD
@@ -219,13 +219,11 @@ kubectl get pvc -n <namespace>
 
 image::vks-workload-001.png[Workload deployed with persistent storage]
 
-Verify the volume provisioning in the ONTAP system. The internal volume name for NAS volumes or the internal LUN name for SAN volumes can be found in the PersistentVolume (PV) details. Use the following command to describe the PV and retrieve the internal volume or LUN name.
-
-Depending on the protocol used, the backend storage could be a volume, qtree, or LUN. You can confirm that the appropriate storage is provisioned in the ONTAP system:
+Depending on the protocol used, the backend storage is a volume, qtree, or LUN. You can verify the storage provisioned in the ONTAP system by describing the PersistentVolume (PV) to retrieve the internal volume name and then using it in ONTAP CLI commands to get the storage details. Use the following command to describe the PV and retrieve the internal volume name:
 
 [source,bash]
 ----
-kubectl describe pv/<pv-name> 
+kubectl describe pv/<pv-name>
 ----
 
 .Show Example
@@ -253,13 +251,21 @@ lun show -vserver <vserver> -volume <internal-volume-name>
 
 image::vks-workload-005.png[ONTAP CLI output for SAN LUN]
 
-If you used `nconnect` mount options in the NAS or NAS Economy storage class, you can verify the number of active TCP connections from the worker node to the storage server using the following command.
+If you used `nconnect` mount options in the NAS or NAS Economy storage class, you can verify the number of active TCP connections from the worker node to the storage server.
 
-Describe the Trident backend config to get the vserver name and the data LIF, then log into the ONTAP cluster:
+First, list the Trident backend configurations to find the backend name, then describe it to retrieve the vserver name and data LIF:
+
+[source,bash]
+----
+kubectl get tbc -n trident
+kubectl describe tbc <backend-name> -n trident
+----
+
+Then log into the ONTAP cluster and run the following command, substituting the data LIF from the output above:
 
 [source,cli]
 ----
-network connections active show -local-address <data lif> -local-port 2049
+network connections active show -local-address <data-lif> -local-port 2049
 ----
 
 .Show Example
@@ -285,15 +291,23 @@ psql "postgresql://<username>:<password>@127.0.0.1:5432/postgres"
 
 . Create a database and a table, then populate the table with data:
 +
-[source,cli]
+[source,sql]
 ----
-postgres=# CREATE DATABASE employee;
-CREATE DATABASE
-
-postgres=# \c employee
-You are now connected to database "employee" as user "<username>".
-
-employee=# CREATE TABLE employees (
+CREATE DATABASE employee;
+----
++
+Switch to the new database (psql meta-command):
++
+[source,bash]
+----
+\c employee
+----
++
+Create the table, insert a row, and query the results:
++
+[source,sql]
+----
+CREATE TABLE employees (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
@@ -302,13 +316,11 @@ employee=# CREATE TABLE employees (
     hire_date DATE DEFAULT CURRENT_DATE,
     salary NUMERIC(10, 2)
 );
-CREATE TABLE
 
-employee=# INSERT INTO employees (first_name, last_name, email, department, salary)
+INSERT INTO employees (first_name, last_name, email, department, salary)
 VALUES ('John', 'Doe', 'john.doe@example.com', 'Engineering', 85000.00);
-INSERT 0 1
 
-employee=# SELECT * FROM employees;
+SELECT * FROM employees;
 ----
 
 == Video demonstration

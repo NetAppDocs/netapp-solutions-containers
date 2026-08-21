@@ -206,9 +206,9 @@ metadata:
   name: tbc-nas-economy-secret
   namespace: trident
 type: Opaque
-stringData:
-  username: "<cluster admin username>"
-  password: "<cluster admin password>"
+data:
+  username: "<base64-encoded cluster admin username>"
+  password: "<base64-encoded cluster admin password>"
 ---
 apiVersion: trident.netapp.io/v1
 kind: TridentBackendConfig
@@ -264,9 +264,9 @@ metadata:
   name: backend-tbc-ontap-iscsi-secret
   namespace: trident
 type: Opaque
-stringData:
-  username: "<cluster admin username>"
-  password: "<cluster admin password>"
+data:
+  username: "<base64-encoded cluster admin username>"
+  password: "<base64-encoded cluster admin password>"
 ---
 apiVersion: trident.netapp.io/v1
 kind: TridentBackendConfig
@@ -349,9 +349,9 @@ metadata:
   name: backend-tbc-ontap-nvme-secret
   namespace: trident
 type: Opaque
-stringData:
-  username: "<cluster admin username>"
-  password: "<cluster admin password>"
+data:
+  username: "<base64-encoded cluster admin username>"
+  password: "<base64-encoded cluster admin password>"
 ---
 apiVersion: trident.netapp.io/v1
 kind: TridentBackendConfig
