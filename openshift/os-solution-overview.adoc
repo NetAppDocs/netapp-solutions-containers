@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: openshift/os-solution-overview.html
 keywords: NVA-1160, Red Hat, OpenShift, Netapp, Trident
-summary: This reference document provides deployment validation of the Red Hat OpenShift solution, deployed through Installer Provisioned Infrastructure (IPI) in several different data center environments as validated by NetApp. It also details storage integration with NetApp storage systems by making use of the Trident storage orchestrator for the management of persistent storage. Lastly, a number of solution validations and real world use cases are explored and documented.
+summary: "This reference document provides deployment validation of the Red Hat OpenShift solution, deployed through Installer Provisioned Infrastructure (IPI) in several different data center environments as validated by NetApp. It also details storage integration with NetApp storage systems by making use of the Trident storage orchestrator for the management of persistent storage. Lastly, a number of solution validations and real world use cases are explored and documented."
 ---
 
 = NVA-1160: Red Hat OpenShift with NetApp

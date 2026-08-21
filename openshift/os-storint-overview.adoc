@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: openshift/os-storint-overview.html
 keywords: Trident, Trident, persistent storage
-summary: NetApp provides a number of products which assist our customers with orchestrating and managing persistent data in container based environments, like Red Hat OpenShift.
+summary: "NetApp provides a number of products which assist our customers with orchestrating and managing persistent data in container based environments, like Red Hat OpenShift."
 ---
 
 = Learn about NetApp Trident integration with Red Hat OpenShift
@@ -23,7 +23,7 @@ Learn about NetApp Trident Protect that has been validated for application and p
 
 Trident, an open-source storage provisioner and orchestrator maintained by NetApp, along with its add-on, NetApp Trident Protect, offers robust solutions for orchestrating and managing persistent data in container-based environments like Red Hat OpenShift.
 
-image:redhat-openshift-108.png["Figure showing input/output dialog or representing written content"]
+image::redhat-openshift-108.png["Figure showing input/output dialog or representing written content"]
 
 
 The following pages have additional information about the NetApp products that have been validated for application and persistent storage management in the Red Hat OpenShift with NetApp solution:

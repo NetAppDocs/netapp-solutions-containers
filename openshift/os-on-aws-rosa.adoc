@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: openshift/os-on-aws-rosa.html
 keywords: OpenShift, AWS, ROSA
-summary: Red Hat OpenShift Service on AWS is a fully-managed Kubernetes platform that allows developers to build and deploy applications in the AWS cloud.
+summary: "Red Hat OpenShift Service on AWS is a fully-managed Kubernetes platform that allows developers to build and deploy applications in the AWS cloud."
 ---
 
 = Red Hat OpenShift Service on AWS

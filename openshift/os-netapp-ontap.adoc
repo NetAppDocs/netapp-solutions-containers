@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: openshift/os-netapp-ontap.html
 keywords: NetApp, ONTAP, AFF, FAS, iSCSI, NFS
-summary: NetApp ONTAP is a powerful storage-software tool with capabilities such as an intuitive GUI, REST APIs with automation integration, AI-informed predictive analytics and corrective action, non-disruptive hardware upgrades, and cross-storage import.
+summary: "NetApp ONTAP is a powerful storage-software tool with capabilities such as an intuitive GUI, REST APIs with automation integration, AI-informed predictive analytics and corrective action, non-disruptive hardware upgrades, and cross-storage import."
 ---
 
 = NetApp ONTAP
@@ -42,7 +42,7 @@ For more information about ONTAP, see the link:https://docs.netapp.com/ontap-9/i
 
 NOTE: NetApp ONTAP is available on-premises, virtualized, or in the cloud.
 
-image:redhat-openshift-035.png["Figure showing input/output dialog or representing written content"]
+image::redhat-openshift-035.png["Figure showing input/output dialog or representing written content"]
 
 == NetApp platforms
 

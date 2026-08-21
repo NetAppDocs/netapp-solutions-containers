@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: openshift/os-adv-mgmt-deployment-prereq.html
 keywords: OpenShift, OCP, Trident, NetApp ONTAP, ONTAP, Trident, Red Hat OpenShift, Advanced Cluster Management, Advanced Cluster Management for Kubernetes
-summary: Advanced Cluster Management for Kubernetes on Red Hat OpenShift with NetApp
+summary: "Advanced Cluster Management for Kubernetes on Red Hat OpenShift with NetApp"
 ---
 
 = Deploy Advanced Cluster Management for Kubernetes

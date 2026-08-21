@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: openshift/os-trident-overview.html
 keywords: Trident, Trident, Helm, Operator, iSCSI, NFS
-summary: Trident is an open-source and fully-supported storage orchestrator for containers and Kubernetes distributions, including Red Hat OpenShift.
+summary: "Trident is an open-source and fully-supported storage orchestrator for containers and Kubernetes distributions, including Red Hat OpenShift."
 ---
 
 = Trident Overview
@@ -23,7 +23,7 @@ Trident is an open-source and fully supported storage orchestrator for container
 
 An administrator can configure a number of storage backends based on project needs and storage system models that enable advanced storage features, including compression, specific disk types, or QoS levels that guarantee a certain level of performance. After they are defined, these backends can be used by developers in their projects to create persistent volume claims (PVCs) and to attach persistent storage to their containers on demand.
 
-image:redhat-openshift-002.png["Figure showing input/output dialog or representing written content"]
+image::redhat-openshift-002.png["Figure showing input/output dialog or representing written content"]
 
 Trident has a rapid development cycle, and just like Kubernetes, is released four times a year.
 

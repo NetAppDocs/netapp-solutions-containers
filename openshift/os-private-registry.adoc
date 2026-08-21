@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: openshift/os-private-registry.html
 keywords: Advanced Configuration, Private Registry, Trident, OpenShift Registry, NetApp Trident Protect Registry
-summary: This section is dedicated to creating and configuring a private image registry backed by persistent storage provided by Trident.
+summary: "This section is dedicated to creating and configuring a private image registry backed by persistent storage provided by Trident."
 ---
 
 = Creating Private Image Registries

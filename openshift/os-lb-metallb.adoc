@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: openshift/os-lb-metallb.html
-summary: This page details installation and configuration instructions for the MetalLB load balancer.
+summary: "This page details installation and configuration instructions for the MetalLB load balancer."
 keywords: Red Hat OpenShift, Kubernetes, MetalLB, LoadBalancer
 ---
 
