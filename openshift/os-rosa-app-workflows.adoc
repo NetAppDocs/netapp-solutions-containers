@@ -23,12 +23,14 @@ NOTE: This snapshot is stored in the same aggregate as the original volume in ON
 **a. Create a VolumeSnapshotClass
 Save the following manifest in a file called volume-snapshot-class.yaml
 [source]
+----
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshotClass
 metadata:
  name: fsx-snapclass
 driver: csi.trident.netapp.io
 deletionPolicy: Delete
+----
 
 Create a snapshot by using the above manifest.
 
@@ -37,6 +39,7 @@ image:redhat-openshift-container-rosa-020.png[snapshot class]
 **b. Next, create a snapshot**
 Create a snapshot of the existing PVC by creating VolumeSnapshot to take a point-in-time copy of your Postgresql data. This creates an FSx snapshot that takes almost no space in the filesystem backend. Save the following manifest in a file called volume-snapshot.yaml:
 [source]
+----
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshot
 metadata:
@@ -45,6 +48,7 @@ spec:
  volumeSnapshotClassName: fsx-snapclass
  source:
    persistentVolumeClaimName: data-postgresql-0
+----
 
 **c. Create the volume snapshot and confirm that it is created**
 
@@ -67,6 +71,7 @@ In this section, we will show how to restore an application from the trident sna
 To restore the volume to its previous state, you must create a new PVC based on the data in the snapshot you took. To do this, save the following manifest in a file named pvc-clone.yaml
 
 [source]
+----
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -82,6 +87,7 @@ spec:
    name: postgresql-volume-snap-01
    kind: VolumeSnapshot
    apiGroup: snapshot.storage.k8s.io
+----
 
 Create a clone of the volume by creating a PVC using the snapshot as the source using the above manifest. Apply the manifest and ensure that the clone is created.
 
@@ -93,7 +99,9 @@ image:redhat-openshift-container-rosa-025.png[postgresql app delete]
 
 **c. Create a new postgresql application using the new clone PVC**
 [source]
+----
 $ helm install postgresql bitnami/postgresql --set primary.persistence.enabled=true --set primary.persistence.existingClaim=postgresql-volume-clone -n postgresql
+----
 
 image:redhat-openshift-container-rosa-026.png[postgresql new install]
 

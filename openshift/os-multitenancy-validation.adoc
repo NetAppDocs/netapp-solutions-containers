@@ -19,11 +19,14 @@ To validate the multitenant architecture that was configured in the previous ste
 
 .	Log in as ocp-project-1-user, developer in project-1.
 .	Check access to create a new project.
-[source, console]
+[source,console]
+----
 oc create ns sub-project-1
+----
 
 .	Create a PVC in project-1 using the storageclass that is assigned to project-1.
-[source, console]
+[source,console]
+----
 cat << EOF | oc create -f -
 kind: PersistentVolumeClaim
 apiVersion: v1
@@ -40,17 +43,23 @@ spec:
       storage: 1Gi
   storageClassName: project-1-sc
 EOF
+----
 
 .	Check the PV associated with the PVC.
-[source, console]
+[source,console]
+----
 oc get pv
+----
 
 .	Validate that the PV and its volume is created in an SVM dedicated to project-1 on NetApp ONTAP.
-[source, console]
+[source,console]
+----
 volume show -vserver project-1-svm
+----
 
 .	Create a pod in project-1 and mount the PVC created in previous step.
-[source, console]
+[source,console]
+----
 cat << EOF | oc create -f -
 kind: Pod
 apiVersion: v1
@@ -72,16 +81,20 @@ spec:
         - mountPath: "/usr/share/nginx/html"
           name: test-pvc-project-1
 EOF
+----
 
 .	Check if the pod is running and whether it mounted the volume.
-[source, console]
+[source,console]
+----
 oc describe pods test-pvc-pod -n project-1
+----
 
 == Validate access to create PVCs or pods in another project or use resources dedicated to another project
 
 .	Log in as ocp-project-1-user, developer in project-1.
 .	Create a PVC in project-1 using the storageclass that is assigned to project-2.
-[source, console]
+[source,console]
+----
 cat << EOF | oc create -f -
 kind: PersistentVolumeClaim
 apiVersion: v1
@@ -98,9 +111,11 @@ spec:
       storage: 1Gi
   storageClassName: project-2-sc
 EOF
+----
 
 .	Create a PVC in project-2.
-[source, console]
+[source,console]
+----
 cat << EOF | oc create -f -
 kind: PersistentVolumeClaim
 apiVersion: v1
@@ -117,14 +132,18 @@ spec:
       storage: 1Gi
   storageClassName: project-1-sc
 EOF
+----
 
 .	Make sure that PVCs `test-pvc-project-1-sc-2` and `test-pvc-project-2-sc-1` were not created.
-[source, console]
+[source,console]
+----
 oc get pvc -n project-1
 oc get pvc -n project-2
+----
 
 .	Create a pod in project-2.
-[source, console]
+[source,console]
+----
 cat << EOF | oc create -f -
 kind: Pod
 apiVersion: v1
@@ -139,31 +158,42 @@ spec:
         - containerPort: 80
           name: "http-server"
 EOF
+----
 
 == Validate access to view and edit Projects, ResourceQuotas, and StorageClasses
 
 .	Log in as ocp-project-1-user, developer in project-1.
 .	Check access to create new projects.
-[source, console]
+[source,console]
+----
 oc create ns sub-project-1
+----
 
 .	Validate access to view projects.
-[source, console]
+[source,console]
+----
 oc get ns
+----
 
 .	Check if the user can view or edit ResourceQuotas in project-1.
-[source, console]
+[source,console]
+----
 oc get resourcequotas -n project-1
 oc edit resourcequotas project-1-sc-rq -n project-1
+----
 
 .	Validate that the user has access to view the storageclasses.
-[source, console]
+[source,console]
+----
 oc get sc
+----
 
 .	Check access to describe the storageclasses.
 .	Validate the user's access to edit the storageclasses.
-[source, console]
+[source,console]
+----
 oc edit sc project-1-sc
+----
 
 
 // NetApp Solutions restructuring (jul 2025) - renamed from containers/rh-os-n_use_case_multitenancy_validation.adoc

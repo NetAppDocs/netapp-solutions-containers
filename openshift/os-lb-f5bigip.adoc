@@ -69,12 +69,15 @@ image:redhat-openshift-112.png[Create VXLAN tunnel]
 
 .	Create a hostsubnet on OpenShift for the F5 BIG-IP server, which extends the subnet from the OpenShift cluster to the F5 BIG-IP server. Download the host subnet YAML definition.
 +
-[source, cli]
+[source,cli]
+----
 wget https://github.com/F5Networks/k8s-bigip-ctlr/blob/master/docs/config_examples/openshift/f5-kctlr-openshift-hostsubnet.yaml
+----
 
 .	Edit the host subnet file and add the BIG-IP VTEP (VXLAN tunnel) IP for the OpenShift SDN.
 +
-[source, cli]
+[source,cli]
+----
 apiVersion: v1
 kind: HostSubnet
 metadata:
@@ -90,6 +93,7 @@ host: f5-server
 hostIP: 10.63.172.239
 +
 NOTE: Change the hostIP and other details as applicable to your environment.
+----
 
 .	Create the HostSubnet resource.
 +
