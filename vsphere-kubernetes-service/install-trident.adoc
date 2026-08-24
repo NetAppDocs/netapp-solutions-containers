@@ -170,7 +170,7 @@ StorageClass definition (save as `sc-nas.yaml`):
 =====
 `mountOptions` is an optional parameter that specifies additional mount options for NFS volumes. The `nconnect` option allows multiple parallel TCP connections for a single NFS mount, which can improve performance for high-throughput workloads. The default value is 1, but it can be increased up to the maximum allowed by the ONTAP system.
 
-In VCF 9.0 and 9.1, the default maximum is 4 and the absolute maximum is 8 parallel TCP connections per datastore. Trident passes the mount options directly to the Kubernetes worker nodes. Set the maximum by adding the option to the storage class manifest.
+ONTAP supports up to 16 connections for a single NFS mount on an nconnect-capable client. Trident passes the mount options directly to the Kubernetes worker nodes, so choose a value supported by both the worker-node NFS client and ONTAP; the following example uses four connections.
 =====
 
 [source,yaml]
