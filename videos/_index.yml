@@ -24,6 +24,6 @@ indexpage:
     - title: "vSphere Kubernetes Service with NetApp Storage"
       links:
         - title: "Deploying vSphere Kubernetes Service with NetApp Storage"
-          url: vks-videos.html#deploying-vsphere-kubernetes-service-with-netapp-storage
+          url: vks-videos.html#deploying-a-vsphere-kubernetes-service-cluster-with-netapp-storage
         - title: "Deploying vSphere Kubernetes Service workloads with NetApp Storage"
-          url: vks-videos.html#deploying-vsphere-kubernetes-service-workloads-with-netapp-storage
+          url: vks-videos.html#deploying-workloads-with-ontap-persistent-storage-using-trident
