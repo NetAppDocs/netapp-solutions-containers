@@ -56,8 +56,8 @@ Trident Protect is installed separately from Trident. Before deployment, verify 
 
 === Key features of Trident Protect
 
-**Automated Backups**
-Trident Protect enables automated, policy-driven backups of container applications and VMs, ensuring that they are regularly backed up without manual intervention.
+**Automated backups**
+Trident Protect enables automated, policy-driven backups of Kubernetes applications, ensuring that they are regularly backed up without manual intervention.
 
 **Snapshot Management**
 It leverages ONTAP's snapshot capabilities to create frequent, point-in-time copies of container applications and VMs, providing a reliable mechanism for recovery.
