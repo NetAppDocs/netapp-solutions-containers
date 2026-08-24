@@ -52,7 +52,7 @@ For complete details on Trident, refer to the link:https://docs.netapp.com/us-en
 
 == Trident Protect
 
-Trident Protect is an advanced feature of Trident that provides enhanced data protection and security for containerized environments. It is designed to ensure that critical data is safeguarded against potential threats and data loss scenarios. It is available free of cost for all Trident users and can be easily enabled in any Kubernetes cluster with Trident installed.
+Trident Protect is installed separately from Trident. Before deployment, verify that your Kubernetes platform, storage backend, snapshot components, and object storage meet the link:https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-requirements.html[Trident Protect requirements^].
 
 === Key features of Trident Protect
 
