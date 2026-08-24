@@ -91,9 +91,9 @@ host: f5-server
 # OpenShift Origin nodes.
 # This address is the BIG-IP VTEP in the SDN's VXLAN.
 hostIP: 10.63.172.239
+----
 +
 NOTE: Change the hostIP and other details as applicable to your environment.
-----
 
 .	Create the HostSubnet resource.
 +
