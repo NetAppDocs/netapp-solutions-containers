@@ -6,9 +6,7 @@ summary: "Install NetApp Trident in a vSphere Kubernetes Service cluster to enab
 ---
 
 = Install NetApp Trident in a VKS cluster
-:toc:
 :hardbreaks:
-:toclevels: 1
 :nofooter:
 :icons: font
 :linkattrs:

@@ -6,9 +6,7 @@ summary: "Learn about the key benefits of using NetApp ONTAP storage with vSpher
 ---
 
 = Learn about NetApp storage for vSphere Kubernetes Service
-:toc:
 :hardbreaks:
-:toclevels: 1
 :nofooter:
 :icons: font
 :linkattrs:

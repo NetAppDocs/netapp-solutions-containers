@@ -6,9 +6,7 @@ summary: "Install a vSphere Kubernetes Service cluster in your VCF environment w
 ---
 
 = Install a vSphere Kubernetes Service cluster
-:toc:
 :hardbreaks:
-:toclevels: 1
 :nofooter:
 :icons: font
 :linkattrs:

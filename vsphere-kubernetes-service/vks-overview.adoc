@@ -6,9 +6,7 @@ summary: "Learn about vSphere Kubernetes Service and how it integrates with NetA
 ---
 
 = Learn about vSphere Kubernetes Service with NetApp ONTAP
-:toc:
 :hardbreaks:
-:toclevels: 1
 :nofooter:
 :icons: font
 :linkattrs:

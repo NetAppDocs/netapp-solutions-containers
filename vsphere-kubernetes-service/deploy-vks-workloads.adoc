@@ -6,9 +6,7 @@ summary: "Deploy a containerized application in a VKS cluster using NetApp ONTAP
 ---
 
 = Deploy a container application with NetApp persistent storage
-:toc:
 :hardbreaks:
-:toclevels: 1
 :nofooter:
 :icons: font
 :linkattrs:
