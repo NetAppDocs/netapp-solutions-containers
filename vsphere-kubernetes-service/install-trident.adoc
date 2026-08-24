@@ -92,7 +92,7 @@ Define Trident backends and storage classes for the following protocols as requi
 * NAS (ontap-nas driver)
 * NAS Economy (ontap-nas-economy driver)
 * SAN (ontap-san driver) for iSCSI, FC, or NVMe protocols
-* SAN Economy (ontap-san-economy driver) for iSCSI, FC, or NVMe protocols
+* SAN Economy (ontap-san-economy driver) for iSCSI
 +
 [role="tabbed-block"]
 ====
