@@ -62,8 +62,8 @@ Trident Protect enables automated, policy-driven backups of Kubernetes applicati
 **Snapshot Management**
 It leverages ONTAP's snapshot capabilities to create frequent, point-in-time copies of container applications and VMs, providing a reliable mechanism for recovery.
 
-**Data Encryption**
-Ensures that data is encrypted both at rest and in transit, meeting stringent security requirements and protecting sensitive information.
+**Backup repository encryption**
+Trident Protect supports password-based encryption for Restic and Kopia backup repositories. Configure persistent-volume and in-transit encryption separately in the storage and network layers.
 
 **Compliance and Auditing**
 Provides tools and features that help organizations meet compliance requirements and conduct regular audits of their data protection practices.
