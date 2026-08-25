@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: anthos/anthos-trident-overview.html
 keywords: Trident, Trident, Helm, Operator, iSCSI, NFS
-summary: Trident is an fully supported, open-source storage orchestrator for containers and Kubernetes distributions, including Anthos.
+summary: "Trident is a fully supported, open-source storage orchestrator for containers and Kubernetes distributions, including Anthos."
 ---
 
 = Trident Overview
@@ -27,42 +27,42 @@ image:a-w-n-astra-trident.png["Figure showing input/output dialog or representin
 
 Trident has a rapid development cycle and, like Kubernetes, is released four times a year.
 
-The documentation for the latest version of Trident can be found https://docs.netapp.com/us-en/trident/index.html[here]. A support matrix for what version of Trident has been tested with which Kubernetes distribution can be found https://docs.netapp.com/us-en/trident/trident-get-started/requirements.html#supported-frontends-orchestrators[here].
+See the link:https://docs.netapp.com/us-en/trident/index.html[Trident documentation^] for the latest version information. A support matrix for Trident version compatibility with Kubernetes distributions is available in link:https://docs.netapp.com/us-en/trident/trident-get-started/requirements.html#supported-frontends-orchestrators[Supported frontends (orchestrators)^].
 
 Starting with the 20.04 release, Trident setup is performed by the Trident operator. The operator makes large scale deployments easier and provides additional support including self healing for pods that are deployed as a part of the Trident install.
 
 With the 22.04 release, a Helm chart was made available to ease the installation of the Trident Operator.
 
-For Trident installation details, please see https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html[here].
+See link:https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy.html[Trident installation details^] for more information.
 
 
 == Create a storage-system backend
 
 After completing the Trident Operator install, you must configure the backend for the specific NetApp storage platform you are using. Follow the link below in order to continue the setup and configuration of Trident.
-link:https://docs.netapp.com/us-en/trident/trident-use/backends.html[Create a backend.]
+link:https://docs.netapp.com/us-en/trident/trident-use/backends.html[Create a backend^]
 
 == Create a storage class
 
 After creating the backend, you must create a storage class that Kubernetes users will specify when they want a volume. Kubernetes users provision volumes by using persistent volume claims (PVCs) that specify a storage class by name.
 Follow the link below to create a storage class.
-link:https://docs.netapp.com/us-en/trident/trident-use/create-stor-class.html[Create a storage class]
+link:https://docs.netapp.com/us-en/trident/trident-use/create-stor-class.html[Create a storage class^]
 
 == Dynamically provision a volume
 
 You must create a Kubernetes persistent volume claim (PVC) object using the storage class to dynamically provision a volume. Follow the link below to create a PVC object.
-link:https://docs.netapp.com/us-en/trident/trident-use/vol-provision.html[Create a PVC]
+link:https://docs.netapp.com/us-en/trident/trident-use/vol-provision.html[Create a PVC^]
 
 == Use the volume
 
 The volume provisioned in the above step can be used by an application by mounting the volume in the pod.The link below shows an example.
-link:https://docs.netapp.com/us-en/trident/trident-use/vol-provision.html#sample-manifests[Mount the volume in a pod]
+link:https://docs.netapp.com/us-en/trident/trident-use/vol-provision.html#sample-manifests[Mount the volume in a pod^]
 
 
 == Sample provisioning
 
-link:anthos-trident-ontap-iscsi.html[Sample manifests for iSCSI protocol,window=_blank]
+link:anthos-trident-ontap-iscsi.html[Sample manifests for iSCSI protocol]
 
-link:anthos-trident-ontap-nfs.html[Sample manifests for nfs protocol,window=_blank]
+link:anthos-trident-ontap-nfs.html[Sample manifests for NFS protocol]
 
 
 

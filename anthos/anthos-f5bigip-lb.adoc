@@ -25,7 +25,7 @@ NOTE: An F5 BIG-IP system can be deployed on dedicated hardware, in the cloud, o
 
 == Validated releases
 
-This solution makes use of the virtual appliance deployed in VMware vSphere. Networking for the F5 Big-IP virtual appliance can be configured in a two-armed or three-armed configuration based on your network environment. The deployment in this document is based on the two-armed configuration. Additional details on configuring the virtual appliance for use with Anthos can be found https://cloud.google.com/solutions/partners/installing-f5-big-ip-adc-for-gke-on-prem[here].
+This solution makes use of the virtual appliance deployed in VMware vSphere. Networking for the F5 Big-IP virtual appliance can be configured in a two-armed or three-armed configuration based on your network environment. The deployment in this document is based on the two-armed configuration. Additional details on configuring the virtual appliance for use with Anthos can be found in the link:https://cloud.google.com/solutions/partners/installing-f5-big-ip-adc-for-gke-on-prem[F5 BIG-IP ADC installation guide for GKE On-Prem^].
 
 The Solutions Engineering Team at NetApp have validated the releases in the following table in our lab to work with deployments of Anthos On-Prem:
 
@@ -39,7 +39,7 @@ The Solutions Engineering Team at NetApp have validated the releases in the foll
 
 To install F5 BIG-IP, complete the following steps:
 
-. Download the virtual application Open Virtual Appliance (OVA) file from F5 https://downloads.f5.com/esd/serveDownload.jsp?path=/big-ip/big-ip_v15.x/15.0.1/english/virtual-edition/&sw=BIG-IP&pro=big-ip_v15.x&ver=15.0.1&container=Virtual-Edition&file=BIGIP-15.0.1-0.0.11.ALL-vmware.ova[here].
+. Download the virtual application Open Virtual Appliance (OVA) file from the link:https://downloads.f5.com/esd/serveDownload.jsp?path=/big-ip/big-ip_v15.x/15.0.1/english/virtual-edition/&sw=BIG-IP&pro=big-ip_v15.x&ver=15.0.1&container=Virtual-Edition&file=BIGIP-15.0.1-0.0.11.ALL-vmware.ova[F5 downloads portal^].
 +
 NOTE:	To download the appliance, a user must register with F5. They provide a 30-day demo license for the Big-IP Virtual Edition Load Balancer. NetApp recommends a permanent 10Gbps license for the production deployment of an appliance.
 

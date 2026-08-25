@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: openshift/os-netapp-overview-advanced.html
 keywords: Advanced Configuration, Load Balancers, Custom Registry
-summary: This section is dedicated to customizations that real world users would likely need to perform when deploying this solution into production, such as creating a dedicated image registry, or deploying custom load balancer instances.
+summary: "This section is dedicated to customizations that real world users would likely need to perform when deploying this solution into production, such as creating a dedicated image registry, or deploying custom load balancer instances."
 ---
 
 = Advanced configuration options

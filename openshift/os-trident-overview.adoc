@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: openshift/os-trident-overview.html
 keywords: Trident, Trident, Helm, Operator, iSCSI, NFS
-summary: Trident is an open-source and fully-supported storage orchestrator for containers and Kubernetes distributions, including Red Hat OpenShift.
+summary: "Trident is an open-source and fully-supported storage orchestrator for containers and Kubernetes distributions, including Red Hat OpenShift."
 ---
 
 = Trident Overview
@@ -23,19 +23,19 @@ Trident is an open-source and fully supported storage orchestrator for container
 
 An administrator can configure a number of storage backends based on project needs and storage system models that enable advanced storage features, including compression, specific disk types, or QoS levels that guarantee a certain level of performance. After they are defined, these backends can be used by developers in their projects to create persistent volume claims (PVCs) and to attach persistent storage to their containers on demand.
 
-image:redhat-openshift-002.png["Figure showing input/output dialog or representing written content"]
+image::redhat-openshift-002.png["Figure showing input/output dialog or representing written content"]
 
 Trident has a rapid development cycle, and just like Kubernetes, is released four times a year.
 
-A support matrix for what version of Trident has been tested with which Kubernetes distribution can be found https://docs.netapp.com/us-en/trident/trident-get-started/requirements.html#supported-frontends-orchestrators[here].
+A support matrix for what version of Trident has been tested with which Kubernetes distribution can be found in link:https://docs.netapp.com/us-en/trident/trident-get-started/requirements.html#supported-frontends-orchestrators[Supported frontends (orchestrators)^].
 
-Please refer to the link:https://docs.netapp.com/us-en/trident/index.html[Trident product documentation] for installation and configuration details. 
+Please refer to the link:https://docs.netapp.com/us-en/trident/index.html[Trident product documentation^] for installation and configuration details. 
 
 == Download Trident
 
 To install Trident on the deployed user cluster and provision a persistent volume, complete the following steps:
 
-.	Download the installation archive to the admin workstation and extract the contents. The current version of Trident can be downloaded https://github.com/NetApp/trident/releases?q=25.&expanded=true[here].
+.   Download the installation archive to the admin workstation and extract the contents. The current version of Trident can be downloaded from the link:https://github.com/NetApp/trident/releases?q=25.&expanded=true[Trident releases page on GitHub^].
 
 . Extract the Trident install from the downloaded bundle.
 +
@@ -264,7 +264,8 @@ To modify the maximum sunrpc slot table entries in OpenShift worker nodes, compl
 
 . Log into the OCP web console and navigate to Compute > Machine Configs. Click Create Machine Config. Copy and paste the YAML file and click Create.
 +
-[source, cli]
+[source,cli]
+----
 apiVersion: machineconfiguration.openshift.io/v1
 kind: MachineConfig
 metadata:
@@ -282,6 +283,7 @@ spec:
           filesystem: root
           mode: 420
           path: /etc/modprobe.d/sunrpc.conf
+----
 
 . After the MCO is created, the configuration needs to be applied on all worker nodes and rebooted one by one. The whole process takes approximately 20 to 30 minutes. Verify whether the machine config is applied by using `oc get mcp` and make sure that the machine config pool for workers is updated.
 +
@@ -303,7 +305,8 @@ To configure the worker nodes to run iSCSI services, complete the following step
 . Log into the OCP web console and navigate to Compute > Machine Configs. Click Create Machine Config. Copy and paste the YAML file and click Create.
 +
 When not using multipathing:
-[source, cli]
+[source,cli]
+----
 apiVersion: machineconfiguration.openshift.io/v1
 kind: MachineConfig
 metadata:
@@ -320,10 +323,12 @@ spec:
           enabled: true
           state: started
   osImageURL: ""
+----
 
 +
 When using multipathing:
-[source, cli]
+[source,cli]
+----
 apiVersion: machineconfiguration.openshift.io/v1
 kind: MachineConfig
 metadata:
@@ -351,6 +356,7 @@ spec:
           enabled: true
           state: started
   osImageURL: ""
+----
 
 
 . After the configuration is created, it takes approximately 20 to 30 minutes to apply the configuration to the worker nodes and reload them. Verify whether the machine config is applied by using `oc get mcp` and make sure that the machine config pool for workers is updated. You can also log into the worker nodes to confirm that the iscsid service is running (and the multipathd service is running if using multipathing).
