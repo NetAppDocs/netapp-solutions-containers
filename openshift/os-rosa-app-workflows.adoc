@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: openshift/os-rosa-app-workflows.html
 keywords: OpenShift, OCP, Trident, NetApp ONTAP, Red Hat OpenShift Service on AWS, 
-summary: Red Hat OpenShift Service on AWS with NetApp ONTAP
+summary: "Red Hat OpenShift Service on AWS with NetApp ONTAP"
 ---
 
 = Red Hat OpenShift Service on AWS with NetApp ONTAP
@@ -22,21 +22,24 @@ NOTE: This snapshot is stored in the same aggregate as the original volume in ON
 
 **a. Create a VolumeSnapshotClass
 Save the following manifest in a file called volume-snapshot-class.yaml
-[source]
+[source,yaml]
+----
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshotClass
 metadata:
  name: fsx-snapclass
 driver: csi.trident.netapp.io
 deletionPolicy: Delete
+----
 
 Create a snapshot by using the above manifest.
 
-image:redhat-openshift-container-rosa-020.png[snapshot class]
+image::redhat-openshift-container-rosa-020.png[snapshot class]
 
 **b. Next, create a snapshot**
 Create a snapshot of the existing PVC by creating VolumeSnapshot to take a point-in-time copy of your Postgresql data. This creates an FSx snapshot that takes almost no space in the filesystem backend. Save the following manifest in a file called volume-snapshot.yaml:
-[source]
+[source,yaml]
+----
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshot
 metadata:
@@ -45,18 +48,19 @@ spec:
  volumeSnapshotClassName: fsx-snapclass
  source:
    persistentVolumeClaimName: data-postgresql-0
+----
 
 **c. Create the volume snapshot and confirm that it is created**
 
 Delete the database to simulate the loss of data (data loss can happen due to a variety of reasons, here we are just simulating it by deleting the database)
 
-image:redhat-openshift-container-rosa-021.png[volume snapshot]
+image::redhat-openshift-container-rosa-021.png[volume snapshot]
 
 **d. Delete the database to simulate the loss of data (data loss can happen due to a variety of reasons, here we are just simulating it by deleting the database)**
 
-image:redhat-openshift-container-rosa-022.png[database connect]
+image::redhat-openshift-container-rosa-022.png[database connect]
 
-image:redhat-openshift-container-rosa-023.png[drop database]
+image::redhat-openshift-container-rosa-023.png[drop database]
 
 == Restore from Volume Snapshot
 **1. Restore from Snapshot**
@@ -66,7 +70,8 @@ In this section, we will show how to restore an application from the trident sna
 
 To restore the volume to its previous state, you must create a new PVC based on the data in the snapshot you took. To do this, save the following manifest in a file named pvc-clone.yaml
 
-[source]
+[source,yaml]
+----
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -82,34 +87,37 @@ spec:
    name: postgresql-volume-snap-01
    kind: VolumeSnapshot
    apiGroup: snapshot.storage.k8s.io
+----
 
 Create a clone of the volume by creating a PVC using the snapshot as the source using the above manifest. Apply the manifest and ensure that the clone is created.
 
-image:redhat-openshift-container-rosa-024.png[postgresql clone from snapshot]
+image::redhat-openshift-container-rosa-024.png[postgresql clone from snapshot]
 
 **b. Delete the original postgresql installation**
 
-image:redhat-openshift-container-rosa-025.png[postgresql app delete]
+image::redhat-openshift-container-rosa-025.png[postgresql app delete]
 
 **c. Create a new postgresql application using the new clone PVC**
-[source]
+[source,bash]
+----
 $ helm install postgresql bitnami/postgresql --set primary.persistence.enabled=true --set primary.persistence.existingClaim=postgresql-volume-clone -n postgresql
+----
 
-image:redhat-openshift-container-rosa-026.png[postgresql new install]
+image::redhat-openshift-container-rosa-026.png[postgresql new install]
 
 **d. Verify that the application pod is in the running state**
 
-image:redhat-openshift-container-rosa-027.png[postgresql new install]
+image::redhat-openshift-container-rosa-027.png[postgresql new install]
 
 **e. Verify that the pod uses the clone as its PVC**
 
-image:redhat-openshift-container-rosa-028.png[postgresql new install describe]
+image::redhat-openshift-container-rosa-028.png[postgresql new install describe]
 
-image:redhat-openshift-container-rosa-029.png[new pvc is the clone]
+image::redhat-openshift-container-rosa-029.png[new pvc is the clone]
 
 f)	To validate that the database has been restored as expected, go back to the container console and show the existing databases
 
-image:redhat-openshift-container-rosa-030.png[database restored]
+image::redhat-openshift-container-rosa-030.png[database restored]
 
 == Demo video
 

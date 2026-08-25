@@ -51,7 +51,7 @@ The following table contains the Anthos versions tested by NetApp and NetApp par
 
 NetApp provides a number of products to help you with orchestrating and managing persistent data in container-based environments such as Anthos.
 
-NetApp Trident is an open-source, fully-supported storage orchestrator for containers and Kubernetes distributions, including Anthos. For more information, visit the Trident website https://docs.netapp.com/us-en/trident/index.html[here].
+NetApp Trident is an open-source, fully-supported storage orchestrator for containers and Kubernetes distributions, including Anthos. For more information, visit the link:https://docs.netapp.com/us-en/trident/index.html[Trident documentation^].
 
 The following pages have additional information about the NetApp products that have been validated for application and persistent-storage management in the Anthos with NetApp solution.
 

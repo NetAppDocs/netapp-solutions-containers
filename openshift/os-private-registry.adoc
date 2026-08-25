@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: openshift/os-private-registry.html
 keywords: Advanced Configuration, Private Registry, Trident, OpenShift Registry, NetApp Trident Protect Registry
-summary: This section is dedicated to creating and configuring a private image registry backed by persistent storage provided by Trident.
+summary: "This section is dedicated to creating and configuring a private image registry backed by persistent storage provided by Trident."
 ---
 
 = Creating Private Image Registries
@@ -13,7 +13,7 @@ summary: This section is dedicated to creating and configuring a private image r
 :imagesdir: ../media/
 
 [.lead]
-For most deployments of Red Hat OpenShift, using a public registry like https://quay.io[Quay.io] or https://hub.docker.com[DockerHub] meets most customer's needs. However there are times when a customer may want to host their own private or customized images.
+For most deployments of Red Hat OpenShift, using a public registry like link:https://quay.io[Quay.io^] or link:https://hub.docker.com[DockerHub^] meets most customer's needs. However there are times when a customer may want to host their own private or customized images.
 
 This procedure documents creating a private image registry which is backed by a persistent volume provided by Trident and NetApp ONTAP.
 
