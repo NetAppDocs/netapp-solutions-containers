@@ -53,19 +53,19 @@ NetApp provides robust all-flash (AFF) and scale-out hybrid (FAS) storage platfo
 
 Both systems are powered by NetApp ONTAP data management software, the industry's most advanced data-management software for highly-available, cloud-integrated, simplified storage management to deliver the enterprise-class speed, efficiency, and security your data fabric needs.
 
-For more information about NETAPP AFF and FAS platforms, click https://docs.netapp.com/platstor/index.jsp[here].
+For more information about NetApp AFF and FAS platforms, see the link:https://docs.netapp.com/platstor/index.jsp[NetApp hardware platform documentation^].
 
 === ONTAP Select
 
 ONTAP Select is a software-defined deployment of NetApp ONTAP that can be deployed onto a hypervisor in your environment. It can be installed on VMware vSphere or on KVM and provides the full functionality and experience of a hardware-based ONTAP system.
 
-For more information about ONTAP Select, click https://docs.netapp.com/us-en/ontap-select/[here].
+For more information about ONTAP Select, see the link:https://docs.netapp.com/us-en/ontap-select/[ONTAP Select documentation^].
 
 === Cloud Volumes ONTAP
 
 NetApp Cloud Volumes ONTAP is a cloud-deployed version of NetApp ONTAP available to be deployed in a number of public clouds, including: Amazon AWS, Microsoft Azure, and Google Cloud.
 
-For more information about Cloud Volumes ONTAP, click https://docs.netapp.com/us-en/occm/#discover-whats-new[here].
+For more information about Cloud Volumes ONTAP, see the link:https://docs.netapp.com/us-en/occm/#discover-whats-new[Cloud Volumes ONTAP documentation^].
 
 
 // NetApp Solutions restructuring (jul 2025) - renamed from containers/a-w-n_netapp_ontap.adoc

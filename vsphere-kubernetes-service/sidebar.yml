@@ -1,0 +1,40 @@
+section: vsphere-kubernetes-service
+title: "vSphere Kubernetes Service with NetApp Storage"
+pdf-filename: "vSphere Kubernetes Service with NetApp Storage"
+entries:
+      - title: "Overview"
+        pdf-filename: "vSphere Kubernetes Service with NetApp Storage Overview"
+        url: /vsphere-kubernetes-service/vks-overview.html
+      - title: "Getting Started with Storage and vSphere Kubernetes Service"
+        pdf-filename: "Getting Started with Storage and vSphere Kubernetes Service"
+        entries:
+          - title: "Deploy vSphere Kubernetes Service"
+            url: /vsphere-kubernetes-service/deploy-vks.html
+          - title: "NetApp Storage benefits for vSphere Kubernetes Service workloads"
+            url: /vsphere-kubernetes-service/netapp-storage-vks.html
+          - title: "NetApp Storage provisioning for VKS workloads"
+            url: /vsphere-kubernetes-service/install-trident.html
+          - title: "Deploy VKS workloads using NetApp Storage"
+            url: /vsphere-kubernetes-service/deploy-vks-workloads.html
+    ## TODO: Add the following section when the content is ready.
+    ## - title: "Data Protection"
+    ##   pdf-filename: "Data Protection"
+    ##   entries:
+    ##      - title: "Backup and Restore Using Trident Protect"
+    ##       url: /vsphere-kubernetes-service/backup-restore-trident-protect.html
+    ##      - title: "Protect using Snapshots and Volume Group Snapshots"
+    ##        url: /vsphere-kubernetes-service/snapshots-volume-group-snapshots.html
+
+    ## - title: "Disaster Recovery using Trident Protect"
+    ##   pdf-filename: "Disaster Recovery using Trident Protect"
+    ##   entries:
+    ##     - title: "Requirements and Prerequisites"
+    ##       url: /vsphere-kubernetes-service/disaster-recovery-trident-protect.html
+    ##     - title: "Source Cluster Setup"
+    ##       url: /vsphere-kubernetes-service/source-cluster-setup.html
+    ##     - title: "Target Cluster Setup"
+    ##       url: /vsphere-kubernetes-service/target-cluster-setup.html
+    ##     - title: "Failover"
+    ##       url: /vsphere-kubernetes-service/failover.html
+    ##     - title: "Failback"
+    ##       url: /vsphere-kubernetes-service/failback.html

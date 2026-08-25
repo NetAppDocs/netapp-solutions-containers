@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: openshift/os-multitenancy-overview.html
 keywords: OpenShift, OCP, Trident, NetApp ONTAP, Red Hat OpenShift, Multitenancy, Multi-tenancy
-summary: Configuring Multitenancy on Red Hat OpenShift with NetApp
+summary: "Configuring Multitenancy on Red Hat OpenShift with NetApp"
 ---
 
 = Configuring multitenancy on Red Hat OpenShift with NetApp
