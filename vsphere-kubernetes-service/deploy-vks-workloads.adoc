@@ -325,4 +325,4 @@ SELECT * FROM employees;
 
 The following video demonstrates installing Trident on a vSphere Kubernetes cluster and deploying a PostgreSQL database with persistent storage using Trident. 
 
-video::eb8bd0c0-a1fe-4288-a575-b4ac00e004a9[panopto, title="Deploying workloads with ONTAP persistent storage using Trident", width=360]
+video::eb8bd0c0-a1fe-4288-a575-b4ac00e004a9[panopto, title="Deploying workloads on VKS cluster backed by ONTAP persistent storage using Trident", width=360]
