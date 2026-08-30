@@ -23,7 +23,9 @@ indexpage:
           url: openshift-videos.html#cloud-and-hybrid-integrations
     - title: "vSphere Kubernetes Service with NetApp Storage"
       links:
-        - title: "Deploying vSphere Kubernetes Service with NetApp Storage"
-          url: vks-videos.html#deploying-a-vsphere-kubernetes-service-cluster-with-netapp-storage
-        - title: "Deploying vSphere Kubernetes Service workloads with NetApp Storage"
-          url: vks-videos.html#deploying-workloads-with-ontap-persistent-storage-using-trident
+        - title: "Create a vSphere Kubernetes cluster on a supervisor cluster"
+          url: vks-videos.html#create-a-vsphere-kubernetes-cluster-on-a-supervisor-cluster
+        - title: "Create a vSphere Kubernetes cluster with VCF Automation"
+          url: vks-videos.html#create-a-vsphere-kubernetes-cluster-with-vcf-automation
+        - title: "Deploy workloads with ONTAP persistent storage using Trident"
+          url: vks-videos.html#deploying-workloads-on-vks-cluster-backed-by-ontap-persistent-storage-using-trident
