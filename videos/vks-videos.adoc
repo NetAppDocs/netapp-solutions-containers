@@ -27,4 +27,4 @@ video::4ef64b3c-7a68-41d5-bacf-b4a8012b49f8[panopto, title="Create a vSphere Kub
 video::571ced1a-58e8-4bf4-9c24-b4b10118bc22[panopto, title="Create a vSphere Kubernetes Cluster with VCF Automation", width=360]
 
 == Deploying workloads on VKS cluster backed by ONTAP persistent storage using Trident
-video::eb8bd0c0-a1fe-4288-a575-b4ac00e004a9[panopto, title="Deploying workloads on VKS cluster backed by ONTAP persistent storage using Trident", width=360]
+video::eb8bd0c0-a1fe-4288-a575-b4ac00e004a9[panopto, title="Deploying workloads on a VKS cluster backed by ONTAP persistent storage using Trident", width=360]
