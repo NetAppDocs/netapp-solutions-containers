@@ -16,7 +16,7 @@ Back up and restore container applications in a vSphere Kubernetes Service (VKS)
 
 Container applications running in a VKS cluster are managed as Kubernetes workloads in worker node namespaces. It is important to protect both the application metadata and the persistent disks so that, if they are lost or corrupted, you can recover them.
 
-The persistent disks of VKS applications can be backed by ONTAP storage integrated with the VKS cluster using link:https://docs.netapp.com/us-en/trident/[Trident CSI]. This procedure uses link:https://docs.netapp.com/us-en/trident/trident-protect/learn-about-trident-protect.html[Trident Protect] to create snapshots and backups of applications, including their data volumes, to ONTAP object storage, and to restore from a snapshot or backup when needed.
+The persistent volumes of VKS applications can be backed by ONTAP storage integrated with the VKS cluster using link:https://docs.netapp.com/us-en/trident/[Trident CSI]. This procedure uses link:https://docs.netapp.com/us-en/trident/trident-protect/learn-about-trident-protect.html[Trident Protect] to create application snapshots, whose metadata is stored in ONTAP object storage while volume snapshot data remains on the storage backend, and backups, whose data is copied to ONTAP object storage. You can restore from either a snapshot or a backup when needed.
 
 Trident Protect enables snapshots, backups, restoration, and disaster recovery of applications on a Kubernetes cluster. Data that can be protected with Trident Protect includes Kubernetes resource objects associated with the applications and their persistent volumes.
 
@@ -32,9 +32,9 @@ Trident Protect enables snapshots, backups, restoration, and disaster recovery o
 .Create AppVault
 [%collapsible]
 ====
-Prior to creating the snapshots and backups for an application, object storage must be configured in Trident Protect to store the snapshots and backups. This is done using the bucket CR. Only administrators can create a bucket CR and configure it.
+Before creating snapshots and backups for an application, you must configure object storage in Trident Protect. This is done by creating an AppVault CR. Only administrators can create and configure an AppVault CR.
 
-The bucket CR is known as AppVault in Trident Protect. AppVault objects are the declarative Kubernetes workflow representation of a storage bucket. An AppVault CR contains the configurations necessary for a bucket to be used in protection operations, such as backups, snapshots, restore operations, and SnapMirror replication.
+AppVault objects are the Kubernetes custom resource representation of a storage bucket. An AppVault CR contains the configurations necessary for a bucket to be used in protection operations, such as backups, snapshots, restore operations, and SnapMirror replication.
 
 In this example, we will show the use of ONTAP S3 as object storage.
 
@@ -84,8 +84,9 @@ spec:
     s3:
       bucketName: trident-protect
       endpoint: <lif for S3 access>
-      secure: "false"
-      skipCertValidation: "true"
+      secure: "false" <use true (default) for https for production>
+      skipCertValidation: "true" < use false (default) for production>
+      //use trusted certificate for production
   providerCredentials:
     accessKeyID:
       valueFromSecret:
@@ -305,7 +306,7 @@ image::vks-tp-015.png[Postgres application restored in the new namespace]
 [%collapsible]
 ====
 *Create an on-demand snapshot*
-Create a snapshot for the app and specify the appvault where it needs to be stored.
+Create a snapshot for the app and specify the AppVault where the snapshot metadata will be stored. The volume snapshot data itself is not copied to object storage — it remains on the storage backend.
 
 [source,yaml]
 ....
@@ -376,13 +377,13 @@ image::vks-tp-017.png[schedule and snapshot created on a schedule]
 *Restore the application from a snapshot to the same namespace*
 Delete the application objects and the PVCs for postgres from the postgres namespace.
 
-image::vks-tp-018.png[Application objects deleted]
+image::vks-tp-019.png[Application objects deleted]
 
 Create a snapshot-in-place-restore object from the snapshot.
 
 [source,yaml]
 ....
-# tp create sir postgres-restore-from-snapshot --snapshot postgres/hourly-f1dd9-20260831135500 -n postgres --dry-run>postgres-sir.yaml
+# tp create sir postgres-restore-from-snapshot --snapshot postgres/hourly-f1dd9-20260831135500 -n postgres --dry-run > postgres-sir.yaml
 
 # cat postgres-sir.yaml
 apiVersion: protect.trident.netapp.io/v1

@@ -16,7 +16,7 @@ entries:
             url: /vsphere-kubernetes-service/install-trident.html
           - title: "Deploy VKS workloads using NetApp Storage"
             url: /vsphere-kubernetes-service/deploy-vks-workloads.html
-    ## TODO: Add the following section when the content is ready.
+    
       - title: "Data Protection"
         pdf-filename: "Data Protection"
         entries:
@@ -24,7 +24,7 @@ entries:
             url: /vsphere-kubernetes-service/backup-restore-trident-protect.html
           ##- title: "Protect using Snapshots and Volume Group Snapshots"
           ##  url: /vsphere-kubernetes-service/snapshots-volume-group-snapshots.html
-
+    ## TODO: Add the following section when the content is ready.
     ## - title: "Disaster Recovery using Trident Protect"
     ##   pdf-filename: "Disaster Recovery using Trident Protect"
     ##   entries:
