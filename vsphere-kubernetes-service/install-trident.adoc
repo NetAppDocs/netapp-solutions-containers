@@ -29,23 +29,36 @@ image::vks-004.png[kubeconfig download from Resources tab]
 +
 link:https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-helm.html[https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-helm.html^]
 +
+Before running the Helm install, create and label the `trident` namespace. The `enforce` label is required — without it, the Kubernetes pod security admission controller will block Trident pods from starting. The `audit` and `warn` labels are recommended so that any future policy violations are logged and surfaced before they cause failures.
++
+[source,cli]
+----
+kubectl create namespace trident
+kubectl label namespace trident \
+  pod-security.kubernetes.io/enforce=privileged \
+  pod-security.kubernetes.io/audit=privileged \
+  pod-security.kubernetes.io/warn=privileged
+----
++
 .Show example
 [%collapsible]
 ====
 [source,cli]
 ----
-helm install trident netapp-trident/trident-operator --version 100.2606.0 --create-namespace --namespace trident --kubeconfig=/path/to/your-kubeconfig-file
+helm install trident netapp-trident/trident-operator --version 100.2606.0 --namespace trident --kubeconfig=/path/to/your-kubeconfig-file
 ----
 
 To enable debug logging, add `--set tridentDebug=true`:
 
 [source,cli]
 ----
-helm install trident netapp-trident/trident-operator --version 100.2606.0 --create-namespace --namespace trident --set tridentDebug=true --kubeconfig=/path/to/your-kubeconfig-file
+helm install trident netapp-trident/trident-operator --version 100.2606.0 --namespace trident --set tridentDebug=true --kubeconfig=/path/to/your-kubeconfig-file
 ----
 ====
 +
 NOTE: You can also install Trident manually using the Trident Operator. Review the procedures in the Trident documentation: link:https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-operator.html[Manually deploy the Trident Operator^]
++
+Ensure that you have labeled the `trident` namespace with the required pod security labels before installing Trident manually.
 
 . Confirm that all Trident pods are running in the cluster.
 +
@@ -57,14 +70,9 @@ NOTE: You can also install Trident manually using the Trident Operator. Review t
 kubectl get pods -n trident
 ----
 
-NOTE: The Trident pods may not get created at this point. If you describe the ReplicaSet object, you might see an error about violating PodSecurity as shown below. This error occurs because the `trident` namespace created during installation enforces the Kubernetes restricted Pod Security Standard (PSS). The Trident Operator requires elevated system privileges to manage host storage and cannot run under the rigid constraints of a restricted profile. To fix this, grant the `trident` namespace a privileged profile so the ReplicaSet controller can successfully spin up the pods.
+image::vks-trident-install-001.png[Trident installed]
 
-[source,text]
-----
-Warning  FailedCreate  25s (x5 over 64s)  replicaset-controller  (combined from similar events): Error creating: pods "trident-operator-5cbf7f857-z7ztd" is forbidden: violates PodSecurity "restricted:latest": allowPrivilegeEscalation != false (container "trident-operator" must set securityContext.allowPrivilegeEscalation=false), unrestricted capabilities (container "trident-operator" must set securityContext.capabilities.drop=["ALL"]), runAsNonRoot != true (pod or container "trident-operator" must set securityContext.runAsNonRoot=true), seccompProfile (pod or container "trident-operator" must set securityContext.seccompProfile.type to "RuntimeDefault" or "Localhost")
-----
-
-Apply the built-in Kubernetes Pod Security Admission labels to the `trident` namespace to exempt it from the restricted profile constraints:
+NOTE: If Trident pods fail to start with a `PodSecurity` admission error, the pod security labels may not have been applied to the `trident` namespace before installation. Use `--overwrite` to reapply them, then verify the pods start.
 
 [source,cli]
 ----
@@ -73,12 +81,6 @@ kubectl label namespace trident pod-security.kubernetes.io/audit=privileged --ov
 kubectl label namespace trident pod-security.kubernetes.io/warn=privileged --overwrite
 ----
 
-[source,cli]
-----
-kubectl get pods -n trident
-----
-
-image::vks-trident-install-001.png[Trident installed]
 ====
 
 == Prepare storage backend and StorageClass configuration files for your environment

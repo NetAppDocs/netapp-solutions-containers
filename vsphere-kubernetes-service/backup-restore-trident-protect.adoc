@@ -23,9 +23,56 @@ Trident Protect enables snapshots, backups, restoration, and disaster recovery o
 **The following are the versions of the various components used for the examples in this section**
 
 * VMware Cloud Foundation (VCF) 9.1 with vSphere Kubernetes Service
-* link:https://docs.netapp.com/us-en/trident/trident-get-started/quickstart.html[Trident 25.02]
-* link:https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-installation.html[Trident Protect 25.02]
+* link:https://docs.netapp.com/us-en/trident/trident-get-started/quickstart.html[Trident 25.06]
+* link:https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-installation.html[Trident Protect 25.06]
 * link:https://docs.netapp.com/us-en/ontap/[ONTAP 9.16]
+
+== Install Trident Protect on the vSphere Kubernetes cluster
+
+.Install Trident Protect
+[%collapsible]
+====
+Use Helm to install Trident Protect on the vSphere Kubernetes Service cluster. The examples in this section use `tridentctl-protect`, the Trident Protect CLI. Install it by following the instructions in the link:https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-cli.html[Trident Protect CLI documentation].
+Additional methods of installing Trident Protect are documented in the link:https://docs.netapp.com/us-en/trident/trident-protect/learn-about-trident-protect.html[Trident Protect documentation].
+
+First, create and label the `trident-protect` namespace. The `enforce` label is required — without it, the Kubernetes pod security admission controller will block Trident Protect pods from starting. The `audit` and `warn` labels are recommended so that any future policy violations are logged and surfaced before they cause failures.
+
+[source,cli]
+....
+kubectl create namespace trident-protect
+kubectl label namespace trident-protect \
+  pod-security.kubernetes.io/enforce=privileged \
+  pod-security.kubernetes.io/audit=privileged \
+  pod-security.kubernetes.io/warn=privileged
+....
+
+Then add the Helm repository and install Trident Protect into the namespace.
+
+[source,cli]
+....
+helm repo add netapp-trident-protect https://netapp.github.io/trident-protect-helm-chart
+helm install trident-protect netapp-trident-protect/trident-protect --set clusterName=<name-of-cluster> --version 100.2606.0 --namespace trident-protect
+....
+
+NOTE: If Trident Protect pods fail to start with a `PodSecurity` admission error, the pod security labels may not have been applied to the `trident-protect` namespace before installation. Use `--overwrite` to reapply them, then verify the pods start.
+
+[source,cli]
+....
+kubectl label namespace trident-protect pod-security.kubernetes.io/enforce=privileged --overwrite
+kubectl label namespace trident-protect pod-security.kubernetes.io/audit=privileged --overwrite
+kubectl label namespace trident-protect pod-security.kubernetes.io/warn=privileged --overwrite
+....
+
+[source,cli]
+....
+kubectl get pods -n trident-protect
+....
+
+image::vks-tp-024.png[Trident Protect pods running]
+
+image::vks-tp-025.png[Trident Protect pods running]
+
+====
 
 == Create App Vault for Object Storage
 
@@ -46,6 +93,8 @@ Here is the workflow for creating an AppVault CR for ONTAP S3:
 . Create an AppVault object for ONTAP S3.
 
 *Configure Trident Protect AppVault for ONTAP S3*
+
+IMPORTANT: The manifest below uses HTTPS with certificate validation enabled, which is required for production. If your ONTAP S3 endpoint uses a certificate signed by a public CA already trusted by the cluster, no additional certificate configuration is needed. If it uses a self-signed or internal CA certificate, provide the base64-encoded CA certificate using the `caCert` field as shown in the manifest. See the lab-only variant at the end of this section if you need an HTTP configuration for isolated non-production testing.
 
 [source,yaml]
 ....
@@ -84,9 +133,13 @@ spec:
     s3:
       bucketName: trident-protect
       endpoint: <lif for S3 access>
-      secure: "false" # Use "true" (the default) for HTTPS in production.
-      skipCertValidation: "true" # Use "false" (the default) for production.
-      # Use a trusted certificate for production.
+      secure: "true"
+      skipCertValidation: "false"
+      # If your ONTAP S3 endpoint uses a certificate signed by a public CA
+      # already trusted by the cluster, no additional certificate config is needed.
+      # If it uses a self-signed or internal CA certificate, provide the
+      # base64-encoded CA certificate:
+      # caCert: <base64-encoded CA certificate>
   providerCredentials:
     accessKeyID:
       valueFromSecret:
@@ -100,6 +153,19 @@ spec:
 
 # kubectl create -f appvault-secret.yaml -n trident-protect
 # kubectl create -f appvault.yaml -n trident-protect
+....
+
+*Lab-only variant (HTTP, no certificate validation)*
+
+Only use the following `s3` settings in an isolated lab environment where no sensitive data is present. Do not use these settings in production.
+
+[source,yaml]
+....
+    s3:
+      bucketName: trident-protect
+      endpoint: <lif for S3 access>
+      secure: "false"
+      skipCertValidation: "true"
 ....
 
 image::vks-tp-001.png[ONTAP S3 AppVault created]
@@ -214,7 +280,14 @@ image::vks-tp-006.png[Backup schedule]
 
 In this example, the backup postgres-backup-on-demand contains the backup for the postgres-app.
 
-First, delete the postgres application and ensure that the PVCs and pod objects are deleted from the namespace "postgres".
+Before deleting the application, verify that the backup you plan to restore from is in the `Completed` state. An in-progress or failed backup cannot be used to recover a deleted workload.
+
+[source,cli]
+....
+kubectl get backup -n postgres
+....
+
+After confirming that the backup state is `Completed`, delete the postgres application and ensure that the PVCs and pod objects are deleted from the namespace "postgres".
 
 image::vks-tp-007.png[Postgres-app objects]
 
@@ -375,7 +448,15 @@ image::vks-tp-017.png[schedule and snapshot created on a schedule]
 [%collapsible]
 ====
 *Restore the application from a snapshot to the same namespace*
-Delete the application objects and the PVCs for postgres from the postgres namespace.
+
+Before deleting the application, verify that the snapshot you plan to restore from is in the `Completed` state. An in-progress or failed snapshot cannot be used to recover a deleted workload.
+
+[source,cli]
+....
+kubectl get snapshot -n postgres
+....
+
+After confirming that the snapshot state is `Completed`, delete the application objects and the PVCs for postgres from the postgres namespace.
 
 image::vks-tp-019.png[Application objects deleted]
 
