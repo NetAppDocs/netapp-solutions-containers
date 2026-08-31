@@ -42,14 +42,14 @@ kubectl label namespace trident pod-security.kubernetes.io/enforce=privileged
 ====
 [source,cli]
 ----
-helm install trident netapp-trident/trident-operator --version 100.2606.0 --namespace trident --kubeconfig=/path/to/your-kubeconfig-file
+helm install trident netapp-trident/trident-operator --version 100.2606.0 --namespace trident
 ----
 
 To enable debug logging, add `--set tridentDebug=true`:
 
 [source,cli]
 ----
-helm install trident netapp-trident/trident-operator --version 100.2606.0 --namespace trident --set tridentDebug=true --kubeconfig=/path/to/your-kubeconfig-file
+helm install trident netapp-trident/trident-operator --version 100.2606.0 --namespace trident --set tridentDebug=true
 ----
 ====
 +
