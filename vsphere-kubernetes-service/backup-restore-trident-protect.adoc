@@ -20,11 +20,11 @@ The persistent volumes of VKS applications can be backed by ONTAP storage integr
 
 Trident Protect enables snapshots, backups, restoration, and disaster recovery of applications on a Kubernetes cluster. Data that can be protected with Trident Protect includes Kubernetes resource objects associated with the applications and their persistent volumes.
 
-**The following are the versions of the various components used for the examples in this section**
+*The following are the versions of the various components used for the examples in this section*
 
 * VMware Cloud Foundation (VCF) 9.1 with vSphere Kubernetes Service
-* link:https://docs.netapp.com/us-en/trident/trident-get-started/quickstart.html[Trident 25.06]
-* link:https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-installation.html[Trident Protect 25.06]
+* link:https://docs.netapp.com/us-en/trident/trident-get-started/quickstart.html[Trident 26.06]
+* link:https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-installation.html[Trident Protect 26.06]
 * link:https://docs.netapp.com/us-en/ontap/[ONTAP 9.16]
 
 == Install Trident Protect on the vSphere Kubernetes cluster
@@ -35,15 +35,12 @@ Trident Protect enables snapshots, backups, restoration, and disaster recovery o
 Use Helm to install Trident Protect on the vSphere Kubernetes Service cluster. The examples in this section use `tridentctl-protect`, the Trident Protect CLI. Install it by following the instructions in the link:https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-cli.html[Trident Protect CLI documentation].
 Additional methods of installing Trident Protect are documented in the link:https://docs.netapp.com/us-en/trident/trident-protect/learn-about-trident-protect.html[Trident Protect documentation].
 
-First, create and label the `trident-protect` namespace. The `enforce` label is required — without it, the Kubernetes pod security admission controller will block Trident Protect pods from starting. The `audit` and `warn` labels are recommended so that any future policy violations are logged and surfaced before they cause failures.
+First, create and label the `trident-protect` namespace. The `enforce=privileged` label is required because Trident Protect runs privileged workloads. Without it, the Kubernetes pod security admission controller will block Trident Protect pods from starting.
 
 [source,cli]
 ....
 kubectl create namespace trident-protect
-kubectl label namespace trident-protect \
-  pod-security.kubernetes.io/enforce=privileged \
-  pod-security.kubernetes.io/audit=privileged \
-  pod-security.kubernetes.io/warn=privileged
+kubectl label namespace trident-protect pod-security.kubernetes.io/enforce=privileged
 ....
 
 Then add the Helm repository and install Trident Protect into the namespace.
@@ -59,8 +56,6 @@ NOTE: If Trident Protect pods fail to start with a `PodSecurity` admission error
 [source,cli]
 ....
 kubectl label namespace trident-protect pod-security.kubernetes.io/enforce=privileged --overwrite
-kubectl label namespace trident-protect pod-security.kubernetes.io/audit=privileged --overwrite
-kubectl label namespace trident-protect pod-security.kubernetes.io/warn=privileged --overwrite
 ....
 
 [source,cli]
@@ -94,7 +89,7 @@ Here is the workflow for creating an AppVault CR for ONTAP S3:
 
 *Configure Trident Protect AppVault for ONTAP S3*
 
-IMPORTANT: The manifest below uses HTTPS with certificate validation enabled, which is required for production. If your ONTAP S3 endpoint uses a certificate signed by a public CA already trusted by the cluster, no additional certificate configuration is needed. If it uses a self-signed or internal CA certificate, provide the base64-encoded CA certificate using the `caCert` field as shown in the manifest. See the lab-only variant at the end of this section if you need an HTTP configuration for isolated non-production testing.
+IMPORTANT: The manifest below uses HTTPS with certificate validation enabled, which is required for production. If your ONTAP S3 endpoint uses a certificate signed by a public CA already trusted by the cluster, no additional certificate configuration is needed. If it uses a self-signed or internal CA certificate, provide the custom root CA certificate using the `rootCA` field as shown in the manifest. See the lab-only variant at the end of this section if you need an HTTP configuration for isolated non-production testing.
 
 [source,yaml]
 ....
@@ -138,8 +133,8 @@ spec:
       # If your ONTAP S3 endpoint uses a certificate signed by a public CA
       # already trusted by the cluster, no additional certificate config is needed.
       # If it uses a self-signed or internal CA certificate, provide the
-      # base64-encoded CA certificate:
-      # caCert: <base64-encoded CA certificate>
+      # base64-encoded root CA certificate:
+      # rootCA: <base64-encoded root CA certificate>
   providerCredentials:
     accessKeyID:
       valueFromSecret:
@@ -178,7 +173,7 @@ image::vks-tp-001.png[ONTAP S3 AppVault created]
 ====
 In this example, data protection for the sample postgres application, installed previously, is performed. The application is installed in the namespace postgres. For details on installation, refer to the section link:/vsphere-kubernetes-service/deploy-vks-workloads.html[Deploy VKS workloads using NetApp Storage].
 
-NOTE: Trident supports RWX access mode as the default mode for NAS protocols. In Block Volume mode for SAN (iSCSI, NVMe/TCP and FC), the default access mode is RWO. RWX Access mode is also supported for SAN protocols, but it requires additional configuration. For more information, refer to the link:https://docs.netapp.com/us-en/trident/trident-protect/learn-about-trident-protect.html[Trident Protect documentation].
+NOTE: The sample PostgreSQL PVCs use RWO access mode for both NAS and SAN. Kubernetes requires each PVC to request an access mode; Trident does not assign RWX or RWO defaults based on the storage protocol. RWX is supported for NAS, and SAN can support RWX with additional configuration. For more information, refer to the link:https://docs.netapp.com/us-en/trident/trident-protect/learn-about-trident-protect.html[Trident Protect documentation].
 
 In the example, the postgres namespace has one application and all resources of the namespace are included when creating the Trident-Protect Application.
 
@@ -338,7 +333,7 @@ image::vks-tp-012.png[Hourly backup available]
 # tp create backuprestore --appvault ontap-s3-appvault1 --path postgres-app_314bbaf6-2ce3-4065-b3c1-ab85c7bb7c7c/backups/hourly-cbd11-20260831124500_2b57bda9-5cb0-4c8f-ae7a-20f94c23c3b9 --namespace-mapping postgres:postgres2 -n postgres2 --dry-run>postgres-app-postgres2-br.yaml
 ....
 
-NOTE: To get the path for the backup, use the command `tp get backups -n postgres -o yaml | grep <backup name>`.
+NOTE: To get the path for the backup, use the command `kubectl get backups <backup-name> -n postgres -o jsonpath='{.status.appArchivePath}'`.
 
 image::vks-tp-013.png[Hourly backup path]
 

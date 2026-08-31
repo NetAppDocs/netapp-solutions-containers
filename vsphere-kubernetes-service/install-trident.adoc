@@ -29,15 +29,12 @@ image::vks-004.png[kubeconfig download from Resources tab]
 +
 link:https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-helm.html[https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-helm.html^]
 +
-Before running the Helm install, create and label the `trident` namespace. The `enforce` label is required — without it, the Kubernetes pod security admission controller will block Trident pods from starting. The `audit` and `warn` labels are recommended so that any future policy violations are logged and surfaced before they cause failures.
+Before running the Helm install, create and label the `trident` namespace. The `enforce=privileged` label is required because Trident runs privileged workloads. Without it, the Kubernetes pod security admission controller will block Trident pods from starting.
 +
 [source,cli]
 ----
 kubectl create namespace trident
-kubectl label namespace trident \
-  pod-security.kubernetes.io/enforce=privileged \
-  pod-security.kubernetes.io/audit=privileged \
-  pod-security.kubernetes.io/warn=privileged
+kubectl label namespace trident pod-security.kubernetes.io/enforce=privileged
 ----
 +
 .Show example
@@ -77,8 +74,6 @@ NOTE: If Trident pods fail to start with a `PodSecurity` admission error, the po
 [source,cli]
 ----
 kubectl label namespace trident pod-security.kubernetes.io/enforce=privileged --overwrite
-kubectl label namespace trident pod-security.kubernetes.io/audit=privileged --overwrite
-kubectl label namespace trident pod-security.kubernetes.io/warn=privileged --overwrite
 ----
 
 ====
