@@ -84,9 +84,9 @@ spec:
     s3:
       bucketName: trident-protect
       endpoint: <lif for S3 access>
-      secure: "false" <use true (default) for https for production>
-      skipCertValidation: "true" < use false (default) for production>
-      //use trusted certificate for production
+      secure: "false" # Use "true" (the default) for HTTPS in production.
+      skipCertValidation: "true" # Use "false" (the default) for production.
+      # Use a trusted certificate for production.
   providerCredentials:
     accessKeyID:
       valueFromSecret:
