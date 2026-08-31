@@ -214,7 +214,14 @@ image::vks-tp-006.png[Backup schedule]
 
 In this example, the backup postgres-backup-on-demand contains the backup for the postgres-app.
 
-First, delete the postgres application and ensure that the PVCs and pod objects are deleted from the namespace "postgres".
+Before deleting the PostgreSQL workload, wait for the backup to reach the `Completed` state:
+
+[source,console]
+....
+tp get backup -n postgres
+....
+
+After the backup is complete, delete the PostgreSQL application resources and ensure that the PVCs and pod objects are deleted from the `postgres` namespace.
 
 image::vks-tp-007.png[Postgres-app objects]
 
