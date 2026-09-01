@@ -20,8 +20,11 @@ summary: Demonstrates some of the capabilities documented in this document.
 [.lead]
 Explore the integration of vSphere Kubernetes Service with NetApp through a series of videos demonstrating key capabilities.
 
-== Deploying a vSphere Kubernetes Service cluster with NetApp storage
-video::4ef64b3c-7a68-41d5-bacf-b4a8012b49f8[panopto, title="Deploying a vSphere Kubernetes Service cluster with NetApp storage", width=360]
+== Create a vSphere Kubernetes cluster on a supervisor cluster
+video::4ef64b3c-7a68-41d5-bacf-b4a8012b49f8[panopto, title="Create a vSphere Kubernetes cluster on a supervisor cluster", width=360]
 
-== Deploying workloads with ONTAP persistent storage using Trident
-video::eb8bd0c0-a1fe-4288-a575-b4ac00e004a9[panopto, title="Deploying workloads with ONTAP persistent storage using Trident", width=360]
+== Create a vSphere Kubernetes cluster with VCF Automation
+video::571ced1a-58e8-4bf4-9c24-b4b10118bc22[panopto, title="Create a vSphere Kubernetes cluster with VCF Automation", width=360]
+
+== Deploying workloads on a VKS cluster backed by ONTAP persistent storage using Trident
+video::eb8bd0c0-a1fe-4288-a575-b4ac00e004a9[panopto, title="Deploying workloads on a VKS cluster backed by ONTAP persistent storage using Trident", width=360]
