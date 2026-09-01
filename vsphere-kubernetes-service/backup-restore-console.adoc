@@ -1,0 +1,171 @@
+---
+sidebar: sidebar
+permalink: vsphere-kubernetes-service/backup-restore-console.html
+keywords: vks, vSphere Kubernetes Service, VCF, Trident, NetApp ONTAP, NetApp Console, Backup and Recovery, data protection, container application protection, ONTAP S3
+summary: "Back up and restore container applications in a VKS cluster using the NetApp Backup and Recovery Service via NetApp Console."
+---
+= Back up and restore container applications in a vSphere Kubernetes Service cluster using NetApp Console
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ../media/
+
+[.lead]
+Back up and restore container applications in a vSphere Kubernetes Service (VKS) cluster using NetApp Console. This procedure covers creating and managing backup and restore operations through Backup and Recovery Service via NetApp Console, using ONTAP S3 Object Storage as the backup target.
+
+NetApp Console provides centralized management of storage and data services across on-premises and cloud environments. It delivers unified control, operational simplicity, and secure management. There are several data services and management features that can be accessed from the user interface at link:https://console.netapp.com[console.netapp.com^]. For complete details about NetApp Console, see link:https://docs.netapp.com/us-en/console-family/[NetApp Console documentation].
+
+This section focuses on the NetApp Backup and Recovery data service for Kubernetes workloads, specifically container applications on vSphere Kubernetes Service clusters. NetApp Backup and Recovery Service enables you to discover, manage, create, and associate protection policies with your Kubernetes applications using a single interface. For a complete guide, see link:https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[NetApp Backup and Recovery documentation].
+
+== Backup and Recovery workflow
+. *Ensure you have a Console agent*
++
+Ensure you have a console agent deployed in the environment where your VKS cluster is running. For details about installing a console agent, see the link:https://docs.netapp.com/us-en/console-setup-admin/concept-agent-install-options.html#agent-console-deploy[NetApp Console Setup documentation].
++
+.Show example
+[%collapsible]
+====
+In NetApp Console, click Deploy Agent as shown in the screenshot, and deploy the agent in the environment where the VKS cluster is running.
+
+In this example, we chose on-premises. Copy the agent installer URL, use the curl command to download the agent installer on the Ubuntu machine running on vSphere, and run the installer to deploy the Console agent.
+
+Register it using the IP address of the agent in the URL. See link:https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-on-prem-ova.html[the documentation] for detailed instructions. After the agent is registered, you can see it in NetApp Console as shown in the screenshot below.
+
+image::vks-console-br-001.png[Console agent installation]
+
+image::vks-console-br-002.png[Using the agent installer URL]
+
+====
+. *Set up ONTAP S3 as a backup target.*
++
+In this example, we use ONTAP S3 Object Storage as the backup target. You can also use AWS S3, Azure Blob, Google Cloud Storage or StorageGRID as backup targets.
++
+For additional details, review link:https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-setup.html#prepare-the-backup-destination[NetApp Console documentation].
++
+To discover ONTAP S3 Object Storage as the backup target in NetApp Console, you will need the following information from your ONTAP cluster.
++
+----
+S3 Endpoint:
+Access Key:
+Secret Key:
+Bucket Name:
+----
++
+To get these values, do the following in your ONTAP cluster using the System Manager.
++
+[loweralpha]
+.. Create an S3-enabled SVM in the ONTAP cluster to store the backup data. Note the S3 endpoint URL for this SVM.
+
+.. In the S3 settings of the SVM, create a user and assign the required access. Note the access key and secret key for this user.
++
+.Show example
+[%collapsible]
+====
+[loweralpha]
+. *Create an S3 user and download the access key and secret key*
++
+image::vks-console-br-003.png[Create an S3 user and download the access key and secret key]
+[lowerroman]
+.. Create a bucket in the S3-enabled SVM. Note the bucket name to use in NetApp Console to discover the ONTAP S3 object storage as the backup target.
+
+image::vks-console-br-004.png[Storage account]
+
+Discover the ONTAP S3 object storage as the backup target in NetApp Console using the S3 endpoint, access key, secret key, and bucket name.
+
+image::vks-console-br-005.png[Discover ONTAP S3 object storage as the backup target in NetApp Console]
+
+image::vks-console-br-006.png[ONTAP S3 object storage details for discovery in NetApp Console]
+
+====
+. *Set up another ONTAP system as a secondary backup target.*
++
+Repeat the same steps as the primary backup target setup, but using the S3 endpoint, access key, secret key, and bucket name from a different ONTAP cluster. This creates a second independent backup destination, enabling a 3-2-1 protection strategy where backup data is stored on two separate ONTAP systems in addition to the primary application storage.
++
+After discovery, both backup targets will be available in NetApp Console and can be independently assigned to protection policies.
+
+. *In NetApp Console, discover the vSphere Kubernetes cluster.*
++
+.Show example
+[%collapsible]
+====
+This step requires the vSphere Kubernetes cluster to be running and the Console agent to be deployed in the same environment.
+Follow these steps to discover the vSphere Kubernetes cluster in NetApp Console.
+
+. In NetApp Console, select *Inventory > Kubernetes* and provide the details of the vSphere Kubernetes cluster.
+. Select the agent deployed in the same environment where the vSphere Kubernetes cluster is located.
+. Copy the provided commands to install Trident Protect and run them from a machine that is connected to your vSphere Kubernetes cluster.
+. After Trident Protect is successfully installed, click *Discover*. NetApp Console discovers the vSphere Kubernetes cluster and all its resources via the agent and populates them in the UI.
+
+image::vks-console-br-007.png[Discover vSphere Kubernetes cluster]
+
+image::vks-console-br-008.png[Install Trident Protect and then click Discover]
+
+image::vks-console-br-009.png[Trident Protect installation complete]
+
+image::vks-console-br-010.png[Discovered vSphere Kubernetes cluster in NetApp Console]
+====
+
+. *In NetApp Console, create an application for the VMs and protect them using backups*
++
+.Show example
+[%collapsible]
+====
+In this step, create an application in NetApp Console for the container applications in your vSphere Kubernetes cluster that need to be protected. You can use namespaces to create an application to protect all the container applications in a namespace in the vSphere Kubernetes cluster.
+
+You will also need a protection policy to associate with the application. You can create a new protection policy or use an existing one. In this example, a new protection policy is created for the application and associated with it. Backups are created for the application based on the protection policy associated with it. The number of backups retained is based on the retention policy defined in the protection policy.
+
+image::vks-console-br-011.png[Create application for container applications]
+
+Provide application details and define criteria for the application. In this example, the application is created for all container applications in a namespace in the vSphere Kubernetes cluster. Click *Search* to see the list of namespace-scoped resources that are part of the application. Click *Next* to proceed.
+
+image::vks-console-br-012.png[Provide application details and define criteria for the application]
+
+Next, you need to provide the protection settings for the application. You can create a new protection policy or use an existing one. In this example, a new protection policy is created for the application and associated with it. Expand *Policy* and click *Create new policy*.
+
+image::vks-console-br-013.png[Create new protection policy]
+
+Provide a name for the policy, choose disk to object storage, add local snapshot schedules, and choose a target for the application resources to be copied to when snapshots are taken. In this example, ONTAP S3 is chosen. Provide object store settings for backup, specify the number of retention copies and choose the backup target. You can also modify the maximum retries and retry interval if you need to. Click *Create* to proceed. The application will be discovered and the protection policy will be associated with it. Backups will be created for the application based on the protection policy associated with it.
+
+image::vks-console-br-014.png[Provide protection policy name]
+
+image::vks-console-br-015.png[Select backup architecture]
+
+image::vks-console-br-016.png[Local snapshot schedule]
+
+image::vks-console-br-017.png[Object store settings for backup]
+
+image::vks-console-br-018.png[Application created and protection completed]
+
+====
+
+. *Restore the application from a backup*
++
+.Show example
+[%collapsible]
+====
+* You can choose one of the many backups available to restore your VM based on your need.
+* You can restore from the local snapshots or from the backups created in the object storage or from the secondary backup target if you have set up one.
+* You can restore to the original namespace or to a different namespace.
+* You can select what resources need to be restored.
+* You can choose the storage class to use when restoring the VMs.
+
+image::vks-console-br-019.png[Restore application from backup]
+
+image::vks-console-br-020.png[Choose a restore point]
+
+image::vks-console-br-021.png[Select restore options]
+
+image::vks-console-br-022.png[Select all or some resources to restore]
+
+image::vks-console-br-023.png[Select storage class for restored resources]
+
+You can watch the progress of the restore job in the Monitor section of NetApp Console. After the restore job is completed, you can see the restored resources in the vSphere Kubernetes cluster.
+
+image::vks-console-br-024.png[Monitor restore job progress]
+
+image::vks-console-br-025.png[Completed restore job]
+
+image::vks-console-br-026.png[Restored application]
+
+====

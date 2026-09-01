@@ -20,6 +20,8 @@ entries:
       - title: "Data Protection"
         pdf-filename: "Data Protection"
         entries:
+          - title: "Backup and Restore Using NetApp Console"
+            url: /vsphere-kubernetes-service/backup-restore-console.html
           - title: "Backup and Restore Using Trident Protect"
             url: /vsphere-kubernetes-service/backup-restore-trident-protect.html
           ##- title: "Protect using Snapshots and Volume Group Snapshots"
