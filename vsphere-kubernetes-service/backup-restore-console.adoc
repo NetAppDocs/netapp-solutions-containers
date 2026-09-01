@@ -21,7 +21,7 @@ This section focuses on the NetApp Backup and Recovery data service for Kubernet
 == Backup and Recovery workflow
 . *Ensure you have a Console agent*
 +
-Ensure you have a console agent deployed in the environment where your VKS cluster is running. For details about installing a console agent, see the link:https://docs.netapp.com/us-en/console-setup-admin/concept-agent-install-options.html#agent-console-deploy[NetApp Console Setup documentation].
+Ensure you have a console agent deployed in the environment where your VKS cluster is running. For details about installing a console agent, see the link:https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-on-prem-ova.html#install-a-console-agent-in-your-vcenter-environment[NetApp Console Setup documentation].
 +
 .Show example
 [%collapsible]
@@ -59,6 +59,8 @@ To get these values, do the following in your ONTAP cluster using the System Man
 
 .. In the S3 settings of the SVM, create a user and assign the required access. Note the access key and secret key for this user.
 +
+NOTE: Trident Protect requires the S3 user to have at least `PutObject`, `GetObject`, `ListBucket`, and `DeleteObject` permissions. Without these permissions, AppVault backup and restore operations fail with access-denied errors. For details, see link:https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-appvault-manage.html[Trident Protect AppVault management documentation].
++
 .Show example
 [%collapsible]
 ====
@@ -78,11 +80,6 @@ image::vks-console-br-005.png[Discover ONTAP S3 object storage as the backup tar
 image::vks-console-br-006.png[ONTAP S3 object storage details for discovery in NetApp Console]
 
 ====
-. *Set up another ONTAP system as a secondary backup target.*
-+
-Repeat the same steps as the primary backup target setup, but using the S3 endpoint, access key, secret key, and bucket name from a different ONTAP cluster. This creates a second independent backup destination, enabling a 3-2-1 protection strategy where backup data is stored on two separate ONTAP systems in addition to the primary application storage.
-+
-After discovery, both backup targets will be available in NetApp Console and can be independently assigned to protection policies.
 
 . *In NetApp Console, discover the vSphere Kubernetes cluster.*
 +
