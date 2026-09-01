@@ -12,7 +12,7 @@ summary: "Back up and restore container applications in a VKS cluster using the 
 :imagesdir: ../media/
 
 [.lead]
-Back up and restore container applications in a vSphere Kubernetes Service (VKS) cluster using NetApp Console. This procedure covers creating and managing backup and restore operations through Backup and Recovery Service via NetApp Console, using ONTAP S3 Object Storage as the backup target.
+Back up and restore container applications in a vSphere Kubernetes Service (VKS) cluster using NetApp Console. This procedure covers creating and managing backup and restore operations through Backup and Recovery Service via NetApp Console, using ONTAP S3 object storage as the backup target.
 
 NetApp Console provides centralized management of storage and data services across on-premises and cloud environments. It delivers unified control, operational simplicity, and secure management. There are several data services and management features that can be accessed from the user interface at link:https://console.netapp.com[console.netapp.com^]. For complete details about NetApp Console, see link:https://docs.netapp.com/us-en/console-family/[NetApp Console documentation].
 
@@ -37,7 +37,7 @@ image::vks-console-br-001.png[Console agent installation]
 image::vks-console-br-002.png[Using the agent installer URL]
 
 ====
-. *Set up ONTAP S3 as a backup target.*
+. *Set up ONTAP S3 as a backup target*
 +
 In this example, we use ONTAP S3 Object Storage as the backup target. You can also use AWS S3, Azure Blob, Google Cloud Storage or StorageGRID as backup targets.
 +
@@ -81,7 +81,7 @@ image::vks-console-br-006.png[ONTAP S3 object storage details for discovery in N
 
 ====
 
-. *In NetApp Console, discover the vSphere Kubernetes cluster.*
+. *In NetApp Console, discover the vSphere Kubernetes cluster*
 +
 .Show example
 [%collapsible]
@@ -105,12 +105,14 @@ image::vks-console-br-010.png[Discovered vSphere Kubernetes cluster in NetApp Co
 
 . *In NetApp Console, create an application for the container workloads and protect it using backups*
 +
+NOTE: You need the Backup and Recovery super admin or Backup and Recovery backup admin role to create and protect a Kubernetes application.
+ +
 .Show example
 [%collapsible]
 ====
 In this step, create an application in NetApp Console for the container applications in your vSphere Kubernetes cluster that need to be protected. You can use namespaces to create an application to protect all the container applications in a namespace in the vSphere Kubernetes cluster.
 
-You will also need a protection policy to associate with the application. You can create a new protection policy or use an existing one. In this example, a new protection policy is created for the application and associated with it. Backups are created for the application based on the protection policy associated with it. The number of backups retained is based on the retention policy defined in the protection policy.
+You will also need a protection policy to associate with the application. You can create a new protection policy or use an existing one.
 
 image::vks-console-br-011.png[Create application for container applications]
 
@@ -122,7 +124,7 @@ Next, you need to provide the protection settings for the application. You can c
 
 image::vks-console-br-013.png[Create new protection policy]
 
-Provide a name for the policy, choose disk to object storage, add local snapshot schedules, and choose a target for the application resources to be copied to when snapshots are taken. In this example, ONTAP S3 is chosen. Provide object store settings for backup, specify the number of retention copies and choose the backup target. You can also modify the maximum retries and retry interval if you need to. Click *Create* to proceed. The application will be discovered and the protection policy will be associated with it. Backups will be created for the application based on the protection policy associated with it.
+Provide a name for the policy and choose the backup architecture. In this example, disk to object storage is chosen. Define the local snapshot schedule, which controls how often snapshots are taken on the primary storage. Then configure the object storage backup settings separately: choose the backup target (in this example, ONTAP S3), set the transfer schedule that controls when snapshot data is copied to object storage, and specify the number of retention copies. The transfer schedule is independent of the snapshot schedule, so resources are copied to object storage according to the transfer schedule, not immediately when each snapshot is taken. You can also modify the maximum retries and retry interval if you need to. Click *Create* to proceed. The application will be discovered and the protection policy will be associated with it.
 
 image::vks-console-br-014.png[Provide protection policy name]
 
