@@ -37,6 +37,10 @@ image::vks-console-br-001.png[Console agent installation]
 image::vks-console-br-002.png[Using the agent installer URL]
 
 ====
+. *Add the ONTAP cluster to NetApp Console and enable Backup and Recovery*
++
+The primary ONTAP cluster must be added to NetApp Console and the Backup and Recovery service enabled on it before workloads can be protected. For instructions, see link:https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-setup.html[Set up NetApp Backup and Recovery].
+
 . *In NetApp Console, discover the vSphere Kubernetes cluster*
 +
 .Show example
