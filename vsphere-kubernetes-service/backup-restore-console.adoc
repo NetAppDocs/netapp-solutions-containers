@@ -106,7 +106,7 @@ image::vks-console-br-009.png[Trident Protect installation complete]
 image::vks-console-br-010.png[Discovered vSphere Kubernetes cluster in NetApp Console]
 ====
 
-. *In NetApp Console, create an application for the VMs and protect them using backups*
+. *In NetApp Console, create an application for the container workloads and protect it using backups*
 +
 .Show example
 [%collapsible]
@@ -144,11 +144,10 @@ image::vks-console-br-018.png[Application created and protection completed]
 .Show example
 [%collapsible]
 ====
-* You can choose one of the many backups available to restore your VM based on your need.
-* You can restore from the local snapshots or from the backups created in the object storage or from the secondary backup target if you have set up one.
-* You can restore to the original namespace or to a different namespace.
-* You can select what resources need to be restored.
-* You can choose the storage class to use when restoring the VMs.
+* You can choose any available restore point — a local snapshot, an object storage backup, or a backup from a secondary target — to restore the application.
+* You can restore the application to its original namespace or to a different namespace.
+* You can select which resources to include in the restore.
+* You can choose the storage class to use for the restored application resources.
 
 image::vks-console-br-019.png[Restore application from backup]
 
