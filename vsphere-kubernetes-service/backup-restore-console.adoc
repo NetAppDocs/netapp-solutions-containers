@@ -106,7 +106,7 @@ image::vks-console-br-010.png[Discovered vSphere Kubernetes cluster in NetApp Co
 . *In NetApp Console, create an application for the container workloads and protect it using backups*
 +
 NOTE: You need the Backup and Recovery super admin or Backup and Recovery backup admin role to create and protect a Kubernetes application.
- +
++
 .Show example
 [%collapsible]
 ====
