@@ -37,13 +37,35 @@ image::vks-console-br-001.png[Console agent installation]
 image::vks-console-br-002.png[Using the agent installer URL]
 
 ====
+. *In NetApp Console, discover the vSphere Kubernetes cluster*
++
+.Show example
+[%collapsible]
+====
+This step requires the vSphere Kubernetes cluster to be running and the Console agent to be deployed in the same environment.
+Follow these steps to discover the vSphere Kubernetes cluster in NetApp Console.
+
+. In NetApp Console, select *Inventory > Kubernetes* and provide the details of the vSphere Kubernetes cluster.
+. Select the agent deployed in the same environment where the vSphere Kubernetes cluster is located.
+. Copy the provided commands to install Trident Protect and run them from a machine that is connected to your vSphere Kubernetes cluster.
+. After Trident Protect is successfully installed, click *Discover*. NetApp Console discovers the vSphere Kubernetes cluster and all its resources via the agent and populates them in the UI. 
+
+image::vks-console-br-007.png[Discover vSphere Kubernetes cluster]
+
+image::vks-console-br-008.png[Install Trident Protect and then click Discover]
+
+image::vks-console-br-009.png[Trident Protect installation complete]
+
+image::vks-console-br-010.png[Discovered vSphere Kubernetes cluster in NetApp Console]
+====
+
 . *Set up ONTAP S3 as a backup target*
 +
-In this example, we use ONTAP S3 Object Storage as the backup target. You can also use AWS S3, Azure Blob, Google Cloud Storage or StorageGRID as backup targets.
+In this example, we use ONTAP S3 object storage as the backup target. You can also use AWS S3, Azure Blob, Google Cloud Storage, or StorageGRID as backup targets.
 +
 For additional details, review link:https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-setup.html#prepare-the-backup-destination[NetApp Console documentation].
 +
-To discover ONTAP S3 Object Storage as the backup target in NetApp Console, you will need the following information from your ONTAP cluster.
+To add ONTAP S3 as a backup target in NetApp Console, you will need the following information from your ONTAP cluster.
 +
 ----
 S3 Endpoint:
@@ -52,7 +74,7 @@ Secret Key:
 Bucket Name:
 ----
 +
-To get these values, do the following in your ONTAP cluster using the System Manager.
+To get these values, do the following in your ONTAP cluster using System Manager.
 +
 [loweralpha]
 .. Create an S3-enabled SVM in the ONTAP cluster to store the backup data. Note the S3 endpoint URL for this SVM.
@@ -69,11 +91,11 @@ NOTE: Trident Protect requires the S3 user to have at least `PutObject`, `GetObj
 +
 image::vks-console-br-003.png[Create an S3 user and download the access key and secret key]
 [lowerroman]
-.. Create a bucket in the S3-enabled SVM. Note the bucket name to use in NetApp Console to discover the ONTAP S3 object storage as the backup target.
+.. Create a bucket in the S3-enabled SVM. Note the bucket name to use when adding the ONTAP S3 object storage as a backup target in NetApp Console.
 
 image::vks-console-br-004.png[Storage account]
 
-Discover the ONTAP S3 object storage as the backup target in NetApp Console using the S3 endpoint, access key, secret key, and bucket name.
+Add the ONTAP S3 object storage as a backup target in NetApp Console using the S3 endpoint, access key, secret key, and bucket name.
 
 image::vks-console-br-005.png[Discover ONTAP S3 object storage as the backup target in NetApp Console]
 
@@ -81,31 +103,9 @@ image::vks-console-br-006.png[ONTAP S3 object storage details for discovery in N
 
 ====
 
-. *In NetApp Console, discover the vSphere Kubernetes cluster*
-+
-.Show example
-[%collapsible]
-====
-This step requires the vSphere Kubernetes cluster to be running and the Console agent to be deployed in the same environment.
-Follow these steps to discover the vSphere Kubernetes cluster in NetApp Console.
-
-. In NetApp Console, select *Inventory > Kubernetes* and provide the details of the vSphere Kubernetes cluster.
-. Select the agent deployed in the same environment where the vSphere Kubernetes cluster is located.
-. Copy the provided commands to install Trident Protect and run them from a machine that is connected to your vSphere Kubernetes cluster.
-. After Trident Protect is successfully installed, click *Discover*. NetApp Console discovers the vSphere Kubernetes cluster and all its resources via the agent and populates them in the UI.
-
-image::vks-console-br-007.png[Discover vSphere Kubernetes cluster]
-
-image::vks-console-br-008.png[Install Trident Protect and then click Discover]
-
-image::vks-console-br-009.png[Trident Protect installation complete]
-
-image::vks-console-br-010.png[Discovered vSphere Kubernetes cluster in NetApp Console]
-====
-
 . *In NetApp Console, create an application for the container workloads and protect it using backups*
 +
-NOTE: You need the Backup and Recovery super admin or Backup and Recovery backup admin role to create and protect a Kubernetes application.
+NOTE: You need the Backup and Recovery super admin or Backup and Recovery backup admin role to create and protect a Kubernetes application. To restore a Kubernetes application, you need the Backup and Recovery super admin or Backup and Recovery restore admin role.
 +
 .Show example
 [%collapsible]
@@ -139,6 +139,8 @@ image::vks-console-br-018.png[Application created and protection completed]
 ====
 
 . *Restore the application from a backup*
++
+NOTE: You need the Backup and Recovery super admin or Backup and Recovery restore admin role to restore a Kubernetes application.
 +
 .Show example
 [%collapsible]
