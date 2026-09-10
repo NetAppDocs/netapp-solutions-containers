@@ -173,3 +173,10 @@ image::vks-console-br-025.png[Completed restore job]
 image::vks-console-br-026.png[Restored application]
 
 ====
+
+== Video demonstration
+
+The following video demonstrates backing up workloads on a VKS cluster to ONTAP S3 object storage using NetApp Console and restoring it back to the vSphere Kubernetes cluster.
+
+== Backup workloads on a VKS cluster to Object Store and Restore using NetApp Console
+video::02f61f3c-ae52-4f0b-9fe7-b4c0012ac7d8[panopto, title="Backup workloads on a VKS cluster to Object Store and Restore using NetApp Console", width=360]
