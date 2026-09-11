@@ -31,3 +31,6 @@ video::ea2cd302-d556-4450-bd68-b4c0012a9b49[panopto, title="Deploying workloads 
 
 == Backup workloads on a VKS cluster to Object Store and Restore using NetApp Console
 video::02f61f3c-ae52-4f0b-9fe7-b4c0012ac7d8[panopto, title="Backup workloads on a VKS cluster to Object Store and Restore using NetApp Console", width=360]
+
+== NetApp Console Local Overview
+video::5a0bdd54-7d38-494a-a224-b4b60011547f[panopto, title="NetApp Console Local Overview", width=360]
