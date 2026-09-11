@@ -157,6 +157,9 @@ image::vks-console-br-018.png[Application created and protection completed]
 .Show example: Create a protection policy using the Disk to Disk architecture
 [%collapsible]
 ====
+
+NOTE: To choose the Disk to Disk architecture, ensure that you have configured the secondary storage target with cluster peering and SVM peering and have the necessary credentials and permissions.
+
 Provide a name for the policy and choose the backup architecture. In this example, Disk to Disk is chosen. Define the local snapshot schedule, which controls how often snapshots are taken on the primary storage. Then select the object storage location for the Kubernetes application metadata for the snapshots.
 
 Configure the secondary storage backup settings separately: choose the backup target, the ONTAP cluster and SVM configured for backup, and the aggregate where the backup volume will be created from the drop-down list. Set the transfer schedule that controls when snapshot data is copied to the secondary storage, and specify the number of retention copies. The transfer schedule is independent of the snapshot schedule, so resources are copied to the secondary target according to the transfer schedule, not immediately when each snapshot is taken. Also configure the object storage target where the application metadata of the SnapMirror copies is stored.
