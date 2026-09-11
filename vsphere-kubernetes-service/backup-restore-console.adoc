@@ -18,7 +18,8 @@ The examples cover the following two backup and restore scenarios:
 
 . Backup and restore using ONTAP S3 object storage as the backup target (disk-to-object workflow).
 . Backup and restore using ONTAP as the backup target (disk-to-disk workflow).
-. Backup and restore using 3-2-1 fanout policy (disk-to-disk, and disk  -to-object workflow) is not validated currently.
+
+NOTE: Backup and restore using 3-2-1 fanout policy (disk-to-disk, and disk-to-object workflow) is not supported currently for VKS workloads.
 
 NetApp Console provides centralized management of storage and data services across on-premises and cloud environments. It delivers unified control, operational simplicity, and secure management. Several data services and management features can be accessed from the user interface at link:https://console.netapp.com[console.netapp.com^]. For complete details about NetApp Console, see link:https://docs.netapp.com/us-en/console-family/[NetApp Console documentation].
 
@@ -220,10 +221,10 @@ image::vks-console-br-034.png[Restored application to the same namespace]
 
 == Video demonstration
 
-The following video demonstrates backing up workloads on a VKS cluster to ONTAP S3 object storage using NetApp Console and restoring it back to the vSphere Kubernetes cluster.
+The following video demonstrates how to back up workloads on a VKS cluster to ONTAP S3 object storage using NetApp Console and restore them to the vSphere Kubernetes cluster.
 
 video::02f61f3c-ae52-4f0b-9fe7-b4c0012ac7d8[panopto, title="Backup workloads on a VKS cluster to Object Store and Restore using NetApp Console", width=360]
 
-The following video shows an overview of NetApp Console Local features
+The following video shows an overview of NetApp Console Local features.
 
 video::5a0bdd54-7d38-494a-a224-b4b60011547f[panopto, title="NetApp Console Local Overview", width=360]
