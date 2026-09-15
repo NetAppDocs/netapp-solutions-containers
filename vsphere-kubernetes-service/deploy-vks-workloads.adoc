@@ -215,7 +215,11 @@ kubectl get all -n <namespace>
 kubectl get pvc -n <namespace>
 ----
 
+.Show example
+[%collapsible]
+====
 image::vks-workload-001.png[Workload deployed with persistent storage]
+====
 
 Depending on the protocol used, the backend storage is a volume, qtree, or LUN. You can verify the storage provisioned in the ONTAP system by describing the PersistentVolume (PV) to retrieve the internal volume name and then using it in ONTAP CLI commands to get the storage details. Use the following command to describe the PV and retrieve the internal volume name:
 
@@ -224,7 +228,10 @@ Depending on the protocol used, the backend storage is a volume, qtree, or LUN. 
 kubectl describe pv/<pv-name>
 ----
 
-.Show Example
+.Show example
+[%collapsible]
+====
+
 image::vks-workload-002.png[Internal volume name for NAS volume]
 
 image::vks-workload-003.png[Internal volume name for SAN LUN]
@@ -249,9 +256,15 @@ lun show -vserver <vserver> -volume <internal-volume-name>
 
 image::vks-workload-005.png[ONTAP CLI output for SAN LUN]
 
+====
+
 If you used `nconnect` mount options in the NAS or NAS Economy storage class, you can verify the number of active TCP connections from the worker node to the storage server.
 
 First, list the Trident backend configurations to find the backend name, then describe it to retrieve the vserver name and data LIF:
+
+.Show example
+[%collapsible]
+====
 
 [source,bash]
 ----
@@ -266,10 +279,14 @@ Then log into the ONTAP cluster and run the following command, substituting the 
 network connections active show -local-address <data-lif> -local-port 2049
 ----
 
-.Show Example
 image::vks-workload-006.png[ONTAP CLI output for active connections]
+====
 
 After the pods are in the running state, connect to the database and verify data operations.
+
+.Show example
+[%collapsible]
+====
 
 .Steps
 
@@ -320,9 +337,10 @@ VALUES ('John', 'Doe', 'john.doe@example.com', 'Engineering', 85000.00);
 
 SELECT * FROM employees;
 ----
+====
 
 == Video demonstration
 
 The following video demonstrates installing Trident on a vSphere Kubernetes cluster and deploying a PostgreSQL database with persistent storage using Trident. 
 
-video::eb8bd0c0-a1fe-4288-a575-b4ac00e004a9[panopto, title="Deploying workloads on a vSphere Kubernetes Service cluster backed by ONTAP persistent storage using Trident", width=360]
+video::ea2cd302-d556-4450-bd68-b4c0012a9b49[panopto, title="Deploying workloads on a VKS cluster backed by ONTAP persistent storage using Trident", width=360]
