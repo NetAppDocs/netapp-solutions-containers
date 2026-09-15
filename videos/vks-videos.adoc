@@ -27,4 +27,10 @@ video::4ef64b3c-7a68-41d5-bacf-b4a8012b49f8[panopto, title="Create a vSphere Kub
 video::571ced1a-58e8-4bf4-9c24-b4b10118bc22[panopto, title="Create a vSphere Kubernetes cluster with VCF Automation", width=360]
 
 == Deploying workloads on a VKS cluster backed by ONTAP persistent storage using Trident
-video::eb8bd0c0-a1fe-4288-a575-b4ac00e004a9[panopto, title="Deploying workloads on a VKS cluster backed by ONTAP persistent storage using Trident", width=360]
+video::ea2cd302-d556-4450-bd68-b4c0012a9b49[panopto, title="Deploying workloads on a VKS cluster backed by ONTAP persistent storage using Trident", width=360]
+
+== Backup workloads on a VKS cluster to Object Store and Restore using NetApp Console
+video::02f61f3c-ae52-4f0b-9fe7-b4c0012ac7d8[panopto, title="Backup workloads on a VKS cluster to Object Store and Restore using NetApp Console", width=360]
+
+== NetApp Console Local Overview
+video::5a0bdd54-7d38-494a-a224-b4b60011547f[panopto, title="NetApp Console Local Overview", width=360]
