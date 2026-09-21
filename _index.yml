@@ -53,7 +53,7 @@ indexpage:
 
     - title: "Partner solutions"
       links:
-        - title: "vSphere with Kubernetes Service website"
+        - title: "vSphere Kubernetes Service website"
           url: https://www.vmware.com/products/cloud-infrastructure/vsphere-kubernetes-service
         - title: "Red Hat OpenShift website"
           url: https://www.redhat.com/en/technologies/cloud-computing/openshift
