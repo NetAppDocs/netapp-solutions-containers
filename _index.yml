@@ -15,7 +15,7 @@ indexpage:
         - title: "Videos and demos"
           url: /videos/index.html
 
-    - title: "vSphere with Kubernetes Service with NetApp"
+    - title: "vSphere Kubernetes Service with NetApp"
       links:
         - title: "Solution overview"
           url: /vsphere-kubernetes-service/vks-overview.html
