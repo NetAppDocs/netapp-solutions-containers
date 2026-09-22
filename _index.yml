@@ -15,18 +15,14 @@ indexpage:
         - title: "Videos and demos"
           url: /videos/index.html
 
-    - title: "Anthos with NetApp"
+    - title: "vSphere Kubernetes Service with NetApp"
       links:
         - title: "Solution overview"
-          url: /anthos/anthos-solution-overview.html
-        - title: "Anthos clusters on VMware"
-          url: /anthos/anthos-vmw.html
-        - title: "Anthos on bare metal"
-          url: /anthos/anthos-bm.html
+          url: /vsphere-kubernetes-service/vks-overview.html
         - title: "NetApp storage integrations"
-          url: /anthos/anthos-storint-overview.html
-        - title: Use case
-          url: /anthos/anthos-deploy-app-cloud-console.html
+          url: /vsphere-kubernetes-service/netapp-storage-vks.html
+        - title: "Data protection"
+          url: /vsphere-kubernetes-service/backup-restore-console.html
 
     - title: "Red Hat OpenShift with NetApp"
       links:
@@ -41,13 +37,29 @@ indexpage:
         - title: "Use cases"
           url: /openshift/os-use-cases.html
 
+
+    - title: "Anthos with NetApp"
+      links:
+        - title: "Solution overview"
+          url: /anthos/anthos-solution-overview.html
+        - title: "Anthos clusters on VMware"
+          url: /anthos/anthos-vmw.html
+        - title: "Anthos on bare metal"
+          url: /anthos/anthos-bm.html
+        - title: "NetApp storage integrations"
+          url: /anthos/anthos-storint-overview.html
+        - title: Use case
+          url: /anthos/anthos-deploy-app-cloud-console.html
+
     - title: "Partner solutions"
       links:
-        - title: "Anthos website"
-          url: https://cloud.google.com/anthos
+        - title: "vSphere Kubernetes Service website"
+          url: https://www.vmware.com/products/cloud-infrastructure/vsphere-kubernetes-service
         - title: "Red Hat OpenShift website"
           url: https://www.redhat.com/en/technologies/cloud-computing/openshift
-    
+        - title: "Anthos website"
+          url: https://cloud.google.com/anthos
+
     - title: "Solution requests and feedback"
       links:
         - title: "Request automation"
