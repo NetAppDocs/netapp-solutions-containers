@@ -86,7 +86,7 @@ The releases listed in this matrix are the releases against which the solution w
 |Technology |Purpose |Software version
 |NetApp ONTAP
 |Storage
-|9.8, 9.9.1, 9.12.1, 
+|9.8, 9.9.1, 9.12.1
 |NetApp Element 
 |Storage
 |12.3
