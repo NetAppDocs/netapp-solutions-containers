@@ -11,6 +11,9 @@ summary: Log of recent changes to the NetApp container solutions collateral.
 [.lead]
 Learn what's new in container solutions.
 
+== 21 September 2026
+Added the VMware vSphere Kubernetes Service with NetApp ONTAP solution to NetApp container solutions: link:https://docs.netapp.com/us-en/netapp-solutions-containers/vsphere-kubernetes-service/vks-overview.html[vSphere Kubernetes Service solutions^].
+
 == 18 August 2025
 The NetApp Solutions site is now the link:https://docs.netapp.com/us-en/netapp-solutions-family/index.html[NetApp solutions family^], which includes the following sites:
 
