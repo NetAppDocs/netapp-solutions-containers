@@ -22,10 +22,11 @@ sidebar:
       url: /index.html
     - title: "What's new"
       url: /whats-new.html
-    - section: anthos
+    - section: vsphere-kubernetes-service
     - section: openshift
     - section: openshift-aws
-    - section: vsphere-kubernetes-service
+    - section: anthos
+    
     - title: "Videos"
       url: /videos/index.html
       entries:
